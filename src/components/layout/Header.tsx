@@ -52,12 +52,20 @@ export function Header() {
           Contato
         </Link>
       </nav>
-      <Link
-        href="#garantir-vaga"
-        className="bg-primary text-on-primary font-label-sm text-[12px] px-6 py-3 rounded uppercase hover:bg-opacity-90 transition-colors tracking-widest font-semibold"
-      >
-        Agendar
-      </Link>
+      <div className="flex gap-4">
+        <Link
+          href="#"
+          className="border border-primary text-primary font-label-sm text-[12px] px-6 py-3 rounded uppercase hover:bg-surface-container-low transition-colors tracking-widest font-semibold"
+        >
+          Área do Aluno
+        </Link>
+        <Link
+          href="#garantir-vaga"
+          className="bg-primary text-on-primary font-label-sm text-[12px] px-6 py-3 rounded uppercase hover:bg-opacity-90 transition-colors tracking-widest font-semibold"
+        >
+          Agendar
+        </Link>
+      </div>
     </motion.header>
   );
 }

@@ -50,6 +50,48 @@ export function Sobre() {
           </div>
         </motion.div>
       </div>
+
+      {/* O Espaço */}
+      <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center mt-24">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="w-full md:w-1/2"
+        >
+          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-4">
+            Infraestrutura
+          </span>
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-element-gap">
+            O Espaço
+          </h2>
+          <p className="font-body-md text-body-md text-on-surface-variant mb-6">
+            Nosso estúdio foi projetado para oferecer o máximo de conforto e imersão
+            durante as suas 8 horas de mentoria presencial.
+          </p>
+          <p className="font-body-md text-body-md text-on-surface-variant">
+            Você terá à disposição equipamentos de ponta, iluminação ideal e um
+            ambiente calmo, preparado para focar no aprimoramento da sua técnica.
+          </p>
+        </motion.div>
+        
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-full md:w-1/2 relative"
+        >
+          <div className="aspect-[4/3] bg-surface-container w-full rounded-DEFAULT overflow-hidden relative border-[0.5px] border-outline-variant shadow-md">
+            <img
+              alt="O Espaço Ana Machado"
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
+              src="/images/image_785870.png"
+            />
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

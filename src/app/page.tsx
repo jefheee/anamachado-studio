@@ -3,9 +3,12 @@ import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Sobre } from "@/components/sections/Sobre";
 import { Tecnicas } from "@/components/sections/Tecnicas";
+import { Gallery } from "@/components/sections/Gallery";
 import { Mentoria } from "@/components/sections/Mentoria";
 import { ProvaSocial } from "@/components/sections/ProvaSocial";
+import { InstagramFeed } from "@/components/sections/InstagramFeed";
 import { Oferta } from "@/components/sections/Oferta";
+import { Location } from "@/components/sections/Location";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
 export default function Home() {
@@ -16,9 +19,12 @@ export default function Home() {
         <Hero />
         <Sobre />
         <Tecnicas />
+        <Gallery />
         <Mentoria />
         <ProvaSocial />
+        <InstagramFeed />
         <Oferta />
+        <Location />
       </main>
       <FloatingWhatsApp />
       <Footer />

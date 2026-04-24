@@ -15,7 +15,7 @@ export function Hero() {
         <img
           alt="Lash Designer de Excelência"
           className="object-cover object-top w-full h-full"
-          src="/images/cursovipana.jpg"
+          src="/images/cursovipana.jpeg.jpg"
         />
         {/* Subtle linear gradient on bottom/left for text readability */}
         <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-tr from-black/70 via-black/20 to-transparent"></div>
@@ -39,7 +39,9 @@ export function Hero() {
           com a mentoria exclusiva de Ana Júlia.
         </p>
         <Link
-          href="#garantir-vaga"
+          href="https://wa.me/5548992054803"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center justify-center bg-secondary text-on-secondary font-label-sm text-label-sm px-8 py-4 rounded uppercase tracking-widest hover:bg-on-secondary-fixed-variant transition-colors group shadow-lg"
         >
           Garantir Minha Vaga

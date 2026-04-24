@@ -104,6 +104,78 @@ export function Tecnicas() {
             </p>
           </motion.div>
         </motion.div>
+
+        {/* Expansão de Serviços: Sobrancelhas */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mt-24 mb-16"
+        >
+          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
+            Especializações Adicionais
+          </span>
+          <h2 className="font-headline-lg text-headline-lg text-primary">
+            Arquitetura do Olhar
+          </h2>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-element-gap md:gap-gutter"
+        >
+          {/* Design de Sobrancelhas */}
+          <motion.div
+            variants={itemVariants}
+            className="bg-surface-container-low rounded-lg border-[0.5px] border-surface-variant flex flex-col group hover:shadow-md transition-shadow duration-300 overflow-hidden"
+          >
+            <div className="h-64 w-full overflow-hidden relative">
+              <img
+                src="/images/image_77eb78.png"
+                alt="Design de Sobrancelhas"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="p-8">
+              <h3 className="font-headline-md text-headline-md text-primary mb-2">
+                Design de Sobrancelhas
+              </h3>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Mapeamento facial avançado para criar a simetria perfeita. Aprenda
+                a técnica de visagismo que harmoniza as sobrancelhas com os traços
+                únicos de cada rosto.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Brow Lamination */}
+          <motion.div
+            variants={itemVariants}
+            className="bg-surface-container-low rounded-lg border-[0.5px] border-surface-variant flex flex-col group hover:shadow-md transition-shadow duration-300 overflow-hidden"
+          >
+            <div className="h-64 w-full overflow-hidden relative">
+              <img
+                src="/images/image_77df36.jpg"
+                alt="Brow Lamination"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            <div className="p-8">
+              <h3 className="font-headline-md text-headline-md text-primary mb-2">
+                Brow Lamination
+              </h3>
+              <p className="font-body-md text-body-md text-on-surface-variant">
+                Alinhamento e reestruturação dos fios para um visual volumoso e
+                imponente. A técnica europeia que entrega um aspecto wild e
+                sofisticado por semanas.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

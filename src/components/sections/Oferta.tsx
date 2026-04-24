@@ -36,8 +36,16 @@ export function Oferta() {
           </span>
         </div>
         
+        <p className="font-body-md text-body-md text-surface-variant mb-8">
+          Após a confirmação do pagamento, você receberá seus dados de acesso
+          imediatamente por e-mail para a área do aluno, além de garantir a sua vaga na
+          mentoria presencial.
+        </p>
+
         <Link
-          href="#contato"
+          href="https://wa.me/5548992054803"
+          target="_blank"
+          rel="noopener noreferrer"
           className="block w-full bg-secondary text-on-secondary font-label-sm text-label-sm py-5 px-8 rounded-lg uppercase tracking-widest hover:bg-on-secondary-fixed-variant transition-colors mb-4 shadow-lg"
         >
           Garantir Minha Vaga no WhatsApp
