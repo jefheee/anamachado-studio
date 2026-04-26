@@ -13,12 +13,13 @@ export function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full bg-surface overflow-hidden">
         <img
-          alt="Lash Designer de Excelência"
-          className="object-cover object-top w-full h-full"
-          src="/images/cursovipana.jpeg.jpg"
+          alt="Mentoria Vip Lash Designer"
+          className="object-cover object-[center_20%] w-full h-full"
+          src="/assets/curso vip/artepricipalcursovip.jpg"
         />
-        {/* Subtle linear gradient on bottom/left for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-tr from-black/70 via-black/20 to-transparent"></div>
+        {/* Camada dupla de contraste para garantir leitura no celular e desktop */}
+        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
       </div>
 
       {/* Content */}
@@ -26,17 +27,18 @@ export function Hero() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
-        className="relative z-10 max-w-2xl text-on-primary"
+        className="relative z-10 max-w-3xl text-white"
       >
         <span className="font-label-sm text-label-sm uppercase tracking-widest text-surface-container-high mb-4 block">
-          Mentoria Premium
+          Metodologia Ana Júlia Machado
         </span>
-        <h1 className="font-headline-xl text-headline-xl mb-element-gap">
-          Lash Designer de Excelência
+        <h1 className="font-headline-xl text-headline-xl mb-element-gap leading-tight">
+          Curso de Extensão de Cílios
+          <span className="block text-secondary">Lash Designer de Excelência</span>
         </h1>
-        <p className="font-body-lg text-body-lg text-surface-container-low mb-8 max-w-md">
-          Domine as técnicas mais procuradas do mercado e transforme sua carreira
-          com a mentoria exclusiva de Ana Júlia.
+        <p className="font-body-lg text-body-lg text-surface-container-lowest mb-8 max-w-xl text-shadow-sm">
+          Formando alunas do zero ao avançado. Domine as técnicas mais procuradas do mercado, 
+          ganhe confiança e conquiste sua liberdade profissional.
         </p>
         <Link
           href="https://wa.me/5548992054803"

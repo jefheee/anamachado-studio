@@ -16,8 +16,8 @@ export function Sobre() {
           <div className="aspect-[4/5] bg-surface-container w-full rounded-DEFAULT overflow-hidden relative border-[0.5px] border-outline-variant shadow-md">
             <img
               alt="Ana Júlia"
-              className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdJOU0nUKh0AT6GKPEY4B6mnAxGzF0_39WQsGiorlVrsCl28t66c8gbo2kLLvkh_BpO1ANdSOT3JGdvuTkOsbM2Vj4eY_RCES1V0ZyDADMGHHSSTKxoMTSuCaS92vSBNK0uIcZBXZGeVeZ8XR4HUp5-eE0EB5NfWbLGJGnD7tuV-j2-T9aLktgQH44LQVc2A5ceceueeP3hkTKs9-JhQyl5wDPUIdUGysV0ltcQoqvUSaIVqV-pXx6naAtu3SrrX3Ey00husTDhzAj"
+              className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 object-top"
+              src="/assets/fotos ana/foto5.jpeg"
             />
           </div>
         </motion.div>
@@ -29,18 +29,23 @@ export function Sobre() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           className="w-full md:w-1/2 order-1 md:order-2"
         >
-          <h2 className="font-headline-lg text-headline-lg text-primary mb-element-gap">
+          <h2 className="font-headline-lg text-headline-lg text-primary mb-6">
             A Arte do Olhar
           </h2>
+          <div className="border-l-4 border-secondary pl-6 mb-8">
+            <p className="font-headline-sm text-headline-sm text-secondary italic">
+              "Eu não ensino só técnica! Eu ensino você a realmente entrar e se destacar no mercado da beleza."
+            </p>
+          </div>
           <p className="font-body-md text-body-md text-on-surface-variant mb-6">
             Com mais de 3 anos de experiência dedicados exclusivamente à estética facial,
-            Ana Júlia não apenas transforma olhares, mas também vidas. Sua paixão pelo
-            ensino a levou a criar uma metodologia única que guia profissionais desde os
-            primeiros passos até técnicas avançadas de volumização.
+            Ana Júlia encontrou na estética muito mais do que uma profissão, encontrou um
+            propósito: transformar vidas através do conhecimento.
           </p>
           <p className="font-body-md text-body-md text-on-surface-variant mb-8">
-            Nesta mentoria, você terá acesso aos segredos de um atendimento premium e
-            à precisão exigida pelo mercado de luxo.
+            Ensinar vai além da técnica: é sobre desenvolver confiança, visão de negócio e 
+            independência financeira. O compromisso é formar profissionais seguras, preparadas 
+            e prontas para viver da beleza, compartilhando tudo o que aprendeu na prática.
           </p>
           <div className="flex items-center gap-4 border-t border-outline-variant pt-6">
             <span className="font-headline-md text-headline-md text-primary">3+</span>
@@ -87,7 +92,7 @@ export function Sobre() {
             <img
               alt="O Espaço Ana Machado"
               className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
-              src="/images/image_785870.png"
+              src="/assets/fotos ana/foto4.jpeg"
             />
           </div>
         </motion.div>

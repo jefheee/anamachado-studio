@@ -4,16 +4,16 @@ import { motion, Variants } from "framer-motion";
 
 const images = [
   {
-    src: "/images/image_785b3c.jpg",
-    alt: "Trabalho de Lash Design 1",
+    src: "/assets/modelos clientes/brasileiro1.jpeg",
+    alt: "Volume Brasileiro - Lash Design",
   },
   {
-    src: "/images/image_785b1c.png",
-    alt: "Trabalho de Lash Design 2",
+    src: "/assets/modelos clientes/egípcio1.jpeg",
+    alt: "Volume Egípcio - Lash Design",
   },
   {
-    src: "/images/image_785b16.png",
-    alt: "Trabalho de Lash Design 3",
+    src: "/assets/modelos clientes/foxy1.jpeg",
+    alt: "Foxy Eyes - Lash Design",
   },
 ];
 

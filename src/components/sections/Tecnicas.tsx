@@ -135,7 +135,7 @@ export function Tecnicas() {
           >
             <div className="h-64 w-full overflow-hidden relative">
               <img
-                src="/images/image_77eb78.png"
+                src="/assets/fotos ana/foto2.jpeg"
                 alt="Design de Sobrancelhas"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -159,7 +159,7 @@ export function Tecnicas() {
           >
             <div className="h-64 w-full overflow-hidden relative">
               <img
-                src="/images/image_77df36.jpg"
+                src="/assets/fotos ana/foto3.jpeg"
                 alt="Brow Lamination"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />

@@ -23,7 +23,7 @@ export function Oferta() {
           Mentoria Lash de Excelência
         </h2>
         
-        <div className="mb-12">
+        <div className="mb-8">
           <span className="block font-body-md text-body-md text-surface-variant mb-2">
             Investimento
           </span>
@@ -32,14 +32,17 @@ export function Oferta() {
             <span className="font-headline-xl text-headline-xl">990,00</span>
           </div>
           <span className="block font-label-sm text-label-sm text-surface-variant mt-2 uppercase tracking-wide">
-            Ou em até 12x no cartão
+            à vista no PIX / Dinheiro / Débito
+          </span>
+          <span className="block font-label-sm text-label-sm text-surface-variant/70 mt-1 uppercase tracking-wide text-[10px]">
+            *Consulte condições de parcelamento no cartão
           </span>
         </div>
         
-        <p className="font-body-md text-body-md text-surface-variant mb-8">
-          Após a confirmação do pagamento, você receberá seus dados de acesso
-          imediatamente por e-mail para a área do aluno, além de garantir a sua vaga na
-          mentoria presencial.
+        <p className="font-body-md text-body-md text-surface-variant mb-8 max-w-lg mx-auto">
+          Este curso é perfeito para quem busca uma introdução rápida ao universo do 
+          alongamento de cílios e quer começar a trabalhar rapidamente com essa técnica 
+          em alta no mercado de beleza.
         </p>
 
         <Link
@@ -51,7 +54,7 @@ export function Oferta() {
           Garantir Minha Vaga no WhatsApp
         </Link>
         <p className="font-body-md text-body-md text-surface-variant text-sm">
-          Vagas limitadas para garantir a qualidade do ensino.
+          Vagas limitadas para garantir a qualidade do ensino e supervisão.
         </p>
       </motion.div>
     </section>
