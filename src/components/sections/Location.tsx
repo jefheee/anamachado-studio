@@ -45,7 +45,6 @@ export function Location() {
             </h3>
             <p className="font-body-md text-body-md text-on-surface-variant">
               Segunda a Sexta: 09h às 19h<br />
-              Sábado: 09h às 13h
             </p>
           </motion.div>
 
