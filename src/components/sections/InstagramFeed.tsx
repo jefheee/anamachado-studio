@@ -41,8 +41,7 @@ export function InstagramFeed() {
             <p className="font-body-md text-body-md text-center max-w-sm">
               [ script feed instagram ]<br />
               <span className="text-sm opacity-70">
-                Recomendamos plataformas como Elfsight ou similar para exibir as fotos do
-                seu feed automaticamente.
+                Elfsight
               </span>
             </p>
           </div>
