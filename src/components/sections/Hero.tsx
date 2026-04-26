@@ -8,18 +8,19 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full min-h-[795px] flex flex-col justify-end px-container-padding pb-section-gap pt-32 md:justify-center md:items-start md:px-[8%]"
+      className="relative w-full min-h-[70vh] md:min-h-[600px] flex flex-col justify-end px-container-padding pb-section-gap pt-32 md:justify-center md:items-start md:px-[8%]"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full bg-surface overflow-hidden">
         <img
           alt="Mentoria Vip Lash Designer"
-          className="object-cover object-[center_20%] w-full h-full"
+          className="object-cover object-top w-full h-full"
           src="/assets/curso vip/artepricipalcursovip.jpg"
         />
         {/* Camada dupla de contraste para garantir leitura no celular e desktop */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-black/70 via-black/20 to-transparent"></div>
       </div>
 
       {/* Content */}

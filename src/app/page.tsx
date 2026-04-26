@@ -2,12 +2,12 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
 import { Sobre } from "@/components/sections/Sobre";
-import { Tecnicas } from "@/components/sections/Tecnicas";
-import { Gallery } from "@/components/sections/Gallery";
+import { Services } from "@/components/sections/Services";
+import { Portfolio } from "@/components/sections/Portfolio";
 import { Mentoria } from "@/components/sections/Mentoria";
-import { ProvaSocial } from "@/components/sections/ProvaSocial";
-import { InstagramFeed } from "@/components/sections/InstagramFeed";
+import { AlunasResults } from "@/components/sections/AlunasResults";
 import { Oferta } from "@/components/sections/Oferta";
+import { InstagramFeed } from "@/components/sections/InstagramFeed";
 import { Location } from "@/components/sections/Location";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
@@ -18,16 +18,16 @@ export default function Home() {
       <main className="w-full mx-auto md:pt-[72px]">
         <Hero />
         <Sobre />
-        <Tecnicas />
-        <Gallery />
+        <Services />
+        <Portfolio />
         <Mentoria />
-        <ProvaSocial />
-        <InstagramFeed />
+        <AlunasResults />
         <Oferta />
+        <InstagramFeed />
         <Location />
       </main>
-      <FloatingWhatsApp />
       <Footer />
+      <FloatingWhatsApp />
     </>
   );
 }
