@@ -20,7 +20,7 @@ export function Sobre() {
             <img
               alt="Ana Júlia"
               className="object-cover w-full h-full transition-transform duration-700 hover:scale-105 object-top"
-              src="/assets/fotos ana/foto1.jpeg"
+              src="/assets/fotos_ana/foto1.jpeg"
             />
           </div>
 
@@ -35,8 +35,8 @@ export function Sobre() {
             <img
               alt="O Espaço Ana Machado"
               className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
-              src="/assets/espaço/fotoespaço.jpg"
-              onError={(e) => { e.currentTarget.src = "/assets/fotos ana/foto4.jpeg" }} // Fallback
+              src="/assets/espaco/fotoespaco.jpg"
+              onError={(e) => { e.currentTarget.src = "/assets/fotos_ana/foto4.jpeg" }} // Fallback
             />
           </motion.div>
         </motion.div>

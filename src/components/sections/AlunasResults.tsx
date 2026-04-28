@@ -2,36 +2,9 @@
 
 import { motion } from "framer-motion";
 
-const alunas = [
-  {
-    name: "Beatriz",
-    trabalho: "/assets/curso vip/aluna beatriz/alunacilios.jpg",
-    resultado: "/assets/curso vip/aluna beatriz/alunaciliiosmanequim.jpg",
-    certificado: "/assets/curso vip/aluna beatriz/alunafotocertificado.jpg",
-  },
-  {
-    name: "Gabriella Soares",
-    trabalho: "/assets/curso vip/aluna gabriella soares/fotoalunacilios.jpg",
-    resultado: "/assets/curso vip/aluna gabriella soares/fotoalunasobrancelha.jpg",
-    certificado: "/assets/curso vip/aluna gabriella soares/fotocertificadoaluna.jpg",
-  },
-  {
-    name: "Joyce",
-    trabalho: "/assets/curso vip/aluna joyce/fotoalunacilios.jpg",
-    resultado: null,
-    certificado: "/assets/curso vip/aluna joyce/fotoalunacertificado.jpg",
-  },
-  {
-    name: "Júlia",
-    trabalho: null,
-    resultado: null,
-    certificado: "/assets/curso vip/aluna júlia/fotoalunacertificado.jpg",
-  }
-];
-
 export function AlunasResults() {
   return (
-    <section id="resultados-alunas" className="py-section-gap px-container-padding bg-surface md:px-[8%]">
+    <section id="resultados-alunas" className="py-24 px-container-padding bg-surface md:px-[8%]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,101 +24,132 @@ export function AlunasResults() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px]">
-          {/* Beatriz - Destaque */}
+        <div className="space-y-16">
+          
+          {/* Aluna Gabriella (Vídeos + Certificado) */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-2 lg:col-span-2 row-span-2 relative rounded-xl overflow-hidden shadow-lg group"
+            className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
           >
-            <img 
-              src={alunas[0].trabalho!} 
-              alt="Aluna Beatriz em treinamento" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 text-white">
-              <span className="font-label-sm text-secondary uppercase tracking-widest block mb-1">Prática Real</span>
-              <h3 className="font-headline-md text-headline-md">Aluna Beatriz</h3>
+            <div className="border-b border-neutral-100 pb-4 mb-8">
+              <h3 className="font-headline-md text-2xl text-primary">Trabalho da Aluna Gabriella Soares</h3>
+              <p className="text-on-surface-variant mt-1">Prática supervisionada em Cílios e Sobrancelhas</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[400px]">
+              <div className="rounded-xl overflow-hidden shadow-md h-[400px] md:h-full bg-black relative">
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+                  <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunacilios.mp4" type="video/mp4" />
+                </video>
+                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Cílios</span>
+              </div>
+              <div className="rounded-xl overflow-hidden shadow-md h-[400px] md:h-full bg-black relative">
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
+                  <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunasobrancelha.mp4" type="video/mp4" />
+                </video>
+                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Sobrancelhas</span>
+              </div>
+              <div className="rounded-xl overflow-hidden shadow-md h-[400px] md:h-full bg-neutral-100 relative">
+                <img 
+                  src="/assets/curso_vip/aluna_gabriella_soares/fotocertificadoaluna.jpg" 
+                  alt="Gabriella com certificado" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Certificação</span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Beatriz Certificado */}
+          {/* Aluna Beatriz */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative rounded-xl overflow-hidden shadow-lg group"
+            className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
           >
-            <img 
-              src={alunas[0].certificado!} 
-              alt="Beatriz com certificado" 
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
+            <div className="border-b border-neutral-100 pb-4 mb-8">
+              <h3 className="font-headline-md text-2xl text-primary">Trabalho da Aluna Beatriz</h3>
+              <p className="text-on-surface-variant mt-1">Evolução do manequim ao modelo real</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[400px]">
+              <div className="rounded-xl overflow-hidden shadow-md h-[300px] md:h-full relative">
+                <img 
+                  src="/assets/curso_vip/aluna_beatriz/alunaciliiosmanequim.jpg" 
+                  alt="Prática no manequim" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Treino</span>
+              </div>
+              <div className="rounded-xl overflow-hidden shadow-md h-[300px] md:h-full relative">
+                <img 
+                  src="/assets/curso_vip/aluna_beatriz/alunacilios.jpg" 
+                  alt="Prática na modelo" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Prática</span>
+              </div>
+              <div className="rounded-xl overflow-hidden shadow-md h-[300px] md:h-full relative">
+                <img 
+                  src="/assets/curso_vip/aluna_beatriz/alunafotocertificado.jpg" 
+                  alt="Beatriz com certificado" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                />
+                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Certificação</span>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Gabriella Trabalho */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative rounded-xl overflow-hidden shadow-lg group"
-          >
-            <img 
-              src={alunas[1].trabalho!} 
-              alt="Aluna Gabriella Soares" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-             <span className="absolute bottom-4 left-4 text-white font-headline-sm">Gabriella</span>
-          </motion.div>
+          {/* Dupla: Joyce e Júlia */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
+            >
+              <div className="border-b border-neutral-100 pb-4 mb-6">
+                <h3 className="font-headline-md text-xl text-primary">Aluna Joyce</h3>
+              </div>
+              <div className="grid grid-cols-2 gap-4 h-[250px]">
+                <div className="rounded-xl overflow-hidden shadow-sm relative">
+                  <img 
+                    src="/assets/curso_vip/aluna_joyce/fotoalunacilios.jpg" 
+                    alt="Joyce trabalhando" 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-sm relative">
+                  <img 
+                    src="/assets/curso_vip/aluna_joyce/fotoalunacertificado.jpg" 
+                    alt="Joyce certificado" 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+            </motion.div>
 
-          {/* Gabriella Certificado */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative rounded-xl overflow-hidden shadow-lg group row-span-2"
-          >
-            <img 
-              src={alunas[1].certificado!} 
-              alt="Gabriella Soares com certificado" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-          </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
+            >
+              <div className="border-b border-neutral-100 pb-4 mb-6">
+                <h3 className="font-headline-md text-xl text-primary">Aluna Júlia</h3>
+              </div>
+              <div className="w-full h-[250px] rounded-xl overflow-hidden shadow-sm relative">
+                <img 
+                  src="/assets/curso_vip/aluna_julia/fotoalunacertificado.jpg" 
+                  alt="Júlia certificado" 
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 object-top"
+                />
+              </div>
+            </motion.div>
+          </div>
 
-           {/* Joyce Certificado */}
-           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative rounded-xl overflow-hidden shadow-lg group"
-          >
-            <img 
-              src={alunas[2].certificado!} 
-              alt="Aluna Joyce com certificado" 
-              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-            />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-             <span className="absolute bottom-4 left-4 text-white font-headline-sm">Joyce</span>
-          </motion.div>
-
-           {/* Júlia Certificado */}
-           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative rounded-xl overflow-hidden shadow-lg group"
-          >
-            <img 
-              src={alunas[3].certificado!} 
-              alt="Aluna Júlia com certificado" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-             <span className="absolute bottom-4 left-4 text-white font-headline-sm">Júlia</span>
-          </motion.div>
         </div>
       </div>
     </section>

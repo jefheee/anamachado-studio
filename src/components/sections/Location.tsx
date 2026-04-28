@@ -22,38 +22,48 @@ export function Location() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch h-auto md:min-h-[400px]">
+          {/* 1/3: Texto */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:col-span-1 bg-surface-container p-8 rounded-lg border-[0.5px] border-outline-variant"
+            className="md:col-span-1 bg-surface-container p-8 rounded-xl border border-neutral-100 flex flex-col justify-center h-full min-h-[400px]"
           >
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-6">
               <MapPin className="text-secondary w-6 h-6" />
             </div>
-            <h3 className="font-headline-md text-headline-md text-primary mb-2">
-              Endereço
+            <h3 className="font-headline-md text-2xl text-primary mb-2">
+              Como Chegar
             </h3>
             <p className="font-body-md text-body-md text-on-surface-variant mb-6">
               Rua Machado de Assis, 995<br />
               Palhoça - SC
             </p>
-            <h3 className="font-headline-md text-headline-md text-primary mb-2">
+            
+            <h4 className="font-headline-md text-lg text-primary mb-2">
+              📍 Ponto de Referência
+            </h4>
+            <p className="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+              Bairro Jardim Eldorado. O estúdio possui portão escuro e muro recém-pintado com a identidade visual da Ana Machado.
+            </p>
+
+            <h4 className="font-headline-md text-lg text-primary mb-2">
               Horário de Funcionamento
-            </h3>
+            </h4>
             <p className="font-body-md text-body-md text-on-surface-variant">
               Segunda a Sexta: 09h às 19h<br />
             </p>
           </motion.div>
 
+          {/* 2/3: Mapa */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-            className="md:col-span-2 aspect-video w-full rounded-lg overflow-hidden border-[0.5px] border-outline-variant shadow-md"
+            className="md:col-span-2 w-full rounded-xl overflow-hidden border border-neutral-100 shadow-sm h-full min-h-[400px]"
           >
             {/* Embed do Google Maps */}
             <iframe
