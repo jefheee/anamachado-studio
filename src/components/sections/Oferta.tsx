@@ -39,11 +39,27 @@ export function Oferta() {
           </span>
         </div>
         
-        <p className="font-body-md text-body-md text-surface-variant mb-8 max-w-lg mx-auto">
-          Este curso é perfeito para quem busca uma introdução rápida ao universo do 
-          alongamento de cílios e quer começar a trabalhar rapidamente com essa técnica 
-          em alta no mercado de beleza.
-        </p>
+        {/* Fórmula PAS (Problema, Agitação, Solução) */}
+        <div className="text-left mb-10 max-w-xl mx-auto space-y-6 bg-white/5 p-6 rounded-xl border border-white/10">
+          <div>
+            <span className="text-secondary font-bold uppercase tracking-wider text-xs mb-1 block">O Problema</span>
+            <p className="font-body-md text-white/90">
+              Sente insegurança na retenção dos fios ou não consegue atrair clientes que pagam o valor justo?
+            </p>
+          </div>
+          <div>
+            <span className="text-secondary font-bold uppercase tracking-wider text-xs mb-1 block">A Realidade</span>
+            <p className="font-body-md text-white/80">
+              O mercado está cheio de profissionais cobrando barato e entregando resultados que duram menos de 15 dias. Continuar errando na técnica significa perder indicações e estagnar o faturamento.
+            </p>
+          </div>
+          <div>
+            <span className="text-secondary font-bold uppercase tracking-wider text-xs mb-1 block">A Solução</span>
+            <p className="font-body-md text-white font-medium">
+              A Metodologia Ana Machado. 8 horas de imersão presencial focada na prática exata para dominar o Volume Brasileiro e Egípcio, com suporte vitalício.
+            </p>
+          </div>
+        </div>
 
         <Link
           href="https://wa.me/5548992054803"

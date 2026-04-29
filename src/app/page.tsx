@@ -6,6 +6,7 @@ import { Services } from "@/components/sections/Services";
 import { Portfolio } from "@/components/sections/Portfolio";
 import { Mentoria } from "@/components/sections/Mentoria";
 import { AlunasResults } from "@/components/sections/AlunasResults";
+import { FAQ } from "@/components/sections/FAQ";
 import { Oferta } from "@/components/sections/Oferta";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
 import { Location } from "@/components/sections/Location";
@@ -22,6 +23,7 @@ export default function Home() {
         <Portfolio />
         <Mentoria />
         <AlunasResults />
+        <FAQ />
         <Oferta />
         <InstagramFeed />
         <Location />

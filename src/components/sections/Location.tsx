@@ -29,24 +29,18 @@ export function Location() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:col-span-1 bg-surface-container p-8 rounded-xl border border-neutral-100 flex flex-col justify-center h-full min-h-[400px]"
+            className="md:col-span-1 bg-surface-container p-8 rounded-xl border border-neutral-100 flex flex-col justify-start h-full min-h-[400px]"
           >
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-6">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-8">
               <MapPin className="text-secondary w-6 h-6" />
             </div>
+            
             <h3 className="font-headline-md text-2xl text-primary mb-2">
               Como Chegar
             </h3>
-            <p className="font-body-md text-body-md text-on-surface-variant mb-6">
+            <p className="font-body-md text-body-md text-on-surface-variant mb-8">
               Rua Machado de Assis, 995<br />
               Palhoça - SC
-            </p>
-            
-            <h4 className="font-headline-md text-lg text-primary mb-2">
-              📍 Ponto de Referência
-            </h4>
-            <p className="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
-              Bairro Jardim Eldorado. O estúdio possui portão escuro e muro recém-pintado com a identidade visual da Ana Machado.
             </p>
 
             <h4 className="font-headline-md text-lg text-primary mb-2">

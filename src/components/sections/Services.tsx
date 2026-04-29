@@ -48,17 +48,18 @@ export function Services() {
       ],
     },
     "Manutenções": {
-      description: "Para manter a saúde dos fios naturais e o preenchimento impecável, as manutenções devem ser realizadas rigorosamente dentro do prazo estabelecido. Após 25 dias, será cobrado o valor de uma nova aplicação.",
+      description: "Para manter a saúde dos fios naturais e o preenchimento impecável, as manutenções devem ser realizadas dentro do prazo estabelecido e com pelo menos 60% dos fios intactos e limpos. Caso contrário, será cobrado o valor de uma nova aplicação.",
       images: [
         "/assets/modelos_clientes/egipcio2.jpeg",
         "/assets/modelos_clientes/foxy2.jpeg",
       ],
       items: [
-        { name: "Manutenção até 15 dias", price: "60" },
-        { name: "Manutenção até 20 dias", price: "70" },
-        { name: "Manutenção até 25 dias", price: "80" },
+        { name: "Manutenção 15 dias", price: "80" },
+        { name: "Manutenção 20 dias", price: "90" },
+        { name: "Manutenção 25 dias", price: "110" },
+        { name: "Manutenção 30 dias", price: "130" },
       ],
-      notice: "Não realizo manutenção de trabalhos de outras profissionais.",
+      notice: "Atenção: Não realizo manutenção de outras profissionais. Agendamento sujeito a sinal de R$40,00 abatido no atendimento.",
     },
   };
 
@@ -88,11 +89,10 @@ export function Services() {
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-8 py-3 rounded-full font-label-sm text-sm uppercase tracking-widest transition-all duration-300 ${
-                activeTab === tab
+              className={`px-8 py-3 rounded-full font-label-sm text-sm uppercase tracking-widest transition-all duration-300 ${activeTab === tab
                   ? "bg-secondary text-on-secondary shadow-lg"
                   : "bg-surface-container hover:bg-surface-container-high text-on-surface-variant"
-              }`}
+                }`}
             >
               {tab}
             </button>
@@ -101,7 +101,7 @@ export function Services() {
 
         {/* Tab Content - 2 Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start min-h-[500px]">
-          
+
           {/* Coluna Esquerda: Texto e Preços */}
           <div className="flex flex-col justify-center h-full">
             <AnimatePresence mode="wait">
@@ -121,7 +121,7 @@ export function Services() {
                     {activeContent.description}
                   </p>
                 </div>
-                
+
                 <ul className="space-y-6 mt-8">
                   {activeContent.items.map((item, index) => (
                     <li key={index} className="flex justify-between items-end gap-4">
@@ -157,11 +157,10 @@ export function Services() {
                 className="grid grid-cols-2 gap-4 h-[500px]"
               >
                 {activeContent.images.map((src, idx) => (
-                  <div 
-                    key={idx} 
-                    className={`rounded-xl overflow-hidden shadow-md ${
-                      activeContent.images.length === 3 && idx === 0 ? "col-span-2 h-[240px]" : "h-full min-h-[240px]"
-                    } ${activeContent.images.length === 2 ? "h-[500px]" : ""}`}
+                  <div
+                    key={idx}
+                    className={`rounded-xl overflow-hidden shadow-md ${activeContent.images.length === 3 && idx === 0 ? "col-span-2 h-[240px]" : "h-full min-h-[240px]"
+                      } ${activeContent.images.length === 2 ? "h-[500px]" : ""}`}
                   >
                     <img
                       src={src}
