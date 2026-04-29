@@ -11,6 +11,7 @@ import { Oferta } from "@/components/sections/Oferta";
 import { InstagramFeed } from "@/components/sections/InstagramFeed";
 import { Location } from "@/components/sections/Location";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
+import { InformativeReels } from "@/components/sections/InformativeReels";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <FAQ />
         <Oferta />
         <InstagramFeed />
+        <InformativeReels />
         <Location />
       </main>
       <Footer />

@@ -31,13 +31,13 @@ export function AlunasResults() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[300px]"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[300px]"
         >
           
           {/* Item 1: Vídeo Gabriella (Cílios) */}
-          <div className="md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden shadow-md bg-black relative group cursor-pointer">
+          <div className="md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden shadow-md bg-black relative group cursor-pointer">
             <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
-              <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunacilios.mp4" type="video/mp4" />
+              <source src="/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunacilios.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 transition-opacity flex flex-col justify-end p-6">
               <div className="flex items-center gap-2 mb-1">
@@ -48,22 +48,22 @@ export function AlunasResults() {
             </div>
           </div>
 
-          {/* Item 2: Foto Beatriz (Manequim) */}
-          <div className="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer">
+          {/* Item 2: Foto Beatriz (Prática Modelo) */}
+          <div className="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer bg-surface-variant">
             <img 
-              src="/assets/curso_vip/aluna_beatriz/alunaciliiosmanequim.jpg" 
-              alt="Prática no manequim" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              src="/assets/curso_vip/alunas/aluna_beatriz/alunacilios.jpg" 
+              alt="Prática na modelo" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-center"
             />
             <div className="absolute bottom-4 left-4">
-              <span className="bg-white/90 text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm backdrop-blur-md uppercase tracking-wider">Treino no Manequim</span>
+              <span className="bg-white/90 text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm backdrop-blur-md uppercase tracking-wider">Prática Real</span>
             </div>
           </div>
 
           {/* Item 3: Vídeo Gabriella (Sobrancelha) */}
           <div className="md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden shadow-md bg-black relative group cursor-pointer">
             <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
-              <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunasobrancelha.mp4" type="video/mp4" />
+              <source src="/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunasobrancelha.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
               <div className="flex items-center gap-2 mb-1">
@@ -74,31 +74,33 @@ export function AlunasResults() {
             </div>
           </div>
 
-          {/* Item 4: Foto Beatriz (Prática Modelo) */}
-          <div className="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer">
+          {/* Item 4: Foto Joyce (Prática Cílios) - Enquadramento correto */}
+          <div className="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer bg-surface-variant">
             <img 
-              src="/assets/curso_vip/aluna_beatriz/alunacilios.jpg" 
-              alt="Prática na modelo" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top"
-            />
-            <div className="absolute bottom-4 left-4">
-              <span className="bg-white/90 text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm backdrop-blur-md uppercase tracking-wider">Aplicação em Modelo</span>
-            </div>
-          </div>
-
-          {/* Item 5: Foto Joyce (Prática Cílios) - Wide on Desktop */}
-          <div className="md:col-span-3 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer">
-            <img 
-              src="/assets/curso_vip/aluna_joyce/fotoalunacilios.jpg" 
+              src="/assets/curso_vip/alunas/aluna_joyce/fotoalunacilios.jpg" 
               alt="Joyce trabalhando" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
-              <span className="text-white font-label-sm text-sm tracking-widest uppercase mb-1">Foco e Precisão</span>
-              <h3 className="text-white font-headline-sm text-xl">Aluna Joyce em Atendimento</h3>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+              <h3 className="text-white font-headline-sm text-sm">Aluna Joyce</h3>
             </div>
           </div>
 
+        </motion.div>
+        
+        {/* CTA Adicional */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center"
+        >
+          <a 
+            href="#garantir-vaga"
+            className="inline-block px-8 py-4 bg-primary text-on-primary font-label-sm text-sm uppercase tracking-widest rounded-lg hover:bg-primary/90 transition-colors shadow-md"
+          >
+            Quero Ser Aluna
+          </a>
         </motion.div>
       </div>
     </section>

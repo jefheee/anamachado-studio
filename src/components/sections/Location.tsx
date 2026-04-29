@@ -5,7 +5,7 @@ import { MapPin } from "lucide-react";
 
 export function Location() {
   return (
-    <section className="py-section-gap px-container-padding bg-surface md:px-[8%] border-t border-outline-variant">
+    <section className="py-section-gap px-container-padding bg-neutral-900 text-white md:px-[8%]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -17,7 +17,7 @@ export function Location() {
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             Onde Estamos
           </span>
-          <h2 className="font-headline-lg text-headline-lg text-primary">
+          <h2 className="font-headline-lg text-headline-lg text-white">
             Nosso Estúdio
           </h2>
         </motion.div>
@@ -29,26 +29,36 @@ export function Location() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:col-span-1 bg-surface-container p-8 rounded-xl border border-neutral-100 flex flex-col justify-start h-full min-h-[400px]"
+            className="md:col-span-1 bg-neutral-800/50 p-8 rounded-xl border border-white/10 flex flex-col justify-start h-full min-h-[400px] shadow-2xl backdrop-blur-sm"
           >
-            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm mb-8">
+            <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center shadow-sm mb-8 border border-white/5">
               <MapPin className="text-secondary w-6 h-6" />
             </div>
             
-            <h3 className="font-headline-md text-2xl text-primary mb-2">
+            <h3 className="font-headline-md text-2xl text-white mb-2">
               Como Chegar
             </h3>
-            <p className="font-body-md text-body-md text-on-surface-variant mb-8">
-              Rua Machado de Assis, 995<br />
-              Palhoça - SC
+            <p className="font-body-md text-white/70 mb-8 leading-relaxed">
+              <span className="font-bold text-white/90">Rua Machado de Assis, 995</span><br />
+              Bairro Passa Vinte<br />
+              Palhoça - SC, 88132-140
             </p>
 
-            <h4 className="font-headline-md text-lg text-primary mb-2">
+            <h4 className="font-headline-md text-lg text-white mb-2">
               Horário de Funcionamento
             </h4>
-            <p className="font-body-md text-body-md text-on-surface-variant">
-              Segunda a Sexta: 09h às 19h<br />
+            <p className="font-body-md text-white/70 mb-8">
+              Segunda a Sexta: <span className="text-secondary font-medium">09h às 19h</span>
             </p>
+
+            <a 
+              href="https://maps.app.goo.gl/YourMapLinkHere" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="mt-auto block w-full py-3 border border-secondary text-secondary text-center rounded-lg font-label-sm uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-colors"
+            >
+              Traçar Rota
+            </a>
           </motion.div>
 
           {/* 2/3: Mapa */}

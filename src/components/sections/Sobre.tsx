@@ -20,27 +20,23 @@ export function Sobre() {
             <img
               alt="Ana Júlia"
               className="object-cover w-full h-full transition-transform duration-700 hover:scale-105 object-top"
-              src="/assets/fotos_ana/foto1.jpeg"
+              src="/assets/fotos_ana/foto7.jpeg"
             />
           </div>
 
-          {/* Imagem Deslocada (O Espaço - Vídeo) */}
+          {/* Imagem Deslocada (O Espaço) */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="absolute bottom-[-10%] right-0 lg:right-[-10%] w-[60%] aspect-[4/3] rounded-DEFAULT overflow-hidden shadow-2xl border-4 border-surface z-20 bg-black"
+            className="absolute bottom-[-10%] right-0 lg:right-[-10%] w-[50%] aspect-[9/16] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-surface z-20"
           >
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline 
-              className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
-            >
-              <source src="/assets/espaco/videoespaco.mp4" type="video/mp4" />
-            </video>
+            <img
+              alt="O Espaço Ana Machado"
+              className="object-cover object-center w-full h-full hover:scale-105 transition-transform duration-700"
+              src="/assets/espaco/fotoespaco.jpg"
+            />
           </motion.div>
         </motion.div>
         
@@ -60,13 +56,11 @@ export function Sobre() {
           </h2>
           <div className="border-l-4 border-secondary pl-6 mb-8">
             <p className="font-headline-sm text-headline-sm text-secondary italic">
-              "Eu não ensino só técnica! Eu ensino você a realmente entrar e se destacar no mercado da beleza."
+              &quot;Eu não ensino só técnica! Eu ensino você a realmente entrar e se destacar no mercado da beleza.&quot;
             </p>
           </div>
           <p className="font-body-md text-body-md text-on-surface-variant mb-6">
-            Com mais de 3 anos de experiência dedicados exclusivamente à estética facial,
-            Ana Júlia encontrou na estética muito mais do que uma profissão, encontrou um
-            propósito: transformar vidas através do conhecimento.
+            Instrutora especialista em extensão de cílios e sobrancelhas, Ana Júlia encontrou na estética muito mais do que uma profissão: um propósito. Com <strong>mais de 2.000 atendimentos realizados desde 2023</strong>, sua missão é transformar vidas através do conhecimento, entregando resultados marcantes e formando novas profissionais de sucesso.
           </p>
           
           <h3 className="font-headline-md text-headline-md text-primary mt-8 mb-4">

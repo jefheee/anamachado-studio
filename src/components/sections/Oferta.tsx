@@ -29,13 +29,13 @@ export function Oferta() {
           </span>
           <div className="flex items-baseline justify-center gap-2">
             <span className="font-headline-md text-headline-md">R$</span>
-            <span className="font-headline-xl text-headline-xl">990,00</span>
+            <span className="font-headline-xl text-headline-xl">999,90</span>
           </div>
           <span className="block font-label-sm text-label-sm text-surface-variant mt-2 uppercase tracking-wide">
             à vista no PIX / Dinheiro / Débito
           </span>
           <span className="block font-label-sm text-label-sm text-surface-variant/70 mt-1 uppercase tracking-wide text-[10px]">
-            *Consulte condições de parcelamento no cartão
+            *Ou em até 12x no cartão de crédito
           </span>
         </div>
         

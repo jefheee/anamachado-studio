@@ -61,7 +61,7 @@ export function Mentoria() {
             <BookOpen className="w-8 h-8 mb-4 opacity-80 group-hover:opacity-100 transition-opacity" />
             <div>
               <h4 className="font-headline-md text-xl mb-2">Apostila Completa</h4>
-              <p className="text-white/80 font-body-sm text-sm">Material super didático para consultar e revisar sempre que precisar.</p>
+              <p className="text-white/80 font-body-sm text-sm">Material super didático cobrindo desde a anatomia dos fios até biossegurança e tendências.</p>
             </div>
           </div>
 
@@ -76,8 +76,8 @@ export function Mentoria() {
           <div className="md:col-span-1 bg-surface-container rounded-3xl p-6 md:p-8 shadow-sm border border-neutral-100 flex flex-col justify-between group hover:shadow-md transition-shadow">
             <Smartphone className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
             <div>
-              <h4 className="font-headline-md text-xl text-primary mb-2">Marketing</h4>
-              <p className="text-on-surface-variant font-body-sm text-sm">Dicas de fotos, edições e estratégias de captação de clientes.</p>
+              <h4 className="font-headline-md text-xl text-primary mb-2">Marketing e Perfil</h4>
+              <p className="text-on-surface-variant font-body-sm text-sm">Captação de primeiras clientes, dicas de fotos, edições e construção de um perfil profissional atrativo.</p>
             </div>
           </div>
 
@@ -88,14 +88,14 @@ export function Mentoria() {
             <p className="text-white/80 font-body-md max-w-md relative z-10">Suporte contínuo para o seu dia a dia. Você não estará sozinha no seu processo de evolução técnica e comercial.</p>
           </div>
 
-          {/* Certificado - Span 2 Cols */}
+          {/* Certificado e Retorno - Span 2 Cols */}
           <div className="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-neutral-100 flex flex-col md:flex-row items-start md:items-center gap-6 group hover:shadow-md transition-shadow">
             <div className="w-16 h-16 rounded-full bg-surface flex items-center justify-center shrink-0 border border-neutral-100">
               <Award className="w-8 h-8 text-secondary group-hover:rotate-12 transition-transform" />
             </div>
             <div>
-              <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-2">Certificado Exclusivo</h4>
-              <p className="text-on-surface-variant font-body-md">Validação oficial do seu aprendizado e diferencial incontestável para a sua nova carreira profissional.</p>
+              <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-2">Certificação e Retorno</h4>
+              <p className="text-on-surface-variant font-body-md">Validação oficial do seu aprendizado e um <strong>retorno de 20 dias para manutenção</strong> para garantir a segurança na prática após o curso.</p>
             </div>
           </div>
 

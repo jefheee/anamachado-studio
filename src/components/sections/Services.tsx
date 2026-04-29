@@ -19,9 +19,11 @@ export function Services() {
         { src: "/assets/modelos_clientes/foxy1.jpeg", label: "Foxy Eyes" },
       ],
       items: [
-        { name: "Volume Brasileiro", price: "160" },
-        { name: "Volume Egípcio", price: "180" },
-        { name: "Foxy Eyes", price: "180" },
+        { name: "Volume Brasileiro", price: "160", badge: "" },
+        { name: "Volume Egípcio", price: "180", badge: "" },
+        { name: "Foxy Eyes", price: "180", badge: "" },
+        { name: "Brasileiro Castanho", price: "170", badge: "Mais Pedido" },
+        { name: "Egípcio Castanho", price: "190", badge: "Mais Pedido" },
       ],
     },
     "Sobrancelhas": {
@@ -31,8 +33,8 @@ export function Services() {
         { src: "/assets/modelos_clientes/fotodesigndesobrancelhas.jpeg", label: "Design de Sobrancelhas" },
       ],
       items: [
-        { name: "Design de Sobrancelhas", price: "35" },
-        { name: "Brow Lamination", price: "120" },
+        { name: "Design de Sobrancelhas", price: "35", badge: "" },
+        { name: "Brow Lamination", price: "120", badge: "" },
       ],
     },
     "Micropigmentação": {
@@ -42,22 +44,24 @@ export function Services() {
         { src: "/assets/modelos_clientes/fotomicropigmentacaolabial.jpeg", label: "Micropigmentação Labial" },
       ],
       items: [
-        { name: "Sobrancelhas Fio a Fio", price: "250" },
-        { name: "Micropigmentação Labial", price: "300" },
-        { name: "Combo Prime", price: "430" },
+        { name: "Sobrancelhas Fio a Fio", price: "250", badge: "" },
+        { name: "Micropigmentação Labial", price: "300", badge: "" },
+        { name: "Combo Prime", price: "430", badge: "" },
       ],
     },
     "Manutenções": {
       description: "Para manter a saúde dos fios naturais e o preenchimento impecável, as manutenções devem ser realizadas dentro do prazo estabelecido e com pelo menos 60% dos fios intactos e limpos. Caso contrário, será cobrado o valor de uma nova aplicação.",
       images: [
-        { src: "/assets/modelos_clientes/egipcio2.jpeg", label: "Manutenção - Volume Egípcio" },
-        { src: "/assets/modelos_clientes/foxy2.jpeg", label: "Manutenção - Foxy Eyes" },
+        { src: "/assets/modelos_clientes/egipcio2.jpeg", label: "Volume Egípcio" },
+        { src: "/assets/modelos_clientes/foxy2.jpeg", label: "Foxy Eyes" },
+        { src: "/assets/modelos_clientes/brasileiro2.jpeg", label: "Brasileiro" },
+        { src: "/assets/modelos_clientes/egipcio3.jpeg", label: "Egípcio" },
       ],
       items: [
-        { name: "Manutenção 15 dias", price: "80" },
-        { name: "Manutenção 20 dias", price: "90" },
-        { name: "Manutenção 25 dias", price: "110" },
-        { name: "Manutenção 30 dias", price: "130" },
+        { name: "Manutenção 15 dias", price: "80", badge: "" },
+        { name: "Manutenção 20 dias", price: "90", badge: "" },
+        { name: "Manutenção 25 dias", price: "110", badge: "" },
+        { name: "Manutenção 30 dias", price: "130", badge: "" },
       ],
       notice: "Atenção: Não realizo manutenção de outras profissionais. Agendamento sujeito a sinal de R$40,00 abatido no atendimento.",
     },
@@ -124,9 +128,16 @@ export function Services() {
 
                 <ul className="space-y-6 mt-8">
                   {activeContent.items.map((item, index) => (
-                    <li key={index} className="flex justify-between items-end gap-4">
-                      <span className="font-headline-md text-headline-md text-on-surface">{item.name}</span>
-                      <div className="flex-1 border-b border-dotted border-outline-variant mb-2"></div>
+                    <li key={index} className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 sm:gap-4">
+                      <div className="flex items-center gap-2">
+                        <span className="font-headline-md text-headline-md text-on-surface">{item.name}</span>
+                        {item.badge && (
+                          <span className="bg-secondary/10 text-secondary text-[10px] uppercase font-bold px-2 py-1 rounded-full whitespace-nowrap">
+                            {item.badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="hidden sm:block flex-1 border-b border-dotted border-outline-variant mb-2"></div>
                       <span className="font-headline-md text-headline-md text-primary font-bold whitespace-nowrap">
                         R$ {item.price}
                       </span>
@@ -141,6 +152,17 @@ export function Services() {
                     </p>
                   </div>
                 )}
+                
+                <div className="mt-8">
+                  <a 
+                    href="https://wa.me/5548992054803"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-8 py-3 border border-primary text-primary font-label-sm text-sm uppercase tracking-widest rounded-lg hover:bg-primary/5 transition-colors"
+                  >
+                    Agendar Avaliação
+                  </a>
+                </div>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -159,15 +181,20 @@ export function Services() {
                 {activeContent.images.map((img, idx) => (
                   <div
                     key={idx}
-                    className={`rounded-xl overflow-hidden shadow-md relative group ${activeContent.images.length === 3 && idx === 0 ? "col-span-2 h-[200px] md:h-[240px]" : "h-full min-h-[190px] md:min-h-[240px]"
-                      } ${activeContent.images.length === 2 ? "h-[400px] md:h-[500px]" : ""}`}
+                    className={`rounded-xl overflow-hidden shadow-md relative group ${
+                      activeContent.images.length === 3 && idx === 0 
+                        ? "col-span-2 h-[200px] md:h-[240px]" 
+                        : activeContent.images.length === 4 
+                          ? "h-[190px] md:h-[240px]" // Para manutenções (4 fotos)
+                          : "h-full min-h-[190px] md:min-h-[240px]"
+                    } ${activeContent.images.length === 2 ? "h-[400px] md:h-[500px]" : ""}`}
                   >
                     <img
                       src={img.src}
                       alt={`Procedimento: ${img.label}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
                       onError={(e) => {
-                        e.currentTarget.src = "/assets/modelos_clientes/brasileiro1.jpeg";
+                        e.currentTarget.src = "/assets/modelos_clientes/egipcio/egipcio (1).jpeg";
                       }}
                     />
                     <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
