@@ -34,14 +34,14 @@ export function Location() {
             <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center shadow-sm mb-8 border border-white/5">
               <MapPin className="text-secondary w-6 h-6" />
             </div>
-            
+
             <h3 className="font-headline-md text-2xl text-white mb-2">
               Como Chegar
             </h3>
             <p className="font-body-md text-white/70 mb-8 leading-relaxed">
               <span className="font-bold text-white/90">Rua Machado de Assis, 995</span><br />
-              Bairro Passa Vinte<br />
-              Palhoça - SC, 88132-140
+              Bairro Jardim Eldorado<br />
+              Palhoça - SC, 88133-380
             </p>
 
             <h4 className="font-headline-md text-lg text-white mb-2">
@@ -51,14 +51,31 @@ export function Location() {
               Segunda a Sexta: <span className="text-secondary font-medium">09h às 19h</span>
             </p>
 
-            <a 
-              href="https://maps.app.goo.gl/YourMapLinkHere" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="mt-auto block w-full py-3 border border-secondary text-secondary text-center rounded-lg font-label-sm uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-colors"
-            >
-              Traçar Rota
-            </a>
+            <div className="mt-auto flex flex-col sm:flex-row gap-3 w-full">
+              <a
+                href="https://maps.app.goo.gl/VjwA4aEg3B1zfz4PA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-3 bg-white text-neutral-900 rounded-lg font-label-sm text-xs sm:text-sm uppercase tracking-widest hover:bg-neutral-200 transition-colors shadow-sm font-semibold"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 488 512" fill="currentColor">
+                  <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>
+                </svg>
+                Google Maps
+              </a>
+
+              <a
+                href="https://maps.apple/p/~kdMwb74ruP5c8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#1A1A1A] border border-white/10 text-white rounded-lg font-label-sm text-xs sm:text-sm uppercase tracking-widest hover:bg-[#2A2A2A] hover:border-white/20 transition-colors shadow-sm font-semibold"
+              >
+                <svg className="w-4 h-4 mb-0.5" viewBox="0 0 384 512" fill="currentColor">
+                  <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                </svg>
+                Apple Maps
+              </a>
+            </div>
           </motion.div>
 
           {/* 2/3: Mapa */}
