@@ -8,14 +8,14 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative w-full min-h-[70vh] md:min-h-[600px] flex flex-col justify-end px-container-padding pb-section-gap pt-32 md:justify-center md:items-start md:px-[8%]"
+      className="relative w-full min-h-[100svh] flex flex-col justify-end px-container-padding pb-section-gap pt-32 md:justify-center md:items-start md:px-[8%]"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0 w-full h-full bg-surface overflow-hidden">
         <img
           alt="Mentoria Vip Lash Designer"
-          className="object-cover object-top w-full h-full"
-          src="/assets/curso_vip/artepricipalcursovip.jpg"
+          className="object-cover object-top md:object-center w-full h-full"
+          src="/assets/curso_vip/curso_vip.jpeg"
         />
         {/* Camada dupla de contraste para garantir leitura no celular e desktop */}
         <div className="absolute inset-0 bg-black/40"></div>
