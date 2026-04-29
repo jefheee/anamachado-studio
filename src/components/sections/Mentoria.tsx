@@ -91,14 +91,14 @@ export function Mentoria() {
                 title="Kit Exclusivo"
                 subtitle="Incluso"
                 gradientPos="top"
-                objectPosition="object-[center_82%]"
+                objectPosition="object-[center_78%]"
               />
               <PremiumVideo
                 src="/assets/curso_vip/montandocaixacurso.mp4"
                 title="Preparado com Carinho"
                 subtitle="Detalhes"
                 gradientPos="top"
-                objectPosition="object-[center_70%]"
+                objectPosition="object-[center_67%]"
               />
               <PremiumVideo
                 src="/assets/curso_vip/mostrandoitenscurso.mp4"
@@ -111,6 +111,7 @@ export function Mentoria() {
                 title="Fature Imediatamente"
                 subtitle="Pronto para uso"
                 gradientPos="bottom"
+                objectPosition="object-[center_70%]"
               />
             </div>
           </div>
