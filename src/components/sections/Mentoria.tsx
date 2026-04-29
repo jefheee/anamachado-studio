@@ -5,23 +5,25 @@ import { motion, useInView } from "framer-motion";
 import { Clock, Award, Headset, BookOpen, Users, Smartphone } from "lucide-react";
 
 // Subcomponente para controle de performance dos vídeos
-function PremiumVideo({ 
-  src, 
-  title, 
-  subtitle, 
-  gradientPos 
-}: { 
-  src: string; 
-  title: string; 
-  subtitle: string; 
-  gradientPos: "top" | "bottom" 
+function PremiumVideo({
+  src,
+  title,
+  subtitle,
+  gradientPos,
+  objectPosition = "object-center"
+}: {
+  src: string;
+  title: string;
+  subtitle: string;
+  gradientPos: "top" | "bottom";
+  objectPosition?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(videoRef, { amount: 0.3 });
 
   useEffect(() => {
     if (isInView && videoRef.current) {
-      videoRef.current.play().catch(() => {});
+      videoRef.current.play().catch(() => { });
     } else if (!isInView && videoRef.current) {
       videoRef.current.pause();
     }
@@ -36,7 +38,7 @@ function PremiumVideo({
         muted
         playsInline
         preload="none"
-        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105 group-hover:scale-100"
+        className={`w-full h-full object-cover ${objectPosition} opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105 group-hover:scale-100`}
       />
       {gradientPos === "bottom" ? (
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4 pointer-events-none">
@@ -57,7 +59,7 @@ export function Mentoria() {
   return (
     <section id="mentoria" className="py-16 md:py-24 px-container-padding bg-[#F9F7F5] md:px-[8%] overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        
+
         <div className="text-center mb-16">
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             Formação Completa
@@ -84,29 +86,31 @@ export function Mentoria() {
           {/* Kit Premium (4 Vídeos) - Span 2x2 */}
           <div className="md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden shadow-lg border-[0.5px] border-neutral-200 aspect-square md:aspect-auto flex flex-col">
             <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-0.5 bg-neutral-900">
-              <PremiumVideo 
-                src="/assets/curso_vip/montandocaixa.mp4" 
-                title="Kit Exclusivo" 
-                subtitle="Incluso" 
-                gradientPos="top" 
+              <PremiumVideo
+                src="/assets/curso_vip/montandocaixa.mp4"
+                title="Kit Exclusivo"
+                subtitle="Incluso"
+                gradientPos="top"
+                objectPosition="object-[center_82%]"
               />
-              <PremiumVideo 
-                src="/assets/curso_vip/montandocaixacurso.mp4" 
-                title="Preparado com Carinho" 
-                subtitle="Detalhes" 
-                gradientPos="top" 
+              <PremiumVideo
+                src="/assets/curso_vip/montandocaixacurso.mp4"
+                title="Preparado com Carinho"
+                subtitle="Detalhes"
+                gradientPos="top"
+                objectPosition="object-[center_70%]"
               />
-              <PremiumVideo 
-                src="/assets/curso_vip/mostrandoitenscurso.mp4" 
-                title="Produtos de Elite" 
-                subtitle="Materiais" 
-                gradientPos="bottom" 
+              <PremiumVideo
+                src="/assets/curso_vip/mostrandoitenscurso.mp4"
+                title="Produtos de Elite"
+                subtitle="Materiais"
+                gradientPos="bottom"
               />
-              <PremiumVideo 
-                src="/assets/curso_vip/mostrandoitenscurso (2).mp4" 
-                title="Fature Imediatamente" 
-                subtitle="Pronto para uso" 
-                gradientPos="bottom" 
+              <PremiumVideo
+                src="/assets/curso_vip/mostrandoitenscurso (2).mp4"
+                title="Fature Imediatamente"
+                subtitle="Pronto para uso"
+                gradientPos="bottom"
               />
             </div>
           </div>
