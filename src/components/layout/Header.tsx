@@ -23,11 +23,11 @@ export function Header() {
           >
             <Menu className="text-neutral-900 w-6 h-6" />
           </button>
-          <div className="h-10 flex items-center">
+          <div className="h-16 flex items-center">
             <img
               alt="Ana Machado Logo"
               className="h-full w-auto object-contain mix-blend-multiply"
-              src="/assets/logoanamachado.jpeg"
+              src="/assets/brand/logoheader.jpeg"
             />
           </div>
         </div>
@@ -70,8 +70,8 @@ export function Header() {
             <div className="flex justify-between items-center mb-12">
               <img
                 alt="Ana Machado Logo"
-                className="h-10 w-auto object-contain mix-blend-multiply"
-                src="/assets/logoanamachado.jpeg"
+                className="h-14 w-auto object-contain mix-blend-multiply"
+                src="/assets/brand/logoheader.jpeg"
               />
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
