@@ -20,11 +20,11 @@ export default function Home() {
     <>
       <Header />
       <main className="w-full mx-auto md:pt-[72px]">
-        <Hero />
         <Sobre />
         <Espaco />
         <Services />
         <Portfolio />
+        <Hero />
         <LashDesignerProfession />
         <Mentoria />
         <AlunasResults />

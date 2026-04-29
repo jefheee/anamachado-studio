@@ -56,7 +56,7 @@ export function Location() {
                 href="https://maps.app.goo.gl/VjwA4aEg3B1zfz4PA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 py-3 bg-white text-neutral-900 rounded-lg font-label-sm text-xs sm:text-sm uppercase tracking-widest hover:bg-neutral-200 transition-colors shadow-sm font-semibold"
+                className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#1A1A1A] border border-white/10 text-white rounded-lg font-label-sm text-xs sm:text-sm uppercase tracking-widest hover:bg-[#2A2A2A] hover:border-white/20 transition-colors shadow-sm font-semibold"
               >
                 <svg className="w-4 h-4" viewBox="0 0 488 512" fill="currentColor">
                   <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/>

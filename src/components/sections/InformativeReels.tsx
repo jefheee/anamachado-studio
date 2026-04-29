@@ -5,21 +5,21 @@ import { motion, useInView } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 
 const videos = [
-  "/assets/conteudos/SaveClip.App_AQMUZslYf_rPbQJdLZuA0S6MEXz2_4CpdiqJ-wj2laI1ddWSrDkD72mVWTKC4_WeqbEp8qWcJLTPa1BUVG0kiiYDBdrK62V8gFDtrUY.mp4",
-  "/assets/conteudos/SaveClip.App_AQN59ngGWVyuACvoIsuJmVpMEWyVW5wMmmWPBj6splKyBMEGyROWEDOaI5mIUbekbuBRI1GensahsBvX6rHUH__ji1upYOxWQmOlw1c.mp4",
-  "/assets/conteudos/SaveClip.App_AQNmjynni4StztBHDWAvBXb3hRJVP68e3yQ16yfbVWJvgAEnMwxzWnyW82Gcll2C7XTQAbSWZZ71m4nktBbQapKskITbfAb9KSHSAaY.mp4",
-  "/assets/conteudos/SaveClip.App_AQNvc-evTFZEC2_BAKlXJiXfgsEmYMGC7tIhjul1cLqyOSig1nCBVH5PDzX7KCTcOb1vxWHlX76X7JES7fvlRPEHeVG3b42XBZdG7Y8.mp4",
-  "/assets/conteudos/SaveClip.App_AQNwg88YGsyI6e7gp6XScPHLa8ojn0JlYliBQeyT_F1S_-DImY2nohP5lmqFs5iNU9zK-fa6pmbbaV-ixQG022_bQUlz5pEBDh5j8Js.mp4",
   "/assets/conteudos/SaveClip.App_AQOkcSrYVOypq_R4iMBNhlfIU4A81XxwHTrYCTMP6PlkuAOPzedSS-31Q9dyank8NrkzUZUbRYGW63kk1AKznliwp6odfFr99dtcu70.mp4",
-  "/assets/conteudos/SaveClip.App_AQOWHrt9ks9ME0gQno8ALmlR2jkuDEzCAJgIqzoxeV8V8FOxNjEMicI6DY8T0oTNNVTI47tXAcuuqzzkVaajcNGlC8U8ccBmSlsPEY0.mp4",
   "/assets/conteudos/SaveClip.App_AQOZ7aR3vmkV2P3RL_aHrzhpRGyvEA3733Lv_2jdxDDKG-9m_-5OMPEODvCGN49f8UrdA5u82vjLYcPpLYJsHqgFUTUfEUAj0y1MK4g.mp4",
+  "/assets/conteudos/SaveClip.App_AQPJZbC5geJPhjtutDYzbdolY62HqJX333jaBB6BcS-8iZ0kbD2uMOQWy_4lCgcFBmVUGEUaVBO5aDzhjQIp5qD2bZ-7ZkC9gpsMPiQ.mp4",
+  "/assets/conteudos/SaveClip.App_AQOWHrt9ks9ME0gQno8ALmlR2jkuDEzCAJgIqzoxeV8V8FOxNjEMicI6DY8T0oTNNVTI47tXAcuuqzzkVaajcNGlC8U8ccBmSlsPEY0.mp4",
+  "/assets/conteudos/SaveClip.App_AQP_I_Cvy7TlEt7uNESwk8fZrVxdHLJdv-BG_dRadprmVnAEUnXLzNYUD4Fnve3WlQCm_EeWQS9P3ch1E5nQ5FH5X3XPCZv973Q8GlI.mp4",
+  "/assets/conteudos/SaveClip.App_AQNvc-evTFZEC2_BAKlXJiXfgsEmYMGC7tIhjul1cLqyOSig1nCBVH5PDzX7KCTcOb1vxWHlX76X7JES7fvlRPEHeVG3b42XBZdG7Y8.mp4",
   "/assets/conteudos/SaveClip.App_AQP8U--DJ7PtOhpevcKquUtE7hBkRT-PQbvQHjOEeCNc_cBHzVVDmVRQp2VvqGDvx6D5ot77h7pZfFFmcAy_TsB5bCE8x1Ltp0SoAig.mp4",
+  "/assets/conteudos/SaveClip.App_AQMUZslYf_rPbQJdLZuA0S6MEXz2_4CpdiqJ-wj2laI1ddWSrDkD72mVWTKC4_WeqbEp8qWcJLTPa1BUVG0kiiYDBdrK62V8gFDtrUY.mp4",
+  "/assets/conteudos/SaveClip.App_AQPuH4lpVkDciz2sCromIwjzZUJ4JO-GzKKg6ZEXwy2IAzZDVnqQpHGTHwdQ0HBJqX9SRuEJ9vyOA3CXVbelFHorAuvnbTcITQL6md8.mp4",
+  "/assets/conteudos/SaveClip.App_AQNmjynni4StztBHDWAvBXb3hRJVP68e3yQ16yfbVWJvgAEnMwxzWnyW82Gcll2C7XTQAbSWZZ71m4nktBbQapKskITbfAb9KSHSAaY.mp4",
   "/assets/conteudos/SaveClip.App_AQPFPOSctQq2WMUMbdlJlTyZcUaNM5j8enhWzMeVPtTxK64ZaKlbZV_0jy8qIudDA1qkZIy7TnQh8wazRCxYlYtfqPGv0Oo1LGy8r88.mp4",
   "/assets/conteudos/SaveClip.App_AQPhZMGw_Ocr3xIL5UDsL2PUUNje9ORaVEbBqdHXmzJohYJaX6Gtc2Gr1ppWFCl47V-NJAYHFwqMQL2MuKMRwXE4zdo_0Q98D1-Pahs.mp4",
-  "/assets/conteudos/SaveClip.App_AQPJZbC5geJPhjtutDYzbdolY62HqJX333jaBB6BcS-8iZ0kbD2uMOQWy_4lCgcFBmVUGEUaVBO5aDzhjQIp5qD2bZ-7ZkC9gpsMPiQ.mp4",
+  "/assets/conteudos/SaveClip.App_AQNwg88YGsyI6e7gp6XScPHLa8ojn0JlYliBQeyT_F1S_-DImY2nohP5lmqFs5iNU9zK-fa6pmbbaV-ixQG022_bQUlz5pEBDh5j8Js.mp4",
+  "/assets/conteudos/SaveClip.App_AQN59ngGWVyuACvoIsuJmVpMEWyVW5wMmmWPBj6splKyBMEGyROWEDOaI5mIUbekbuBRI1GensahsBvX6rHUH__ji1upYOxWQmOlw1c.mp4",
   "/assets/conteudos/SaveClip.App_AQPrN1Z9XlTeg50PIWBLoM6sAAH8h2BZ_WWpKvHTo_hFTbkXOuEkkqZSSlv5OPbf07BfUipQrapxAqeNaLeikoMq6Jm6S7MTm18QlAE.mp4",
-  "/assets/conteudos/SaveClip.App_AQPuH4lpVkDciz2sCromIwjzZUJ4JO-GzKKg6ZEXwy2IAzZDVnqQpHGTHwdQ0HBJqX9SRuEJ9vyOA3CXVbelFHorAuvnbTcITQL6md8.mp4",
-  "/assets/conteudos/SaveClip.App_AQP_I_Cvy7TlEt7uNESwk8fZrVxdHLJdv-BG_dRadprmVnAEUnXLzNYUD4Fnve3WlQCm_EeWQS9P3ch1E5nQ5FH5X3XPCZv973Q8GlI.mp4",
 ];
 
 function ReelVideo({ src }: { src: string }) {

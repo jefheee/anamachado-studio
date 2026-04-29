@@ -49,7 +49,7 @@ export function LashDesignerProfession() {
                 Você sabe o que é ser uma <strong>Lash Designer</strong>? Muito além de aplicar extensões, é a profissional especializada em desenhar e personalizar o olhar de cada cliente, unindo arte, técnica e visagismo.
               </p>
               <p>
-                Enquanto antigamente o mercado contava apenas com "extensionistas", hoje a Lash Designer é uma <strong>especialista altamente valorizada</strong>. Com o domínio de técnicas como Fio a Fio, Volume Brasileiro e Fox Eyes, você não apenas melhora a estética, mas entrega praticidade e confiança.
+                Enquanto antigamente o mercado contava apenas com &quot;extensionistas&quot;, hoje a Lash Designer é uma <strong>especialista altamente valorizada</strong>. Com o domínio de técnicas como Fio a Fio, Volume Brasileiro e Fox Eyes, você não apenas melhora a estética, mas entrega praticidade e confiança.
               </p>
               <p>
                 E o melhor: é uma das áreas da estética com <strong>retorno mais rápido sobre o investimento</strong>. O custo de material por procedimento é baixo, permitindo margens de lucro que aceleram sua independência financeira.

@@ -3,6 +3,7 @@
 import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Play } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 function ResultVideo({
   src,
@@ -75,16 +76,41 @@ function ResultImage({
   );
 }
 
+const alunasMedia = [
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunacilios.mp4", title: "Aluna Gabriella", tag: "Prática Cílios", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_beatriz/alunacilios.jpg", title: "Aluna Beatriz", tag: "Prática Real", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunasobrancelha.mp4", title: "Aluna Gabriella", tag: "Design", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_joyce/fotoalunacilios.jpg", title: "Aluna Joyce", tag: "Cílios", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_leticia/videociliospessoa.mp4", title: "Aluna Letícia", tag: "Resultado", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_maria/videociliosmodelo.mp4", title: "Aluna Maria", tag: "Prática", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_maria/ciliosmodelo.jpg", title: "Aluna Maria", tag: "Cílios", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_maria/treinandocilios.mp4", title: "Aluna Maria", tag: "Treinamento", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/fotoalunacilios.jpg", title: "Aluna Gabriella", tag: "Resultado", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/fotoalunasobrancelha.jpg", title: "Aluna Gabriella", tag: "Sobrancelha", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_joyce/videoalunacilios.mp4", title: "Aluna Joyce", tag: "Cílios", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_mariana/video_mariana.mp4", title: "Aluna Mariana", tag: "Mão na Massa", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_sara/alunatreinando.mp4", title: "Aluna Sara", tag: "Treinamento", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_sara/video_sara.mp4", title: "Aluna Sara", tag: "Prática", type: "video" },
+  { src: "/assets/curso_vip/alunas/sem_id/videociliosmodelo.mp4", title: "Aluna", tag: "Resultado", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_beatriz/alunaciliiosmanequim.jpg", title: "Aluna Beatriz", tag: "Treino no Manequim", type: "image" }
+];
+
 export function AlunasResults() {
+  const [emblaRef] = useEmblaCarousel({
+    align: "start",
+    dragFree: true,
+    containScroll: "trimSnaps"
+  });
+
   return (
     <section id="resultados-alunas" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%]">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             A Arte em Prática
@@ -93,91 +119,27 @@ export function AlunasResults() {
             Resultados Reais das Nossas Alunas
           </h2>
           <p className="font-body-md text-body-md text-on-surface-variant mt-4 max-w-2xl mx-auto">
-            Da teoria à prática com excelência. Veja o desempenho e a evolução na hora de aplicar as técnicas em modelos reais.
+            Da teoria à prática com excelência. Arraste para o lado e veja o desempenho e a evolução na hora de aplicar as técnicas.
           </p>
         </motion.div>
 
-        {/* Dynamic Bento/Masonry Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[250px]"
-        >
-          
-          <ResultVideo
-            src="/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunacilios.mp4"
-            title="Aluna Gabriella"
-            tag="Prática Cílios"
-            className="md:col-span-2 md:row-span-2"
-          />
-
-          <ResultImage
-            src="/assets/curso_vip/alunas/aluna_beatriz/alunacilios.jpg"
-            title="Aluna Beatriz"
-            tag="Prática Real"
-            className="md:col-span-1 md:row-span-1"
-          />
-
-          <ResultVideo
-            src="/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunasobrancelha.mp4"
-            title="Aluna Gabriella"
-            tag="Design"
-            className="md:col-span-1 md:row-span-2"
-          />
-
-          <ResultImage
-            src="/assets/curso_vip/alunas/aluna_joyce/fotoalunacilios.jpg"
-            title="Aluna Joyce"
-            tag="Cílios"
-            className="md:col-span-1 md:row-span-1"
-          />
-
-          <ResultVideo
-            src="/assets/curso_vip/alunas/aluna_leticia/videocilios.mp4"
-            title="Aluna Letícia"
-            tag="Resultado Final"
-            className="md:col-span-1 md:row-span-2"
-          />
-
-          <ResultVideo
-            src="/assets/curso_vip/alunas/aluna_maria/videociliosmodelo.mp4"
-            title="Aluna Maria"
-            tag="Cílios"
-            className="md:col-span-2 md:row-span-2"
-          />
-
-          <ResultImage
-            src="/assets/curso_vip/alunas/aluna_sara/alunatreinandocilios.jpeg"
-            title="Aluna Sara"
-            tag="Treinamento"
-            className="md:col-span-1 md:row-span-1"
-          />
-
-          <ResultImage
-            src="/assets/curso_vip/alunas/aluna_maria/treinandocilios.jpeg"
-            title="Aluna Maria"
-            tag="Mão na Massa"
-            className="md:col-span-1 md:row-span-1"
-          />
-
-        </motion.div>
-        
-        {/* CTA Adicional */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <a
-            href="#garantir-vaga"
-            className="inline-block px-8 py-4 bg-primary text-on-primary font-label-sm text-sm uppercase tracking-widest rounded-lg hover:bg-primary/90 transition-colors shadow-md"
-          >
-            Quero Ser Aluna
-          </a>
-        </motion.div>
+        {/* Embla Carousel Viewport */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-4 md:gap-6 touch-pan-y">
+            {alunasMedia.map((media, index) => (
+              <div 
+                key={index} 
+                className="relative flex-[0_0_80%] sm:flex-[0_0_40%] lg:flex-[0_0_28%] h-[400px] md:h-[500px] select-none"
+              >
+                {media.type === "video" ? (
+                  <ResultVideo src={media.src} title={media.title} tag={media.tag} className="w-full h-full" />
+                ) : (
+                  <ResultImage src={media.src} title={media.title} tag={media.tag} className="w-full h-full" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

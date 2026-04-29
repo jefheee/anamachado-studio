@@ -14,9 +14,9 @@ export function Services() {
     "Cílios": {
       description: "A extensão de cílios transforma o olhar, trazendo praticidade e elevação da autoestima. O Volume Brasileiro proporciona um olhar marcante, o Egípcio traz densidade e o Foxy Eyes cria um efeito lifting sofisticado.",
       images: [
-        { src: "/assets/modelos_clientes/brasileiro1.jpeg", label: "Volume Brasileiro" },
-        { src: "/assets/modelos_clientes/egipcio1.jpeg", label: "Volume Egípcio" },
-        { src: "/assets/modelos_clientes/foxy1.jpeg", label: "Foxy Eyes" },
+        { src: "/assets/modelos_clientes/brasileiro/brasileiro (1).jpeg", label: "Volume Brasileiro" },
+        { src: "/assets/modelos_clientes/egipcio/egipcio (1).jpeg", label: "Volume Egípcio" },
+        { src: "/assets/modelos_clientes/foxy/foxy (1).jpeg", label: "Foxy Eyes" },
       ],
       items: [
         { name: "Volume Brasileiro", price: "160", badge: "Mais Pedido" },
@@ -29,8 +29,8 @@ export function Services() {
     "Sobrancelhas": {
       description: "Um design bem estruturado é a moldura do rosto. O Design estratégico alinha a simetria, enquanto a Brow Lamination entrega volume, preenchimento e um aspecto moderno e selvagem (fluffy brows).",
       images: [
-        { src: "/assets/modelos_clientes/fotobrownlamination.jpeg", label: "Brow Lamination" },
-        { src: "/assets/modelos_clientes/fotodesigndesobrancelhas.jpeg", label: "Design de Sobrancelhas" },
+        { src: "/assets/modelos_clientes/brown_lamination/brown_lamination (8).jpeg", label: "Brow Lamination" },
+        { src: "/assets/modelos_clientes/design_simples/design_simples (1).jpg", label: "Design de Sobrancelhas" },
       ],
       items: [
         { name: "Design de Sobrancelhas", price: "35", badge: "" },
@@ -40,8 +40,8 @@ export function Services() {
     "Micropigmentação": {
       description: "Correção e aprimoramento duradouros. A técnica Fio a Fio reproduz a naturalidade dos pelos da sobrancelha, enquanto a revitalização Labial devolve cor, contorno e saúde aos lábios.",
       images: [
-        { src: "/assets/modelos_clientes/microsobrancelhasfioafio.jpeg", label: "Sobrancelha Fio a Fio" },
-        { src: "/assets/modelos_clientes/fotomicropigmentacaolabial.jpeg", label: "Micropigmentação Labial" },
+        { src: "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (1).jpeg", label: "Sobrancelha Fio a Fio" },
+        { src: "/assets/modelos_clientes/micropigmentacao_labial/micropigmentacao_labial_depois.jpeg", label: "Micropigmentação Labial" },
       ],
       items: [
         { name: "Sobrancelhas Fio a Fio", price: "250", badge: "" },

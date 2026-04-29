@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 type PortfolioGroup = {
   id: string;
@@ -79,20 +81,24 @@ const portfolioGroups: PortfolioGroup[] = [
     ]
   },
   {
-    id: "design_simples",
-    title: "Design Simples",
-    cover: "/assets/modelos_clientes/design_simples/design_simples (1).jpg",
+    id: "brasileiro",
+    title: "Volume Brasileiro",
+    cover: "/assets/modelos_clientes/brasileiro/brasileiro (1).jpeg",
     videos: [
-      "/assets/modelos_clientes/design_simples/design_simples (1).mp4",
-      "/assets/modelos_clientes/design_simples/design_simples (2).mp4",
-      "/assets/modelos_clientes/design_simples/design_simples (3).mp4",
+      "/assets/modelos_clientes/brasileiro/brasileiro (1).mp4",
+      "/assets/modelos_clientes/brasileiro/brasileiro (2).mp4",
+      "/assets/modelos_clientes/brasileiro/brasileiro (3).mp4",
+      "/assets/modelos_clientes/brasileiro/brasileiro (5).mp4",
     ],
     images: [
-      "/assets/modelos_clientes/design_simples/design_simples (1).jpg",
-      "/assets/modelos_clientes/design_simples/design_simples (2).jpg",
-      "/assets/modelos_clientes/design_simples/design_simples (3).jpg",
-      "/assets/modelos_clientes/design_simples/design_simples (4).jpg",
-      "/assets/modelos_clientes/design_simples/design_simples (5).jpeg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (1).jpeg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (1).jpg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (2).jpeg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (2).jpg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (3).jpeg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (3).jpg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (4).jpg",
+      "/assets/modelos_clientes/brasileiro/brasileiro (5).jpg",
     ]
   },
   {
@@ -112,14 +118,20 @@ const portfolioGroups: PortfolioGroup[] = [
     ]
   },
   {
-    id: "brasileiro",
-    title: "Volume Brasileiro",
-    cover: "/assets/modelos_clientes/brasileiro1.jpeg",
-    videos: [],
+    id: "design_simples",
+    title: "Design Simples",
+    cover: "/assets/modelos_clientes/design_simples/design_simples (1).jpg",
+    videos: [
+      "/assets/modelos_clientes/design_simples/design_simples (1).mp4",
+      "/assets/modelos_clientes/design_simples/design_simples (2).mp4",
+      "/assets/modelos_clientes/design_simples/design_simples (3).mp4",
+    ],
     images: [
-      "/assets/modelos_clientes/brasileiro1.jpeg",
-      "/assets/modelos_clientes/brasileiro2.jpeg",
-      "/assets/modelos_clientes/brasileiro3.jpeg",
+      "/assets/modelos_clientes/design_simples/design_simples (1).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (2).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (3).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (4).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (5).jpeg",
     ]
   },
   {
@@ -132,6 +144,24 @@ const portfolioGroups: PortfolioGroup[] = [
     images: [
       "/assets/modelos_clientes/egipcio_castanho/volume_egipcio_castanho (1).jpg",
       "/assets/modelos_clientes/egipcio_castanho/volume_egipcio_castanho (2).jpg",
+    ]
+  },
+  {
+    id: "brasileiro_castanho",
+    title: "Brasileiro Castanho",
+    cover: "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (1).jpg",
+    videos: [
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (1).mp4",
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (2).mp4",
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (3).mp4",
+    ],
+    images: [
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (1).jpg",
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (2).jpg",
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (3).jpg",
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (4).jpg",
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (5).jpg",
+      "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (6).jpg",
     ]
   },
   {
@@ -160,17 +190,77 @@ const portfolioGroups: PortfolioGroup[] = [
   }
 ];
 
+function CardCarousel({ group, setActiveGroup }: { group: PortfolioGroup, setActiveGroup: (g: PortfolioGroup) => void }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, watchDrag: false }, [
+    Autoplay({ delay: 3000, stopOnInteraction: false })
+  ]);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (emblaApi) {
+      if (isHovered) {
+        emblaApi.plugins().autoplay.play();
+      } else {
+        emblaApi.plugins().autoplay.stop();
+        emblaApi.scrollTo(0); // Volta para a primeira imagem ao tirar o hover
+      }
+    }
+  }, [emblaApi, isHovered]);
+
+  // Juntar cover com 3 primeiras imagens unicas para o carousel
+  const carouselImages = Array.from(new Set([group.cover, ...group.images])).slice(0, 4);
+
+  return (
+    <div 
+      onClick={() => setActiveGroup(group)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="flex-[0_0_85vw] md:flex-[0_0_320px] h-[450px] relative rounded-xl overflow-hidden shadow-sm border-[0.5px] border-outline-variant group cursor-pointer"
+    >
+      <div className="overflow-hidden w-full h-full" ref={emblaRef}>
+        <div className="flex w-full h-full">
+          {carouselImages.map((src, idx) => (
+            <div key={idx} className="relative flex-[0_0_100%] h-full">
+              <img
+                src={src}
+                alt={`${group.title} ${idx}`}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none transition-opacity duration-300"></div>
+      <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-10 pointer-events-none">
+        <span className="text-white font-headline-sm text-headline-sm shadow-sm">
+          {group.title}
+        </span>
+        <span className="text-white/80 text-xs font-medium uppercase tracking-wider bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
+          {group.videos.length + group.images.length} itens
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function Portfolio() {
   const [activeGroup, setActiveGroup] = useState<PortfolioGroup | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Embla setup for main scroll container
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    align: "start",
+    dragFree: true,
+    containScroll: "trimSnaps" 
+  });
 
-  const scroll = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const { current } = scrollContainerRef;
-      const scrollAmount = direction === "left" ? -320 : 320;
-      current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
-  };
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
 
   return (
     <section id="portfolio" className="py-16 md:py-24 bg-surface-container-lowest overflow-hidden">
@@ -190,14 +280,14 @@ export function Portfolio() {
         {/* Navigation Buttons */}
         <div className="flex gap-2 self-start md:self-end">
           <button 
-            onClick={() => scroll("left")}
+            onClick={scrollPrev}
             className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
             aria-label="Scroll Left"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
-            onClick={() => scroll("right")}
+            onClick={scrollNext}
             className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
             aria-label="Scroll Right"
           >
@@ -207,33 +297,12 @@ export function Portfolio() {
       </div>
 
       <div className="w-full px-container-padding md:px-[8%]">
-        <div 
-          ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide py-4 touch-pan-x"
-        >
-          {portfolioGroups.map((group) => (
-            <div 
-              key={group.id} 
-              onClick={() => setActiveGroup(group)}
-              className="snap-center w-[85vw] md:w-[320px] h-[450px] relative rounded-xl overflow-hidden shadow-sm border-[0.5px] border-outline-variant group flex-shrink-0 cursor-pointer"
-            >
-              <img
-                src={group.cover}
-                alt={group.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none transition-opacity duration-300"></div>
-              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-10">
-                <span className="text-white font-headline-sm text-headline-sm shadow-sm">
-                  {group.title}
-                </span>
-                <span className="text-white/80 text-xs font-medium uppercase tracking-wider bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
-                  {group.videos.length + group.images.length} itens
-                </span>
-              </div>
-            </div>
-          ))}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-6 py-4 touch-pan-y">
+            {portfolioGroups.map((group) => (
+              <CardCarousel key={group.id} group={group} setActiveGroup={setActiveGroup} />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -277,8 +346,8 @@ export function Portfolio() {
                 </motion.div>
               ))}
 
-              {/* Fotos */}
-              {activeGroup.images.map((src, idx) => (
+              {/* Fotos únicas, usando set para remover duplicações onde a capa já tá nas fotos */}
+              {Array.from(new Set([activeGroup.cover, ...activeGroup.images])).map((src, idx) => (
                 <motion.img
                   key={`img-${idx}`}
                   initial={{ opacity: 0, y: 20 }}
