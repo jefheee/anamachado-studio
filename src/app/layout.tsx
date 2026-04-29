@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope, Noto_Serif } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
