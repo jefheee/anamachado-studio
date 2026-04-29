@@ -4,20 +4,29 @@ import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { Play } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
+import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
+
+function getStandardizedTag(src: string): string {
+  const lowerSrc = src.toLowerCase();
+  if (lowerSrc.includes("cilios") || lowerSrc.includes("ciliios")) return "Aplicação Prática";
+  if (lowerSrc.includes("sobrancelha")) return "Design de Sobrancelha";
+  if (lowerSrc.includes("manequim")) return "Treino em Manequim";
+  if (lowerSrc.includes("certificado")) return "Certificação VIP";
+  return "Treinamento Prático";
+}
 
 function ResultVideo({
   src,
   title,
-  tag,
   className
 }: {
   src: string;
   title: string;
-  tag: string;
   className: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const isInView = useInView(videoRef, { amount: 0.3 });
+  const tag = getStandardizedTag(src);
 
   useEffect(() => {
     if (isInView && videoRef.current) {
@@ -28,7 +37,7 @@ function ResultVideo({
   }, [isInView]);
 
   return (
-    <div className={`rounded-2xl overflow-hidden shadow-md bg-black relative group cursor-pointer ${className}`}>
+    <FullscreenMediaWrapper src={src} type="video" className={`rounded-2xl overflow-hidden shadow-md bg-black relative group block h-full ${className}`}>
       <video
         ref={videoRef}
         src={src}
@@ -45,23 +54,22 @@ function ResultVideo({
         </div>
         <h3 className="text-white font-headline-sm text-lg">{title}</h3>
       </div>
-    </div>
+    </FullscreenMediaWrapper>
   );
 }
 
 function ResultImage({
   src,
   title,
-  tag,
   className
 }: {
   src: string;
   title: string;
-  tag: string;
   className: string;
 }) {
+  const tag = getStandardizedTag(src);
   return (
-    <div className={`rounded-2xl overflow-hidden shadow-md relative group cursor-pointer bg-surface-variant ${className}`}>
+    <FullscreenMediaWrapper src={src} type="image" className={`rounded-2xl overflow-hidden shadow-md relative group block h-full bg-surface-variant ${className}`}>
       <img
         src={src}
         alt={title}
@@ -72,27 +80,27 @@ function ResultImage({
         <span className="bg-white/90 text-primary w-max text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm backdrop-blur-md uppercase tracking-wider mb-1">{tag}</span>
         <h3 className="text-white font-headline-sm text-sm">{title}</h3>
       </div>
-    </div>
+    </FullscreenMediaWrapper>
   );
 }
 
 const alunasMedia = [
-  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunacilios.mp4", title: "Aluna Gabriella", tag: "Prática Cílios", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_beatriz/alunacilios.jpg", title: "Aluna Beatriz", tag: "Prática Real", type: "image" },
-  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunasobrancelha.mp4", title: "Aluna Gabriella", tag: "Design", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_joyce/fotoalunacilios.jpg", title: "Aluna Joyce", tag: "Cílios", type: "image" },
-  { src: "/assets/curso_vip/alunas/aluna_leticia/videociliospessoa.mp4", title: "Aluna Letícia", tag: "Resultado", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_maria/videociliosmodelo.mp4", title: "Aluna Maria", tag: "Prática", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_maria/ciliosmodelo.jpg", title: "Aluna Maria", tag: "Cílios", type: "image" },
-  { src: "/assets/curso_vip/alunas/aluna_maria/treinandocilios.mp4", title: "Aluna Maria", tag: "Treinamento", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/fotoalunacilios.jpg", title: "Aluna Gabriella", tag: "Resultado", type: "image" },
-  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/fotoalunasobrancelha.jpg", title: "Aluna Gabriella", tag: "Sobrancelha", type: "image" },
-  { src: "/assets/curso_vip/alunas/aluna_joyce/videoalunacilios.mp4", title: "Aluna Joyce", tag: "Cílios", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_mariana/video_mariana.mp4", title: "Aluna Mariana", tag: "Mão na Massa", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_sara/alunatreinando.mp4", title: "Aluna Sara", tag: "Treinamento", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_sara/video_sara.mp4", title: "Aluna Sara", tag: "Prática", type: "video" },
-  { src: "/assets/curso_vip/alunas/sem_id/videociliosmodelo.mp4", title: "Aluna", tag: "Resultado", type: "video" },
-  { src: "/assets/curso_vip/alunas/aluna_beatriz/alunaciliiosmanequim.jpg", title: "Aluna Beatriz", tag: "Treino no Manequim", type: "image" }
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunacilios.mp4", title: "Aluna Gabriella", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_beatriz/alunacilios.jpg", title: "Aluna Beatriz", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/videoalunasobrancelha.mp4", title: "Aluna Gabriella", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_joyce/fotoalunacilios.jpg", title: "Aluna Joyce", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_leticia/videociliospessoa.mp4", title: "Aluna Letícia", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_maria/videociliosmodelo.mp4", title: "Aluna Maria", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_maria/ciliosmodelo.jpg", title: "Aluna Maria", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_maria/treinandocilios.mp4", title: "Aluna Maria", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/fotoalunacilios.jpg", title: "Aluna Gabriella", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_gabriella_soares/fotoalunasobrancelha.jpg", title: "Aluna Gabriella", type: "image" },
+  { src: "/assets/curso_vip/alunas/aluna_joyce/videoalunacilios.mp4", title: "Aluna Joyce", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_mariana/video_mariana.mp4", title: "Aluna Mariana", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_sara/alunatreinando.mp4", title: "Aluna Sara", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_sara/video_sara.mp4", title: "Aluna Sara", type: "video" },
+  { src: "/assets/curso_vip/alunas/sem_id/videociliosmodelo.mp4", title: "Aluna", type: "video" },
+  { src: "/assets/curso_vip/alunas/aluna_beatriz/alunaciliiosmanequim.jpg", title: "Aluna Beatriz", type: "image" }
 ];
 
 export function AlunasResults() {
@@ -132,9 +140,9 @@ export function AlunasResults() {
                 className="relative flex-[0_0_80%] sm:flex-[0_0_40%] lg:flex-[0_0_28%] h-[400px] md:h-[500px] select-none"
               >
                 {media.type === "video" ? (
-                  <ResultVideo src={media.src} title={media.title} tag={media.tag} className="w-full h-full" />
+                  <ResultVideo src={media.src} title={media.title} className="w-full h-full" />
                 ) : (
-                  <ResultImage src={media.src} title={media.title} tag={media.tag} className="w-full h-full" />
+                  <ResultImage src={media.src} title={media.title} className="w-full h-full" />
                 )}
               </div>
             ))}

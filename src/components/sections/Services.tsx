@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
 
 type Tab = "Cílios" | "Sobrancelhas" | "Micropigmentação" | "Manutenções";
 
@@ -179,9 +180,11 @@ export function Services() {
                 className="grid grid-cols-2 gap-4 h-[400px] md:h-[500px]"
               >
                 {activeContent.images.map((img, idx) => (
-                  <div
+                  <FullscreenMediaWrapper
                     key={idx}
-                    className={`rounded-xl overflow-hidden shadow-md relative group ${
+                    src={img.src}
+                    type="image"
+                    className={`rounded-xl overflow-hidden shadow-md relative group block ${
                       activeContent.images.length === 3 && idx === 0 
                         ? "col-span-2 h-[200px] md:h-[240px]" 
                         : activeContent.images.length === 4 
@@ -200,7 +203,7 @@ export function Services() {
                     <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                       <span className="text-white font-label-sm tracking-wide text-sm">{img.label}</span>
                     </div>
-                  </div>
+                  </FullscreenMediaWrapper>
                 ))}
               </motion.div>
             </AnimatePresence>

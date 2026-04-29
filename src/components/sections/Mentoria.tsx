@@ -9,6 +9,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
+
 // Subcomponente para controle de performance dos vídeos
 function PremiumVideo({
   src,
@@ -35,7 +37,7 @@ function PremiumVideo({
   }, [isInView]);
 
   return (
-    <div className="relative w-full h-full group overflow-hidden bg-black">
+    <FullscreenMediaWrapper src={src} type="video" className="relative w-full h-full group overflow-hidden bg-black block">
       <video
         ref={videoRef}
         src={src}
@@ -56,7 +58,7 @@ function PremiumVideo({
           <h3 className="text-white font-headline-sm text-sm sm:text-base leading-tight">{title}</h3>
         </div>
       )}
-    </div>
+    </FullscreenMediaWrapper>
   );
 }
 

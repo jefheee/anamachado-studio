@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
+import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
 
 type PortfolioGroup = {
   id: string;
@@ -347,22 +348,26 @@ export function Portfolio() {
                   style={{ minHeight: "300px" }}
                 >
                   {src.endsWith('.mp4') ? (
-                    <video
-                      src={src}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-auto object-contain"
-                    />
+                    <FullscreenMediaWrapper src={src} type="video" className="block w-full h-full">
+                      <video
+                        src={src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-auto object-contain"
+                      />
+                    </FullscreenMediaWrapper>
                   ) : (
-                    <Image
-                      src={src}
-                      alt={`${activeGroup.title} - Item ${idx + 1}`}
-                      width={800}
-                      height={800}
-                      className="w-full h-auto object-cover"
-                    />
+                    <FullscreenMediaWrapper src={src} type="image" className="block w-full h-full">
+                      <Image
+                        src={src}
+                        alt={`${activeGroup.title} - Item ${idx + 1}`}
+                        width={800}
+                        height={800}
+                        className="w-full h-auto object-cover"
+                      />
+                    </FullscreenMediaWrapper>
                   )}
                 </motion.div>
               ))}
