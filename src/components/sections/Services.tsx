@@ -19,11 +19,11 @@ export function Services() {
         { src: "/assets/modelos_clientes/foxy1.jpeg", label: "Foxy Eyes" },
       ],
       items: [
-        { name: "Volume Brasileiro", price: "160", badge: "" },
+        { name: "Volume Brasileiro", price: "160", badge: "Mais Pedido" },
         { name: "Volume Egípcio", price: "180", badge: "" },
-        { name: "Foxy Eyes", price: "180", badge: "" },
-        { name: "Brasileiro Castanho", price: "170", badge: "Mais Pedido" },
-        { name: "Egípcio Castanho", price: "190", badge: "Mais Pedido" },
+        { name: "Foxy Eyes", price: "180", badge: "Mais Pedido" },
+        { name: "Brasileiro Castanho", price: "170", badge: "" },
+        { name: "Egípcio Castanho", price: "190", badge: "" },
       ],
     },
     "Sobrancelhas": {
@@ -34,7 +34,7 @@ export function Services() {
       ],
       items: [
         { name: "Design de Sobrancelhas", price: "35", badge: "" },
-        { name: "Brow Lamination", price: "120", badge: "" },
+        { name: "Brow Lamination", price: "120", badge: "Mais Pedido" },
       ],
     },
     "Micropigmentação": {

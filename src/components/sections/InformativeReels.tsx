@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
 
 const videos = [
   "/assets/conteudos/SaveClip.App_AQMUZslYf_rPbQJdLZuA0S6MEXz2_4CpdiqJ-wj2laI1ddWSrDkD72mVWTKC4_WeqbEp8qWcJLTPa1BUVG0kiiYDBdrK62V8gFDtrUY.mp4",
@@ -9,45 +10,49 @@ const videos = [
   "/assets/conteudos/SaveClip.App_AQNmjynni4StztBHDWAvBXb3hRJVP68e3yQ16yfbVWJvgAEnMwxzWnyW82Gcll2C7XTQAbSWZZ71m4nktBbQapKskITbfAb9KSHSAaY.mp4",
   "/assets/conteudos/SaveClip.App_AQNvc-evTFZEC2_BAKlXJiXfgsEmYMGC7tIhjul1cLqyOSig1nCBVH5PDzX7KCTcOb1vxWHlX76X7JES7fvlRPEHeVG3b42XBZdG7Y8.mp4",
   "/assets/conteudos/SaveClip.App_AQNwg88YGsyI6e7gp6XScPHLa8ojn0JlYliBQeyT_F1S_-DImY2nohP5lmqFs5iNU9zK-fa6pmbbaV-ixQG022_bQUlz5pEBDh5j8Js.mp4",
+  "/assets/conteudos/SaveClip.App_AQOkcSrYVOypq_R4iMBNhlfIU4A81XxwHTrYCTMP6PlkuAOPzedSS-31Q9dyank8NrkzUZUbRYGW63kk1AKznliwp6odfFr99dtcu70.mp4",
   "/assets/conteudos/SaveClip.App_AQOWHrt9ks9ME0gQno8ALmlR2jkuDEzCAJgIqzoxeV8V8FOxNjEMicI6DY8T0oTNNVTI47tXAcuuqzzkVaajcNGlC8U8ccBmSlsPEY0.mp4",
+  "/assets/conteudos/SaveClip.App_AQOZ7aR3vmkV2P3RL_aHrzhpRGyvEA3733Lv_2jdxDDKG-9m_-5OMPEODvCGN49f8UrdA5u82vjLYcPpLYJsHqgFUTUfEUAj0y1MK4g.mp4",
+  "/assets/conteudos/SaveClip.App_AQP8U--DJ7PtOhpevcKquUtE7hBkRT-PQbvQHjOEeCNc_cBHzVVDmVRQp2VvqGDvx6D5ot77h7pZfFFmcAy_TsB5bCE8x1Ltp0SoAig.mp4",
+  "/assets/conteudos/SaveClip.App_AQPFPOSctQq2WMUMbdlJlTyZcUaNM5j8enhWzMeVPtTxK64ZaKlbZV_0jy8qIudDA1qkZIy7TnQh8wazRCxYlYtfqPGv0Oo1LGy8r88.mp4",
+  "/assets/conteudos/SaveClip.App_AQPhZMGw_Ocr3xIL5UDsL2PUUNje9ORaVEbBqdHXmzJohYJaX6Gtc2Gr1ppWFCl47V-NJAYHFwqMQL2MuKMRwXE4zdo_0Q98D1-Pahs.mp4",
+  "/assets/conteudos/SaveClip.App_AQPJZbC5geJPhjtutDYzbdolY62HqJX333jaBB6BcS-8iZ0kbD2uMOQWy_4lCgcFBmVUGEUaVBO5aDzhjQIp5qD2bZ-7ZkC9gpsMPiQ.mp4",
+  "/assets/conteudos/SaveClip.App_AQPrN1Z9XlTeg50PIWBLoM6sAAH8h2BZ_WWpKvHTo_hFTbkXOuEkkqZSSlv5OPbf07BfUipQrapxAqeNaLeikoMq6Jm6S7MTm18QlAE.mp4",
+  "/assets/conteudos/SaveClip.App_AQPuH4lpVkDciz2sCromIwjzZUJ4JO-GzKKg6ZEXwy2IAzZDVnqQpHGTHwdQ0HBJqX9SRuEJ9vyOA3CXVbelFHorAuvnbTcITQL6md8.mp4",
+  "/assets/conteudos/SaveClip.App_AQP_I_Cvy7TlEt7uNESwk8fZrVxdHLJdv-BG_dRadprmVnAEUnXLzNYUD4Fnve3WlQCm_EeWQS9P3ch1E5nQ5FH5X3XPCZv973Q8GlI.mp4",
 ];
 
-export function InformativeReels() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+function ReelVideo({ src }: { src: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(videoRef, { amount: 0.6 });
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const video = entry.target as HTMLVideoElement;
-          if (entry.isIntersecting) {
-            // Play only if it is visible
-            video.play().catch(() => {
-              // Ignore play errors (e.g., autoplay prevented)
-            });
-          } else {
-            video.pause();
-          }
-        });
-      },
-      {
-        threshold: 0.6, // Play when 60% of the video is visible
-      }
-    );
-
-    videoRefs.current.forEach((video) => {
-      if (video) observer.observe(video);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+    if (isInView && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    } else if (!isInView && videoRef.current) {
+      videoRef.current.pause();
+    }
+  }, [isInView]);
 
   return (
-    <section className="py-16 md:py-24 px-container-padding bg-surface-container-lowest md:px-[8%] overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <video
+      ref={videoRef}
+      src={src}
+      className="w-full h-full object-cover"
+      loop
+      muted
+      playsInline
+      preload="none"
+    />
+  );
+}
+
+export function InformativeReels() {
+  const [emblaRef] = useEmblaCarousel({ dragFree: true, align: "center" });
+
+  return (
+    <section className="py-16 md:py-24 bg-surface-container-lowest overflow-hidden">
+      <div className="max-w-6xl mx-auto px-container-padding md:px-[8%]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -65,29 +70,17 @@ export function InformativeReels() {
             Dicas diárias, bastidores do estúdio e conteúdos exclusivos para quem ama o universo da beleza.
           </p>
         </motion.div>
+      </div>
 
-        {/* Horizontal Carousel */}
-        <div 
-          ref={containerRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 hide-scrollbar"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
+      {/* Embla Carousel */}
+      <div className="w-full pl-container-padding md:pl-[12%] pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+        <div className="flex gap-4 md:gap-6">
           {videos.map((src, index) => (
             <div 
               key={index} 
-              className="snap-center shrink-0 w-[80vw] md:w-[300px] lg:w-[350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-lg bg-black relative"
+              className="flex-[0_0_80vw] md:flex-[0_0_300px] lg:flex-[0_0_350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-lg bg-black relative"
             >
-              <video
-                ref={(el) => {
-                  videoRefs.current[index] = el;
-                }}
-                src={src}
-                className="w-full h-full object-cover"
-                loop
-                muted
-                playsInline
-                preload="metadata"
-              />
+              <ReelVideo src={src} />
             </div>
           ))}
         </div>

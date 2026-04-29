@@ -8,14 +8,114 @@ type PortfolioGroup = {
   id: string;
   title: string;
   cover: string;
+  videos: string[];
   images: string[];
 };
 
 const portfolioGroups: PortfolioGroup[] = [
   {
+    id: "foxy",
+    title: "Foxy Eyes",
+    cover: "/assets/modelos_clientes/foxy/foxy (1).jpeg",
+    videos: [
+      "/assets/modelos_clientes/foxy/foxy (1).mp4",
+      "/assets/modelos_clientes/foxy/foxy (2).mp4",
+      "/assets/modelos_clientes/foxy/foxy (5).mp4",
+      "/assets/modelos_clientes/foxy/foxy (6).mp4",
+    ],
+    images: [
+      "/assets/modelos_clientes/foxy/foxy (1).jpeg",
+      "/assets/modelos_clientes/foxy/foxy (1).jpg",
+      "/assets/modelos_clientes/foxy/foxy (2).jpeg",
+      "/assets/modelos_clientes/foxy/foxy (2).jpg",
+      "/assets/modelos_clientes/foxy/foxy (3).jpeg",
+      "/assets/modelos_clientes/foxy/foxy (3).jpg",
+      "/assets/modelos_clientes/foxy/foxy (5).jpg",
+      "/assets/modelos_clientes/foxy/foxy (6).jpg",
+      "/assets/modelos_clientes/foxy/foxy (7).jpg",
+    ]
+  },
+  {
+    id: "egipcio",
+    title: "Volume Egípcio",
+    cover: "/assets/modelos_clientes/egipcio/egipcio (1).jpeg",
+    videos: [
+      "/assets/modelos_clientes/egipcio/egipcio (1).mp4",
+      "/assets/modelos_clientes/egipcio/egipcio (2).mp4",
+      "/assets/modelos_clientes/egipcio/egipcio (3).mp4",
+      "/assets/modelos_clientes/egipcio/egipcio (4).mp4",
+    ],
+    images: [
+      "/assets/modelos_clientes/egipcio/egipcio (1).jpeg",
+      "/assets/modelos_clientes/egipcio/egipcio (1).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (2).jpeg",
+      "/assets/modelos_clientes/egipcio/egipcio (2).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (3).jpeg",
+      "/assets/modelos_clientes/egipcio/egipcio (3).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (4).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (5).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (6).jpg",
+    ]
+  },
+  {
+    id: "henna",
+    title: "Sobrancelhas de Henna",
+    cover: "/assets/modelos_clientes/henna/henna (1).jpg",
+    videos: [
+      "/assets/modelos_clientes/henna/henna (1).mp4",
+      "/assets/modelos_clientes/henna/henna (2).mp4",
+      "/assets/modelos_clientes/henna/henna (3).mp4",
+      "/assets/modelos_clientes/henna/henna (4).mp4",
+      "/assets/modelos_clientes/henna/henna (5).mp4",
+    ],
+    images: [
+      "/assets/modelos_clientes/henna/henna (1).jpg",
+      "/assets/modelos_clientes/henna/henna (2).jpg",
+      "/assets/modelos_clientes/henna/henna (3).jpg",
+      "/assets/modelos_clientes/henna/henna (4).jpg",
+      "/assets/modelos_clientes/henna/henna (5).jpg",
+      "/assets/modelos_clientes/henna/henna (6).jpg",
+      "/assets/modelos_clientes/henna/henna (7).jpg",
+    ]
+  },
+  {
+    id: "design_simples",
+    title: "Design Simples",
+    cover: "/assets/modelos_clientes/design_simples/design_simples (1).jpg",
+    videos: [
+      "/assets/modelos_clientes/design_simples/design_simples (1).mp4",
+      "/assets/modelos_clientes/design_simples/design_simples (2).mp4",
+      "/assets/modelos_clientes/design_simples/design_simples (3).mp4",
+    ],
+    images: [
+      "/assets/modelos_clientes/design_simples/design_simples (1).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (2).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (3).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (4).jpg",
+      "/assets/modelos_clientes/design_simples/design_simples (5).jpeg",
+    ]
+  },
+  {
+    id: "brow-lamination",
+    title: "Brow Lamination",
+    cover: "/assets/modelos_clientes/brown_lamination/brown_lamination (8).jpeg",
+    videos: [
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (2).mp4",
+    ],
+    images: [
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (8).jpeg",
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (3).jpg",
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (4).jpg",
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (5).jpg",
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (6).jpg",
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (7).jpg",
+    ]
+  },
+  {
     id: "brasileiro",
     title: "Volume Brasileiro",
     cover: "/assets/modelos_clientes/brasileiro1.jpeg",
+    videos: [],
     images: [
       "/assets/modelos_clientes/brasileiro1.jpeg",
       "/assets/modelos_clientes/brasileiro2.jpeg",
@@ -23,40 +123,39 @@ const portfolioGroups: PortfolioGroup[] = [
     ]
   },
   {
-    id: "egipcio",
-    title: "Volume Egípcio",
-    cover: "/assets/modelos_clientes/egipcio1.jpeg",
+    id: "egipcio_castanho",
+    title: "Egípcio Castanho",
+    cover: "/assets/modelos_clientes/egipcio_castanho/volume_egipcio_castanho (1).jpg",
+    videos: [
+      "/assets/modelos_clientes/egipcio_castanho/volume_egipcio_castanho (1).mp4",
+    ],
     images: [
-      "/assets/modelos_clientes/egipcio1.jpeg",
-      "/assets/modelos_clientes/egipcio2.jpeg",
-      "/assets/modelos_clientes/egipcio3.jpeg",
+      "/assets/modelos_clientes/egipcio_castanho/volume_egipcio_castanho (1).jpg",
+      "/assets/modelos_clientes/egipcio_castanho/volume_egipcio_castanho (2).jpg",
     ]
   },
   {
-    id: "foxy",
-    title: "Foxy Eyes",
-    cover: "/assets/modelos_clientes/foxy1.jpeg",
+    id: "micropigmentacao_fio_a_fio",
+    title: "Micropigmentação Fio a Fio",
+    cover: "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (1).jpeg",
+    videos: [],
     images: [
-      "/assets/modelos_clientes/foxy1.jpeg",
-      "/assets/modelos_clientes/foxy2.jpeg",
-      "/assets/modelos_clientes/foxy3.jpeg",
+      "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (1).jpeg",
+      "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (1).jpg",
+      "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (2).jpg",
+      "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (3).jpg",
+      "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (4).jpg",
     ]
   },
   {
-    id: "brow-lamination",
-    title: "Brow Lamination e Design",
-    cover: "/assets/modelos_clientes/fotobrownlamination.jpeg",
-    images: [
-      "/assets/modelos_clientes/fotobrownlamination.jpeg",
-      "/assets/modelos_clientes/fotodesigndesobrancelhas.jpeg",
-    ]
-  },
-  {
-    id: "micropigmentacao",
+    id: "micropigmentacao_labial",
     title: "Micropigmentação Labial",
-    cover: "/assets/modelos_clientes/fotomicropigmentacaolabial.jpeg",
+    cover: "/assets/modelos_clientes/micropigmentacao_labial/micropigmentacao_labial_depois.jpeg",
+    videos: [],
     images: [
-      "/assets/modelos_clientes/fotomicropigmentacaolabial.jpeg",
+      "/assets/modelos_clientes/micropigmentacao_labial/micropigmentacao_labial_depois.jpeg",
+      "/assets/modelos_clientes/micropigmentacao_labial/micropigmentacao_labial_antes_e_depois.jpg",
+      "/assets/modelos_clientes/micropigmentacao_labial/micropigmentacao_labial_antes.jpg",
     ]
   }
 ];
@@ -84,7 +183,7 @@ export function Portfolio() {
             Trabalhos Recentes
           </h2>
           <p className="font-body-md text-body-md text-on-surface-variant mt-4 max-w-2xl">
-            Clique num modelo para ver mais detalhes e confira de perto a excelência, retenção e simetria dos nossos atendimentos.
+            Clique num modelo para ver mais detalhes em vídeo e confira de perto a excelência, retenção e simetria dos nossos atendimentos.
           </p>
         </div>
         
@@ -122,6 +221,7 @@ export function Portfolio() {
                 src={group.cover}
                 alt={group.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none transition-opacity duration-300"></div>
               <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end z-10">
@@ -129,7 +229,7 @@ export function Portfolio() {
                   {group.title}
                 </span>
                 <span className="text-white/80 text-xs font-medium uppercase tracking-wider bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm">
-                  {group.images.length} fotos
+                  {group.videos.length + group.images.length} itens
                 </span>
               </div>
             </div>
@@ -137,7 +237,7 @@ export function Portfolio() {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal com Renderização Condicional de Vídeo */}
       <AnimatePresence>
         {activeGroup && (
           <motion.div 
@@ -146,7 +246,7 @@ export function Portfolio() {
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex flex-col"
           >
-            <div className="p-6 flex justify-between items-center text-white">
+            <div className="p-6 flex justify-between items-center text-white shrink-0">
               <h3 className="font-headline-md text-xl">{activeGroup.title}</h3>
               <button 
                 onClick={() => setActiveGroup(null)}
@@ -156,13 +256,34 @@ export function Portfolio() {
               </button>
             </div>
             
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6 items-center">
-              {activeGroup.images.map((src, idx) => (
-                <motion.img
-                  key={idx}
+            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-8 items-center">
+              {/* Vídeos renderizados apenas quando modal está aberto */}
+              {activeGroup.videos.map((src, idx) => (
+                <motion.div
+                  key={`video-${idx}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
+                  className="w-full max-w-2xl rounded-xl shadow-2xl overflow-hidden bg-black/50"
+                >
+                  <video
+                    src={src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto object-contain"
+                  />
+                </motion.div>
+              ))}
+
+              {/* Fotos */}
+              {activeGroup.images.map((src, idx) => (
+                <motion.img
+                  key={`img-${idx}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: (activeGroup.videos.length + idx) * 0.1 }}
                   src={src}
                   alt={`${activeGroup.title} - Foto ${idx + 1}`}
                   className="w-full max-w-2xl rounded-xl shadow-2xl object-cover"

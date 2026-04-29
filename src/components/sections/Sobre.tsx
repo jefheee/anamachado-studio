@@ -4,40 +4,45 @@ import { motion } from "framer-motion";
 
 export function Sobre() {
   return (
-    <section className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%] overflow-hidden">
+    <section className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%] overflow-hidden border-t border-outline-variant">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
         
-        {/* Coluna de Imagens Sobrepostas */}
+        {/* Coluna de Imagens Mosaico (Fotos da Ana) */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full lg:w-1/2 relative"
+          className="w-full lg:w-1/2 relative grid grid-cols-2 gap-4"
         >
           {/* Imagem Principal (Ana) */}
-          <div className="aspect-[3/4] w-[80%] max-w-[400px] bg-surface-container rounded-DEFAULT overflow-hidden relative border-[0.5px] border-outline-variant shadow-xl z-10">
+          <div className="col-span-2 aspect-[16/10] md:aspect-[4/3] bg-surface-container rounded-xl overflow-hidden shadow-sm relative group">
             <img
-              alt="Ana Júlia"
-              className="object-cover w-full h-full transition-transform duration-700 hover:scale-105 object-top"
-              src="/assets/fotos_ana/foto7.jpeg"
+              alt="Ana Júlia Especialista"
+              className="object-cover w-full h-full object-center transition-transform duration-700 group-hover:scale-105"
+              src="/assets/fotos_ana/foto5.jpeg"
+              loading="lazy"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
           </div>
 
-          {/* Imagem Deslocada (O Espaço) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="absolute bottom-[-10%] right-0 lg:right-[-10%] w-[50%] aspect-[9/16] md:aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border-4 border-surface z-20"
-          >
+          {/* Imagens Menores */}
+          <div className="aspect-square rounded-xl overflow-hidden shadow-sm relative group">
             <img
-              alt="O Espaço Ana Machado"
-              className="object-cover object-center w-full h-full hover:scale-105 transition-transform duration-700"
-              src="/assets/espaco/fotoespaco.jpg"
+              alt="Detalhe Atendimento Ana Machado"
+              className="object-cover object-top w-full h-full transition-transform duration-700 group-hover:scale-105"
+              src="/assets/fotos_ana/foto7.jpeg"
+              loading="lazy"
             />
-          </motion.div>
+          </div>
+          <div className="aspect-square rounded-xl overflow-hidden shadow-sm relative group">
+            <img
+              alt="Estúdio Ana Machado"
+              className="object-cover object-center w-full h-full transition-transform duration-700 group-hover:scale-105"
+              src="/assets/fotos_ana/foto3.jpeg"
+              loading="lazy"
+            />
+          </div>
         </motion.div>
         
         {/* Coluna de Texto */}
@@ -46,7 +51,7 @@ export function Sobre() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="w-full lg:w-1/2 mt-12 lg:mt-0"
+          className="w-full lg:w-1/2"
         >
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-4">
             Sobre a Especialista
@@ -59,24 +64,27 @@ export function Sobre() {
               &quot;Eu não ensino só técnica! Eu ensino você a realmente entrar e se destacar no mercado da beleza.&quot;
             </p>
           </div>
-          <p className="font-body-md text-body-md text-on-surface-variant mb-6">
+          <p className="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
             Instrutora especialista em extensão de cílios e sobrancelhas, Ana Júlia encontrou na estética muito mais do que uma profissão: um propósito. Com <strong>mais de 2.000 atendimentos realizados desde 2023</strong>, sua missão é transformar vidas através do conhecimento, entregando resultados marcantes e formando novas profissionais de sucesso.
           </p>
-          
-          <h3 className="font-headline-md text-headline-md text-primary mt-8 mb-4">
-            Nosso Espaço
-          </h3>
-          <p className="font-body-md text-body-md text-on-surface-variant mb-8">
-            Nossa estrutura foi projetada para oferecer a máxima imersão. Você terá à disposição 
-            equipamentos de ponta, iluminação ideal e um ambiente premium, preparado tanto para os 
-            atendimentos de excelência quanto para o aprimoramento da sua técnica na mentoria.
+          <p className="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+            Seja no cuidado com o design perfeito ou na mentoria meticulosa de cada aluna, o foco sempre foi e será a excelência, aliando durabilidade, retenção e visagismo.
           </p>
 
-          <div className="flex items-center gap-4 border-t border-outline-variant pt-6">
-            <span className="font-headline-md text-headline-md text-primary">3+</span>
-            <span className="font-label-sm text-label-sm text-on-surface-variant uppercase">
-              Anos de<br />Experiência
-            </span>
+          <div className="flex flex-wrap items-center gap-8 border-t border-outline-variant pt-8">
+            <div className="flex items-center gap-4">
+              <span className="font-headline-lg text-4xl text-primary font-bold">2k+</span>
+              <span className="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest leading-tight">
+                Atendimentos<br />Realizados
+              </span>
+            </div>
+            <div className="w-px h-12 bg-outline-variant hidden sm:block"></div>
+            <div className="flex items-center gap-4">
+              <span className="font-headline-lg text-4xl text-primary font-bold">3+</span>
+              <span className="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest leading-tight">
+                Anos de<br />Experiência
+              </span>
+            </div>
           </div>
         </motion.div>
       </div>

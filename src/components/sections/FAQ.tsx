@@ -29,6 +29,14 @@ const faqServicos: FAQItem[] = [
   {
     question: "Vocês fazem manutenção de cílios de outras profissionais?",
     answer: "Não realizamos manutenção de extensões feitas em outros estúdios. Nestes casos, realizamos a remoção segura do trabalho antigo e fazemos uma nova aplicação impecável."
+  },
+  {
+    question: "Quanto tempo dura a extensão de cílios?",
+    answer: "A durabilidade média é de 20 a 30 dias, dependendo do ciclo natural de crescimento dos seus fios e dos cuidados diários. Recomendamos manutenções a cada 15 ou 20 dias para manter o design sempre perfeito."
+  },
+  {
+    question: "Grávidas podem realizar o procedimento?",
+    answer: "Sim! Utilizamos materiais de alta qualidade e com aprovação. No entanto, recomendamos sempre a liberação e autorização do seu médico obstetra por precaução."
   }
 ];
 
@@ -44,6 +52,18 @@ const faqCurso: FAQItem[] = [
   {
     question: "O material prático está incluso no curso?",
     answer: "Sim, o treinamento garante um Kit Iniciante Premium completo e selecionado a dedo para você começar a atender imediatamente após a certificação."
+  },
+  {
+    question: "Terei suporte após finalizar o curso?",
+    answer: "Com certeza. O curso inclui Acompanhamento Vitalício. Você nunca estará sozinha; daremos todo o suporte para a sua evolução técnica e comercial diária."
+  },
+  {
+    question: "A prática é feita em pessoas reais?",
+    answer: "Sim! Durante a mentoria você terá Treinamento em Modelos reais, onde corrigimos minuciosamente a sua postura, isolamento e aplicação ao vivo para garantir total segurança."
+  },
+  {
+    question: "Quanto tempo leva para recuperar o investimento do curso?",
+    answer: "Com as técnicas de marketing ensinadas no curso e cobrando um valor inicial médio de R$ 120 por aplicação, você pode recuperar todo o investimento inicial atendendo cerca de 10 clientes. O retorno é extremamente rápido."
   }
 ];
 
