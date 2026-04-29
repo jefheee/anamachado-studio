@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Sobre() {
   return (
-    <section className="py-24 px-container-padding bg-surface md:px-[8%] overflow-hidden">
+    <section className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%] overflow-hidden">
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
         
         {/* Coluna de Imagens Sobrepostas */}
@@ -24,20 +24,23 @@ export function Sobre() {
             />
           </div>
 
-          {/* Imagem Deslocada (O Espaço) */}
+          {/* Imagem Deslocada (O Espaço - Vídeo) */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="absolute bottom-[-10%] right-0 lg:right-[-10%] w-[60%] aspect-[4/3] rounded-DEFAULT overflow-hidden shadow-2xl border-4 border-surface z-20"
+            className="absolute bottom-[-10%] right-0 lg:right-[-10%] w-[60%] aspect-[4/3] rounded-DEFAULT overflow-hidden shadow-2xl border-4 border-surface z-20 bg-black"
           >
-            <img
-              alt="O Espaço Ana Machado"
-              className="object-cover w-full h-full hover:scale-105 transition-transform duration-700"
-              src="/assets/espaco/fotoespaco.jpg"
-              onError={(e) => { e.currentTarget.src = "/assets/fotos_ana/foto4.jpeg" }} // Fallback
-            />
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+            >
+              <source src="/assets/espaco/videoespaco.mp4" type="video/mp4" />
+            </video>
           </motion.div>
         </motion.div>
         

@@ -14,9 +14,9 @@ export function Services() {
     "Cílios": {
       description: "A extensão de cílios transforma o olhar, trazendo praticidade e elevação da autoestima. O Volume Brasileiro proporciona um olhar marcante, o Egípcio traz densidade e o Foxy Eyes cria um efeito lifting sofisticado.",
       images: [
-        "/assets/modelos_clientes/brasileiro1.jpeg",
-        "/assets/modelos_clientes/egipcio1.jpeg",
-        "/assets/modelos_clientes/foxy1.jpeg",
+        { src: "/assets/modelos_clientes/brasileiro1.jpeg", label: "Volume Brasileiro" },
+        { src: "/assets/modelos_clientes/egipcio1.jpeg", label: "Volume Egípcio" },
+        { src: "/assets/modelos_clientes/foxy1.jpeg", label: "Foxy Eyes" },
       ],
       items: [
         { name: "Volume Brasileiro", price: "160" },
@@ -27,8 +27,8 @@ export function Services() {
     "Sobrancelhas": {
       description: "Um design bem estruturado é a moldura do rosto. O Design estratégico alinha a simetria, enquanto a Brow Lamination entrega volume, preenchimento e um aspecto moderno e selvagem (fluffy brows).",
       images: [
-        "/assets/modelos_clientes/fotobrownlamination.jpeg",
-        "/assets/modelos_clientes/brasileiro2.jpeg", // fallback
+        { src: "/assets/modelos_clientes/fotobrownlamination.jpeg", label: "Brow Lamination" },
+        { src: "/assets/modelos_clientes/fotodesigndesobrancelhas.jpeg", label: "Design de Sobrancelhas" },
       ],
       items: [
         { name: "Design de Sobrancelhas", price: "35" },
@@ -38,8 +38,8 @@ export function Services() {
     "Micropigmentação": {
       description: "Correção e aprimoramento duradouros. A técnica Fio a Fio reproduz a naturalidade dos pelos da sobrancelha, enquanto a revitalização Labial devolve cor, contorno e saúde aos lábios.",
       images: [
-        "/assets/modelos_clientes/fotomicropigmentacaolabial.jpeg",
-        "/assets/modelos_clientes/brasileiro3.jpeg", // fallback
+        { src: "/assets/modelos_clientes/microsobrancelhasfioafio.jpeg", label: "Sobrancelha Fio a Fio" },
+        { src: "/assets/modelos_clientes/fotomicropigmentacaolabial.jpeg", label: "Micropigmentação Labial" },
       ],
       items: [
         { name: "Sobrancelhas Fio a Fio", price: "250" },
@@ -50,8 +50,8 @@ export function Services() {
     "Manutenções": {
       description: "Para manter a saúde dos fios naturais e o preenchimento impecável, as manutenções devem ser realizadas dentro do prazo estabelecido e com pelo menos 60% dos fios intactos e limpos. Caso contrário, será cobrado o valor de uma nova aplicação.",
       images: [
-        "/assets/modelos_clientes/egipcio2.jpeg",
-        "/assets/modelos_clientes/foxy2.jpeg",
+        { src: "/assets/modelos_clientes/egipcio2.jpeg", label: "Manutenção - Volume Egípcio" },
+        { src: "/assets/modelos_clientes/foxy2.jpeg", label: "Manutenção - Foxy Eyes" },
       ],
       items: [
         { name: "Manutenção 15 dias", price: "80" },
@@ -66,7 +66,7 @@ export function Services() {
   const activeContent = content[activeTab];
 
   return (
-    <section id="servicos" className="py-24 px-container-padding bg-surface md:px-[8%]">
+    <section id="servicos" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -100,7 +100,7 @@ export function Services() {
         </div>
 
         {/* Tab Content - 2 Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start min-h-[500px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start min-h-[500px]">
 
           {/* Coluna Esquerda: Texto e Preços */}
           <div className="flex flex-col justify-center h-full">
@@ -154,23 +154,25 @@ export function Services() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.5 }}
-                className="grid grid-cols-2 gap-4 h-[500px]"
+                className="grid grid-cols-2 gap-4 h-[400px] md:h-[500px]"
               >
-                {activeContent.images.map((src, idx) => (
+                {activeContent.images.map((img, idx) => (
                   <div
                     key={idx}
-                    className={`rounded-xl overflow-hidden shadow-md ${activeContent.images.length === 3 && idx === 0 ? "col-span-2 h-[240px]" : "h-full min-h-[240px]"
-                      } ${activeContent.images.length === 2 ? "h-[500px]" : ""}`}
+                    className={`rounded-xl overflow-hidden shadow-md relative group ${activeContent.images.length === 3 && idx === 0 ? "col-span-2 h-[200px] md:h-[240px]" : "h-full min-h-[190px] md:min-h-[240px]"
+                      } ${activeContent.images.length === 2 ? "h-[400px] md:h-[500px]" : ""}`}
                   >
                     <img
-                      src={src}
-                      alt={`Procedimento de ${activeTab} ${idx + 1}`}
+                      src={img.src}
+                      alt={`Procedimento: ${img.label}`}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                       onError={(e) => {
-                        // Fallback se a imagem específica não existir (evita erro visual)
                         e.currentTarget.src = "/assets/modelos_clientes/brasileiro1.jpeg";
                       }}
                     />
+                    <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                      <span className="text-white font-label-sm tracking-wide text-sm">{img.label}</span>
+                    </div>
                   </div>
                 ))}
               </motion.div>

@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 
 export function AlunasResults() {
   return (
-    <section id="resultados-alunas" className="py-24 px-container-padding bg-surface md:px-[8%]">
+    <section id="resultados-alunas" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,137 +21,85 @@ export function AlunasResults() {
             Resultados Reais das Nossas Alunas
           </h2>
           <p className="font-body-md text-body-md text-on-surface-variant mt-4 max-w-2xl mx-auto">
-            Da teoria à prática com excelência. Veja o desempenho e a evolução de quem confiou na metodologia Ana Machado.
+            Da teoria à prática com excelência. Veja o desempenho e a evolução na hora de aplicar as técnicas em modelos reais.
           </p>
         </motion.div>
 
-        <div className="space-y-16">
+        {/* Dynamic Bento/Masonry Grid */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[250px] md:auto-rows-[300px]"
+        >
           
-          {/* Aluna Gabriella (Vídeos + Certificado) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
-          >
-            <div className="border-b border-neutral-100 pb-4 mb-8">
-              <h3 className="font-headline-md text-2xl text-primary">Trabalho da Aluna Gabriella Soares</h3>
-              <p className="text-on-surface-variant mt-1">Prática supervisionada em Cílios e Sobrancelhas</p>
+          {/* Item 1: Vídeo Gabriella (Cílios) */}
+          <div className="md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden shadow-md bg-black relative group cursor-pointer">
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
+              <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunacilios.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 transition-opacity flex flex-col justify-end p-6">
+              <div className="flex items-center gap-2 mb-1">
+                <Play className="w-4 h-4 text-white fill-white" />
+                <span className="text-white font-label-sm text-sm tracking-widest uppercase">Prática</span>
+              </div>
+              <h3 className="text-white font-headline-sm text-lg">Aluna Gabriella</h3>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[400px]">
-              <div className="rounded-xl overflow-hidden shadow-md h-[400px] md:h-full bg-black relative">
-                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-                  <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunacilios.mp4" type="video/mp4" />
-                </video>
-                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Cílios</span>
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-md h-[400px] md:h-full bg-black relative">
-                <video autoPlay loop muted playsInline className="w-full h-full object-cover">
-                  <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunasobrancelha.mp4" type="video/mp4" />
-                </video>
-                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Sobrancelhas</span>
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-md h-[400px] md:h-full bg-neutral-100 relative">
-                <img 
-                  src="/assets/curso_vip/aluna_gabriella_soares/fotocertificadoaluna.jpg" 
-                  alt="Gabriella com certificado" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
-                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Certificação</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Aluna Beatriz */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
-          >
-            <div className="border-b border-neutral-100 pb-4 mb-8">
-              <h3 className="font-headline-md text-2xl text-primary">Trabalho da Aluna Beatriz</h3>
-              <p className="text-on-surface-variant mt-1">Evolução do manequim ao modelo real</p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-auto md:h-[400px]">
-              <div className="rounded-xl overflow-hidden shadow-md h-[300px] md:h-full relative">
-                <img 
-                  src="/assets/curso_vip/aluna_beatriz/alunaciliiosmanequim.jpg" 
-                  alt="Prática no manequim" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
-                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Treino</span>
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-md h-[300px] md:h-full relative">
-                <img 
-                  src="/assets/curso_vip/aluna_beatriz/alunacilios.jpg" 
-                  alt="Prática na modelo" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
-                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Prática</span>
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-md h-[300px] md:h-full relative">
-                <img 
-                  src="/assets/curso_vip/aluna_beatriz/alunafotocertificado.jpg" 
-                  alt="Beatriz com certificado" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                />
-                <span className="absolute bottom-4 left-4 bg-black/60 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm">Certificação</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Dupla: Joyce e Júlia */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
-            >
-              <div className="border-b border-neutral-100 pb-4 mb-6">
-                <h3 className="font-headline-md text-xl text-primary">Aluna Joyce</h3>
-              </div>
-              <div className="grid grid-cols-2 gap-4 h-[250px]">
-                <div className="rounded-xl overflow-hidden shadow-sm relative">
-                  <img 
-                    src="/assets/curso_vip/aluna_joyce/fotoalunacilios.jpg" 
-                    alt="Joyce trabalhando" 
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-                <div className="rounded-xl overflow-hidden shadow-sm relative">
-                  <img 
-                    src="/assets/curso_vip/aluna_joyce/fotoalunacertificado.jpg" 
-                    alt="Joyce certificado" 
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100"
-            >
-              <div className="border-b border-neutral-100 pb-4 mb-6">
-                <h3 className="font-headline-md text-xl text-primary">Aluna Júlia</h3>
-              </div>
-              <div className="w-full h-[250px] rounded-xl overflow-hidden shadow-sm relative">
-                <img 
-                  src="/assets/curso_vip/aluna_julia/fotoalunacertificado.jpg" 
-                  alt="Júlia certificado" 
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700 object-top"
-                />
-              </div>
-            </motion.div>
           </div>
 
-        </div>
+          {/* Item 2: Foto Beatriz (Manequim) */}
+          <div className="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer">
+            <img 
+              src="/assets/curso_vip/aluna_beatriz/alunaciliiosmanequim.jpg" 
+              alt="Prática no manequim" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute bottom-4 left-4">
+              <span className="bg-white/90 text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm backdrop-blur-md uppercase tracking-wider">Treino no Manequim</span>
+            </div>
+          </div>
+
+          {/* Item 3: Vídeo Gabriella (Sobrancelha) */}
+          <div className="md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden shadow-md bg-black relative group cursor-pointer">
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105">
+              <source src="/assets/curso_vip/aluna_gabriella_soares/videoalunasobrancelha.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+              <div className="flex items-center gap-2 mb-1">
+                <Play className="w-4 h-4 text-white fill-white" />
+                <span className="text-white font-label-sm text-sm tracking-widest uppercase">Design</span>
+              </div>
+              <h3 className="text-white font-headline-sm text-lg">Aluna Gabriella</h3>
+            </div>
+          </div>
+
+          {/* Item 4: Foto Beatriz (Prática Modelo) */}
+          <div className="md:col-span-1 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer">
+            <img 
+              src="/assets/curso_vip/aluna_beatriz/alunacilios.jpg" 
+              alt="Prática na modelo" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top"
+            />
+            <div className="absolute bottom-4 left-4">
+              <span className="bg-white/90 text-primary text-xs font-bold px-3 py-1 rounded-full shadow-sm backdrop-blur-md uppercase tracking-wider">Aplicação em Modelo</span>
+            </div>
+          </div>
+
+          {/* Item 5: Foto Joyce (Prática Cílios) - Wide on Desktop */}
+          <div className="md:col-span-3 md:row-span-1 rounded-2xl overflow-hidden shadow-md relative group cursor-pointer">
+            <img 
+              src="/assets/curso_vip/aluna_joyce/fotoalunacilios.jpg" 
+              alt="Joyce trabalhando" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-top"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+              <span className="text-white font-label-sm text-sm tracking-widest uppercase mb-1">Foco e Precisão</span>
+              <h3 className="text-white font-headline-sm text-xl">Aluna Joyce em Atendimento</h3>
+            </div>
+          </div>
+
+        </motion.div>
       </div>
     </section>
   );

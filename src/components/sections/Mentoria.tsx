@@ -1,26 +1,11 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import { Clock, Gift, Award, Headset, BookOpen, Users, Smartphone } from "lucide-react";
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
+import { Clock, Award, Headset, BookOpen, Users, Smartphone } from "lucide-react";
 
 export function Mentoria() {
   return (
-    <section id="mentoria" className="py-24 px-container-padding bg-[#F9F7F5] md:px-[8%] overflow-hidden">
+    <section id="mentoria" className="py-16 md:py-24 px-container-padding bg-[#F9F7F5] md:px-[8%] overflow-hidden">
       <div className="max-w-6xl mx-auto">
         
         <div className="text-center mb-16">
@@ -38,128 +23,81 @@ export function Mentoria() {
           </motion.h2>
         </div>
 
-        {/* Vídeo do Kit em Destaque */}
+        {/* Bento Grid */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8 }}
-          className="w-full max-w-4xl mx-auto mb-20 rounded-2xl overflow-hidden shadow-2xl border-[4px] border-white relative aspect-[16/9] md:aspect-[21/9]"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[220px]"
         >
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline 
-            className="w-full h-full object-cover"
-          >
-            <source src="/assets/curso_vip/montandocaixacurso.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-            <h3 className="text-white font-headline-md text-2xl drop-shadow-md">
-              O Seu Kit Iniciante de Alto Padrão
-            </h3>
+          {/* Vídeo Vertical - Span 2 Rows */}
+          <div className="md:col-span-1 md:row-span-2 relative rounded-3xl overflow-hidden shadow-lg border-[0.5px] border-neutral-200 bg-black aspect-[9/16] md:aspect-auto group">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline 
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105 group-hover:scale-100"
+            >
+              <source src="/assets/curso_vip/montandocaixacurso.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6 md:p-8 pointer-events-none">
+              <span className="text-secondary font-label-sm uppercase tracking-widest text-xs mb-2">Incluso</span>
+              <h3 className="text-white font-headline-md text-xl md:text-2xl mb-2">Kit Premium</h3>
+              <p className="text-white/80 font-body-sm text-sm">Materiais selecionados para você começar a faturar imediatamente.</p>
+            </div>
           </div>
-        </motion.div>
 
-        {/* Grelha de Benefícios */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-        >
-          {/* Duração */}
-          <motion.div variants={itemVariants} className="flex flex-col h-full p-8 bg-white rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#F9F7F5] flex items-center justify-center mb-6">
-              <Clock className="text-secondary w-6 h-6" />
-            </div>
-            <h4 className="font-headline-md text-headline-md text-primary mb-3">
-              8h de Curso Presencial
-            </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex-grow">
-              Teoria e prática intensiva. Podendo dividir em 2 dias ou finalizar em 1 dia focado.
-            </p>
-          </motion.div>
+          {/* 8h Curso - Span 2 Cols */}
+          <div className="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-neutral-100 flex flex-col justify-center relative overflow-hidden group hover:shadow-md transition-shadow">
+            <Clock className="absolute -right-4 -bottom-4 w-32 h-32 text-surface-container opacity-50 group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
+            <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-3 relative z-10">8h de Curso Presencial</h4>
+            <p className="text-on-surface-variant font-body-md max-w-sm relative z-10">Teoria e prática intensiva. Podendo dividir em 2 dias ou finalizar em 1 dia focado para acelerar sua jornada.</p>
+          </div>
 
-          {/* Apostila */}
-          <motion.div variants={itemVariants} className="flex flex-col h-full p-8 bg-white rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#F9F7F5] flex items-center justify-center mb-6">
-              <BookOpen className="text-secondary w-6 h-6" />
+          {/* Apostila - Span 1 Col */}
+          <div className="md:col-span-1 bg-secondary text-white rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow hover:-translate-y-1 duration-300">
+            <BookOpen className="w-8 h-8 mb-4 opacity-80 group-hover:opacity-100 transition-opacity" />
+            <div>
+              <h4 className="font-headline-md text-xl mb-2">Apostila Completa</h4>
+              <p className="text-white/80 font-body-sm text-sm">Material super didático para consultar e revisar sempre que precisar.</p>
             </div>
-            <h4 className="font-headline-md text-headline-md text-primary mb-3">
-              Apostila Completa
-            </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex-grow">
-              Material super didático para você consultar e revisar sempre que precisar.
-            </p>
-          </motion.div>
+          </div>
 
-          {/* Kit Iniciante */}
-          <motion.div variants={itemVariants} className="flex flex-col h-full p-8 bg-white rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#F9F7F5] flex items-center justify-center mb-6">
-              <Gift className="text-secondary w-6 h-6" />
-            </div>
-            <h4 className="font-headline-md text-headline-md text-primary mb-3">
-              Kit Iniciante Exclusivo
-            </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex-grow">
-              Materiais de qualidade Premium selecionados para você começar a praticar imediatamente.
-            </p>
-          </motion.div>
+          {/* Treinamento Modelos - Span 2 Cols */}
+          <div className="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-neutral-100 flex flex-col justify-center group hover:shadow-md transition-shadow">
+            <Users className="w-8 h-8 text-secondary mb-4 group-hover:scale-110 transition-transform" />
+            <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-3">Treinamento em Modelos</h4>
+            <p className="text-on-surface-variant font-body-md">Mão na massa desde o início com supervisão rigorosa. Corrigimos cada detalhe da sua postura e aplicação ao vivo.</p>
+          </div>
 
-          {/* Prática Real */}
-          <motion.div variants={itemVariants} className="flex flex-col h-full p-8 bg-white rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#F9F7F5] flex items-center justify-center mb-6">
-              <Users className="text-secondary w-6 h-6" />
+          {/* Captação - Span 1 Col */}
+          <div className="md:col-span-1 bg-surface-container rounded-3xl p-6 md:p-8 shadow-sm border border-neutral-100 flex flex-col justify-between group hover:shadow-md transition-shadow">
+            <Smartphone className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+            <div>
+              <h4 className="font-headline-md text-xl text-primary mb-2">Marketing</h4>
+              <p className="text-on-surface-variant font-body-sm text-sm">Dicas de fotos, edições e estratégias de captação de clientes.</p>
             </div>
-            <h4 className="font-headline-md text-headline-md text-primary mb-3">
-              Treinamento em Modelos
-            </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex-grow">
-              Mão na massa desde o início com supervisão rigorosa e correção de detalhes.
-            </p>
-          </motion.div>
+          </div>
 
-          {/* Marketing */}
-          <motion.div variants={itemVariants} className="flex flex-col h-full p-8 bg-white rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#F9F7F5] flex items-center justify-center mb-6">
-              <Smartphone className="text-secondary w-6 h-6" />
-            </div>
-            <h4 className="font-headline-md text-headline-md text-primary mb-3">
-              Captação e Posicionamento
-            </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex-grow">
-              Dicas de fotos, edições e estratégias de Marketing para conseguir suas primeiras clientes.
-            </p>
-          </motion.div>
+          {/* Acompanhamento - Span 2 Cols */}
+          <div className="md:col-span-2 bg-primary text-white rounded-3xl p-6 md:p-8 shadow-lg flex flex-col justify-center relative overflow-hidden group">
+            <Headset className="absolute right-0 bottom-0 w-40 h-40 text-white/5 pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+            <h4 className="font-headline-md text-xl md:text-2xl mb-3 relative z-10">Acompanhamento Vitalício</h4>
+            <p className="text-white/80 font-body-md max-w-md relative z-10">Suporte contínuo para o seu dia a dia. Você não estará sozinha no seu processo de evolução técnica e comercial.</p>
+          </div>
 
-          {/* Suporte Vitalício */}
-          <motion.div variants={itemVariants} className="flex flex-col h-full p-8 bg-white rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#F9F7F5] flex items-center justify-center mb-6">
-              <Headset className="text-secondary w-6 h-6" />
+          {/* Certificado - Span 2 Cols */}
+          <div className="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-neutral-100 flex flex-col md:flex-row items-start md:items-center gap-6 group hover:shadow-md transition-shadow">
+            <div className="w-16 h-16 rounded-full bg-surface flex items-center justify-center shrink-0 border border-neutral-100">
+              <Award className="w-8 h-8 text-secondary group-hover:rotate-12 transition-transform" />
             </div>
-            <h4 className="font-headline-md text-headline-md text-primary mb-3">
-              Acompanhamento Vitalício
-            </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex-grow">
-              Suporte contínuo para o seu dia a dia. Você não estará sozinha no seu processo de evolução.
-            </p>
-          </motion.div>
-
-          {/* Certificado (Destaque Centralizado na última linha se sobrar espaço) */}
-          <motion.div variants={itemVariants} className="flex flex-col h-full p-8 bg-white rounded-xl shadow-sm border border-neutral-100 hover:shadow-md transition-shadow md:col-start-2">
-            <div className="w-12 h-12 rounded-full bg-[#F9F7F5] flex items-center justify-center mb-6">
-              <Award className="text-secondary w-6 h-6" />
+            <div>
+              <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-2">Certificado Exclusivo</h4>
+              <p className="text-on-surface-variant font-body-md">Validação oficial do seu aprendizado e diferencial incontestável para a sua nova carreira profissional.</p>
             </div>
-            <h4 className="font-headline-md text-headline-md text-primary mb-3">
-              Certificado Exclusivo
-            </h4>
-            <p className="font-body-sm text-body-sm text-on-surface-variant flex-grow">
-              Validação oficial do seu aprendizado e diferencial incontestável para a sua carreira.
-            </p>
-          </motion.div>
+          </div>
 
         </motion.div>
       </div>
