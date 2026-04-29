@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export function Header() {
@@ -23,18 +24,21 @@ export function Header() {
           >
             <Menu className="text-neutral-900 w-6 h-6" />
           </button>
-          <div className="h-16 flex items-center">
-            <img
+          <div className="h-20 flex items-center bg-white rounded-md p-2">
+            <Image
               alt="Ana Machado Logo"
               className="h-full w-auto object-contain mix-blend-multiply"
-              src="/assets/brand/logoheader.jpeg"
+              src="/assets/brand/logoheader_sem_fundo.png"
+              width={160}
+              height={64}
+              priority
             />
           </div>
         </div>
         
         {/* Nav Desktop */}
-        <nav className="hidden md:flex gap-8 items-center font-noto-serif font-light tracking-wide text-neutral-900">
-          <Link href="#inicio" className="hover:opacity-70 transition-opacity duration-300 font-medium">Início</Link>
+        <nav className="hidden md:flex gap-8 items-center uppercase tracking-widest text-xs font-medium text-neutral-900">
+          <Link href="#inicio" className="hover:opacity-70 transition-opacity duration-300">Início</Link>
           <Link href="#servicos" className="hover:opacity-70 transition-opacity duration-300">Serviços</Link>
           <Link href="#portfolio" className="hover:opacity-70 transition-opacity duration-300">Portfólio</Link>
           <Link href="#mentoria" className="hover:opacity-70 transition-opacity duration-300">Mentoria</Link>
@@ -68,11 +72,15 @@ export function Header() {
             className="fixed inset-0 z-[60] bg-white flex flex-col p-6"
           >
             <div className="flex justify-between items-center mb-12">
-              <img
-                alt="Ana Machado Logo"
-                className="h-14 w-auto object-contain mix-blend-multiply"
-                src="/assets/brand/logoheader.jpeg"
-              />
+              <div className="h-16 bg-white rounded-md p-2">
+                <Image
+                  alt="Ana Machado Logo"
+                  className="h-full w-auto object-contain mix-blend-multiply"
+                  src="/assets/brand/logoheader_sem_fundo.png"
+                  width={140}
+                  height={56}
+                />
+              </div>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-2 bg-neutral-100 rounded-full"
@@ -81,7 +89,7 @@ export function Header() {
               </button>
             </div>
 
-            <nav className="flex flex-col gap-6 font-headline-md text-headline-md mb-12 text-neutral-900">
+            <nav className="flex flex-col gap-6 uppercase tracking-widest text-sm font-medium mb-12 text-neutral-900">
               <Link onClick={() => setIsMobileMenuOpen(false)} href="#inicio" className="hover:opacity-70">Início</Link>
               <Link onClick={() => setIsMobileMenuOpen(false)} href="#servicos" className="hover:opacity-70">Serviços</Link>
               <Link onClick={() => setIsMobileMenuOpen(false)} href="#portfolio" className="hover:opacity-70">Portfólio</Link>

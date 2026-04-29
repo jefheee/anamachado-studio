@@ -63,22 +63,40 @@ function PremiumVideo({
 export function Mentoria() {
   const containerRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    if (!containerRef.current || !contentRef.current) return;
+    if (!containerRef.current || !contentRef.current || !bgRef.current) return;
 
-    // Z-Axis Reveal Effect
-    gsap.fromTo(contentRef.current,
-      { scale: 0.5, opacity: 0 },
+    // Animação de Reveal do Background (expande)
+    gsap.fromTo(bgRef.current,
+      { scale: 0.8, opacity: 0 },
       {
         scale: 1,
         opacity: 1,
-        ease: "none",
+        ease: "power2.out",
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 90%", // Start when top of section hits 90% of viewport
-          end: "top 20%",   // Finish when top of section reaches 20% of viewport
-          scrub: 1,         // Smooth scrubbing
+          start: "top 80%",
+          end: "center center",
+          scrub: 1,
+        }
+      }
+    );
+
+    // Z-Axis Reveal Effect
+    gsap.fromTo(contentRef.current,
+      { scale: 0.8, opacity: 0, y: 50 },
+      {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 60%", 
+          end: "center center",   
+          scrub: 1,         
         }
       }
     );
@@ -90,8 +108,8 @@ export function Mentoria() {
       ref={containerRef} 
       className="relative py-16 md:py-24 px-container-padding md:px-[8%] overflow-hidden"
     >
-      {/* Background Fixo Global para Efeito Parallax Absoluto */}
-      <div className="fixed inset-0 w-full h-full -z-10">
+      {/* Background Expandível */}
+      <div ref={bgRef} className="absolute inset-0 w-full h-full z-0 origin-center">
         <img src="/assets/bg-mentoria.jpg" className="w-full h-full object-cover" alt="Background" />
         <div className="absolute inset-0 bg-[#F9F7F5]/90 backdrop-blur-[2px]"></div>
       </div>

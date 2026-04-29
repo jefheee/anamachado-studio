@@ -52,10 +52,10 @@ export function Services() {
     "Manutenções": {
       description: "Para manter a saúde dos fios naturais e o preenchimento impecável, as manutenções devem ser realizadas dentro do prazo estabelecido e com pelo menos 60% dos fios intactos e limpos. Caso contrário, será cobrado o valor de uma nova aplicação.",
       images: [
-        { src: "/assets/modelos_clientes/egipcio2.jpeg", label: "Volume Egípcio" },
-        { src: "/assets/modelos_clientes/foxy2.jpeg", label: "Foxy Eyes" },
-        { src: "/assets/modelos_clientes/brasileiro2.jpeg", label: "Brasileiro" },
-        { src: "/assets/modelos_clientes/egipcio3.jpeg", label: "Egípcio" },
+        { src: "/assets/modelos_clientes/egipcio/egipcio (2).jpg", label: "Manutenção Volume Egípcio" },
+        { src: "/assets/modelos_clientes/foxy/foxy (2).jpeg", label: "Manutenção Foxy Eyes" },
+        { src: "/assets/modelos_clientes/brasileiro/brasileiro (2).jpeg", label: "Manutenção Brasileiro" },
+        { src: "/assets/modelos_clientes/brasileiro_castanho/brasileiro_castanho (2).jpg", label: "Manutenção Castanho" },
       ],
       items: [
         { name: "Manutenção 15 dias", price: "80", badge: "" },

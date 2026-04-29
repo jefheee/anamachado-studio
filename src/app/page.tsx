@@ -1,7 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Sobre } from "@/components/sections/Sobre";
 import { Espaco } from "@/components/sections/Espaco";
 import { Services } from "@/components/sections/Services";
 import { Portfolio } from "@/components/sections/Portfolio";
@@ -20,11 +19,10 @@ export default function Home() {
     <>
       <Header />
       <main className="w-full mx-auto md:pt-[72px]">
-        <Sobre />
+        <Hero />
         <Espaco />
         <Services />
         <Portfolio />
-        <Hero />
         <LashDesignerProfession />
         <Mentoria />
         <AlunasResults />
