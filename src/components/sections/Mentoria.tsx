@@ -86,12 +86,12 @@ export function Mentoria() {
       { scale: 0.85, opacity: 0.3 },
       { scale: 1, opacity: 1, duration: 1, ease: "none" }
     )
-    // Text fades in and slides up
-    .fromTo(".mentoria-hero-text",
-      { opacity: 0, y: 60 },
-      { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
-      0.2
-    );
+      // Text fades in and slides up
+      .fromTo(".mentoria-hero-text",
+        { opacity: 0, y: 60 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+        0.2
+      );
 
     // Content below: Z-axis reveal
     if (contentRef.current) {
@@ -114,15 +114,15 @@ export function Mentoria() {
 
   return (
     <section id="mentoria" ref={sectionRef} className="overflow-hidden">
-      
+
       {/* MENTORIA HERO — Pinned section with bg-mentoria.jpg */}
       <div ref={heroRef} className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden">
         {/* Background Image - Animated */}
         <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform overflow-hidden">
-          <img 
-            src="/assets/bg-mentoria.jpg" 
-            className="w-full h-full object-cover" 
-            alt="Mentoria VIP Ana Machado" 
+          <img
+            src="/assets/bg-mentoria.jpg"
+            className="w-full h-full object-cover"
+            alt="Mentoria VIP Ana Machado"
           />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
@@ -175,7 +175,7 @@ export function Mentoria() {
 
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[220px]">
-            
+
             {/* Kit Premium (4 Vídeos) - Span 2x2 */}
             <div className="md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden shadow-xl border-[0.5px] border-neutral-200 aspect-square md:aspect-auto flex flex-col">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-0.5 bg-neutral-900">
