@@ -23,16 +23,17 @@ const portfolioGroups: PortfolioGroup[] = [
     videos: [
       "/assets/modelos_clientes/foxy/foxy (1).mp4",
       "/assets/modelos_clientes/foxy/foxy (2).mp4",
-      "/assets/modelos_clientes/foxy/foxy (5).mp4",
-      "/assets/modelos_clientes/foxy/foxy (6).mp4",
+      "/assets/modelos_clientes/foxy/foxy (3).mp4",
+      "/assets/modelos_clientes/foxy/foxy (4).mp4",
     ],
     images: [
       "/assets/modelos_clientes/foxy/foxy (1).jpeg",
       "/assets/modelos_clientes/foxy/foxy (1).jpg",
       "/assets/modelos_clientes/foxy/foxy (2).jpeg",
       "/assets/modelos_clientes/foxy/foxy (2).jpg",
-      "/assets/modelos_clientes/foxy/foxy (3).jpeg",
       "/assets/modelos_clientes/foxy/foxy (3).jpg",
+      "/assets/modelos_clientes/foxy/foxy (4).jpeg",
+      "/assets/modelos_clientes/foxy/foxy (4).jpg",
       "/assets/modelos_clientes/foxy/foxy (5).jpg",
       "/assets/modelos_clientes/foxy/foxy (6).jpg",
       "/assets/modelos_clientes/foxy/foxy (7).jpg",
@@ -46,18 +47,20 @@ const portfolioGroups: PortfolioGroup[] = [
       "/assets/modelos_clientes/egipcio/egipcio (1).mp4",
       "/assets/modelos_clientes/egipcio/egipcio (2).mp4",
       "/assets/modelos_clientes/egipcio/egipcio (3).mp4",
-      "/assets/modelos_clientes/egipcio/egipcio (4).mp4",
+      "/assets/modelos_clientes/egipcio/egipcio (5).mp4",
     ],
     images: [
       "/assets/modelos_clientes/egipcio/egipcio (1).jpeg",
       "/assets/modelos_clientes/egipcio/egipcio (1).jpg",
-      "/assets/modelos_clientes/egipcio/egipcio (2).jpeg",
-      "/assets/modelos_clientes/egipcio/egipcio (2).jpg",
       "/assets/modelos_clientes/egipcio/egipcio (3).jpeg",
       "/assets/modelos_clientes/egipcio/egipcio (3).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (4).jpeg",
       "/assets/modelos_clientes/egipcio/egipcio (4).jpg",
       "/assets/modelos_clientes/egipcio/egipcio (5).jpg",
       "/assets/modelos_clientes/egipcio/egipcio (6).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (7).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (8).jpg",
+      "/assets/modelos_clientes/egipcio/egipcio (9).jpg",
     ]
   },
   {
@@ -107,10 +110,13 @@ const portfolioGroups: PortfolioGroup[] = [
     title: "Brow Lamination",
     cover: "/assets/modelos_clientes/brown_lamination/brown_lamination (8).jpeg",
     videos: [
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (1).mp4",
       "/assets/modelos_clientes/brown_lamination/brown_lamination (2).mp4",
     ],
     images: [
       "/assets/modelos_clientes/brown_lamination/brown_lamination (8).jpeg",
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (1).jpg",
+      "/assets/modelos_clientes/brown_lamination/brown_lamination (2).jpg",
       "/assets/modelos_clientes/brown_lamination/brown_lamination (3).jpg",
       "/assets/modelos_clientes/brown_lamination/brown_lamination (4).jpg",
       "/assets/modelos_clientes/brown_lamination/brown_lamination (5).jpg",
@@ -198,18 +204,17 @@ function PortfolioCard({ group, setActiveGroup }: { group: PortfolioGroup, setAc
   const allMedia = Array.from(new Set([...group.videos, group.cover, ...group.images]));
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isHovered && allMedia.length > 1) {
-      timer = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % allMedia.length);
-      }, 3000);
-    } else {
-      setCurrentIndex(0);
-    }
-    return () => {
-      if (timer) clearInterval(timer);
-    };
+    if (!isHovered || allMedia.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % allMedia.length);
+    }, 3000);
+    return () => clearInterval(timer);
   }, [isHovered, allMedia.length]);
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setCurrentIndex(0);
+  };
 
   const currentSrc = allMedia[currentIndex];
 
@@ -217,7 +222,7 @@ function PortfolioCard({ group, setActiveGroup }: { group: PortfolioGroup, setAc
     <div 
       onClick={() => setActiveGroup(group)}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
       className="flex-[0_0_85vw] md:flex-[0_0_320px] h-[450px] relative rounded-xl overflow-hidden shadow-sm border-[0.5px] border-outline-variant group cursor-pointer bg-neutral-900"
     >
       <div className="absolute inset-0 w-full h-full">
