@@ -1,11 +1,11 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useEffect, useState, useCallback } from "react";
+import { motion, useInView } from "framer-motion";
 import { Sparkles, Gift, Heart, Coffee } from "lucide-react";
 import Image from "next/image";
 
-// Auto-swap media card component
+// Auto-swap media card — crossfade with readiness tracking (no blank frames)
 function MediaSwapCard({
   media,
   label,
@@ -17,32 +17,58 @@ function MediaSwapCard({
   className?: string;
   delay?: number;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [nextIndex, setNextIndex] = useState<number | null>(null);
+  const [nextReady, setNextReady] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(containerRef, { amount: 0.3 });
+  const activeVideoRef = useRef<HTMLVideoElement>(null);
+  const nextVideoRef = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(containerRef, { amount: 0.2 });
 
-  // Auto-swap every 4 seconds
+  // Auto-swap timer
   useEffect(() => {
     if (media.length <= 1) return;
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % media.length);
-    }, 4000);
+      const upcoming = (activeIndex + 1) % media.length;
+      setNextIndex(upcoming);
+      // For images, mark ready immediately
+      if (media[upcoming].type === "image") {
+        setNextReady(true);
+      }
+    }, 5000);
     return () => clearInterval(timer);
-  }, [media.length]);
+  }, [media.length, activeIndex]);
 
-  // Control video playback
+  // When next is ready, commit the swap
   useEffect(() => {
-    if (videoRef.current) {
+    if (nextReady && nextIndex !== null) {
+      // Small delay for crossfade effect
+      const swapTimer = setTimeout(() => {
+        setActiveIndex(nextIndex);
+        setNextIndex(null);
+        setNextReady(false);
+      }, 600);
+      return () => clearTimeout(swapTimer);
+    }
+  }, [nextReady, nextIndex]);
+
+  // Play/pause active video
+  useEffect(() => {
+    if (activeVideoRef.current) {
       if (isInView) {
-        videoRef.current.play().catch(() => {});
+        activeVideoRef.current.play().catch(() => {});
       } else {
-        videoRef.current.pause();
+        activeVideoRef.current.pause();
       }
     }
-  }, [isInView, currentIndex]);
+  }, [isInView, activeIndex]);
 
-  const current = media[currentIndex];
+  const handleNextCanPlay = useCallback(() => {
+    setNextReady(true);
+  }, []);
+
+  const active = media[activeIndex];
+  const next = nextIndex !== null ? media[nextIndex] : null;
 
   return (
     <motion.div
@@ -51,42 +77,65 @@ function MediaSwapCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.6 }}
-      className={`relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer ${className}`}
+      className={`relative rounded-2xl overflow-hidden shadow-lg group cursor-pointer bg-neutral-900 ${className}`}
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={`${current.src}-${currentIndex}`}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.6 }}
-          className="absolute inset-0 w-full h-full"
+      {/* Active layer — always visible */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        {active.type === "video" ? (
+          <video
+            ref={activeVideoRef}
+            src={active.src}
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <Image
+            src={active.src}
+            alt={label}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover"
+          />
+        )}
+      </div>
+
+      {/* Next layer — fades in on top when ready, then becomes the active */}
+      {next && (
+        <div
+          className={`absolute inset-0 w-full h-full z-[1] transition-opacity duration-600 ${
+            nextReady ? "opacity-100" : "opacity-0"
+          }`}
         >
-          {current.type === "video" ? (
+          {next.type === "video" ? (
             <video
-              ref={videoRef}
-              src={current.src}
+              ref={nextVideoRef}
+              src={next.src}
               loop
               muted
               playsInline
-              preload="none"
+              preload="metadata"
+              onCanPlay={handleNextCanPlay}
               className="w-full h-full object-cover"
             />
           ) : (
             <Image
-              src={current.src}
+              src={next.src}
               alt={label}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              className="object-cover"
+              onLoad={() => setNextReady(true)}
             />
           )}
-        </motion.div>
-      </AnimatePresence>
+        </div>
+      )}
 
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none z-10"></div>
-      
+
       {/* Label */}
       <div className="absolute bottom-5 left-5 z-20 pointer-events-none">
         <span className="text-white font-headline-sm text-sm md:text-base drop-shadow-lg">{label}</span>
@@ -99,7 +148,7 @@ function MediaSwapCard({
             <div
               key={idx}
               className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                idx === currentIndex ? "bg-white scale-125" : "bg-white/40"
+                idx === activeIndex ? "bg-white scale-125" : "bg-white/40"
               }`}
             />
           ))}
@@ -131,7 +180,7 @@ export function Espaco() {
   return (
     <section id="espaco" className="py-16 md:py-24 px-container-padding bg-surface-container-lowest md:px-[8%] overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -158,9 +207,9 @@ export function Espaco() {
           <FeaturePill icon={Heart} text="Conforto Total" delay={0.4} />
         </div>
 
-        {/* Bento Grid - Media showcase with auto-swap */}
+        {/* Bento Grid - Media showcase with crossfade swap */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[180px] md:auto-rows-[240px]">
-          
+
           {/* Main space video - Tall left */}
           <MediaSwapCard
             media={[
@@ -171,7 +220,7 @@ export function Espaco() {
             className="col-span-2 row-span-2"
             delay={0}
           />
-          
+
           {/* Studio photo - Top right */}
           <MediaSwapCard
             media={[
@@ -185,8 +234,8 @@ export function Espaco() {
           {/* Mimos - brindes pascoa */}
           <MediaSwapCard
             media={[
-              { src: "/assets/espaco/mimos_brindes/brindespascoaespaco.mp4", type: "video" },
               { src: "/assets/espaco/mimos_brindes/brindesnatalespaco.jpg", type: "image" },
+              { src: "/assets/espaco/mimos_brindes/brindespascoaespaco.mp4", type: "video" },
               { src: "/assets/espaco/mimos_brindes/sorteio_cesta_pascoa.jpg", type: "image" },
             ]}
             label="Brindes e Sorteios"
@@ -197,8 +246,8 @@ export function Espaco() {
           {/* Montando brindes */}
           <MediaSwapCard
             media={[
-              { src: "/assets/espaco/mimos_brindes/montando_brindes_estudio.mp4", type: "video" },
               { src: "/assets/espaco/mimos_brindes/brindesnatalespaco.jpg", type: "image" },
+              { src: "/assets/espaco/mimos_brindes/montando_brindes_estudio.mp4", type: "video" },
             ]}
             label="Preparando Mimos"
             className="col-span-1 row-span-1"

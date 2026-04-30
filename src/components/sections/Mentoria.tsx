@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Clock, Award, Headset, BookOpen, Users, Smartphone, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -10,8 +10,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Subcomponente para controle de performance dos vídeos
-function PremiumVideo({
+// Lazy-loaded video: only mounts when scrolled into view, uses poster frame
+function LazyVideo({
   src,
   title,
   subtitle,
@@ -24,28 +24,45 @@ function PremiumVideo({
   gradientPos: "top" | "bottom";
   objectPosition?: string;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(videoRef, { amount: 0.3 });
+  const isInView = useInView(containerRef, { amount: 0.2, once: false });
+  const [shouldMount, setShouldMount] = useState(false);
+  const [isReady, setIsReady] = useState(false);
 
+  // Mount video only when it enters viewport for the first time
   useEffect(() => {
-    if (isInView && videoRef.current) {
-      videoRef.current.play().catch(() => { });
-    } else if (!isInView && videoRef.current) {
+    if (isInView && !shouldMount) {
+      setShouldMount(true);
+    }
+  }, [isInView, shouldMount]);
+
+  // Play/pause based on visibility
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (isInView) {
+      videoRef.current.play().catch(() => {});
+    } else {
       videoRef.current.pause();
     }
-  }, [isInView]);
+  }, [isInView, shouldMount]);
 
   return (
-    <div className="relative w-full h-full group overflow-hidden bg-black">
-      <video
-        ref={videoRef}
-        src={src}
-        loop
-        muted
-        playsInline
-        preload="none"
-        className={`w-full h-full object-cover ${objectPosition} opacity-80 group-hover:opacity-100 transition-opacity duration-500 scale-105 group-hover:scale-100`}
-      />
+    <div ref={containerRef} className="relative w-full h-full group overflow-hidden bg-neutral-900">
+      {shouldMount && (
+        <video
+          ref={videoRef}
+          src={src}
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          onCanPlay={() => setIsReady(true)}
+          className={`w-full h-full object-cover ${objectPosition} transition-opacity duration-700 scale-105 group-hover:scale-100 ${
+            isReady ? "opacity-80 group-hover:opacity-100" : "opacity-0"
+          }`}
+        />
+      )}
       {gradientPos === "bottom" ? (
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-4 pointer-events-none">
           <span className="text-secondary font-label-sm uppercase tracking-widest text-[10px] mb-1">{subtitle}</span>
@@ -81,16 +98,16 @@ export function Mentoria() {
       }
     });
 
-    // Background scales from 0.85 to 1, opacity from 0.3 to 1
+    // Background fades in from fully transparent and scales up
     heroTl.fromTo(bgRef.current,
-      { scale: 0.85, opacity: 0.3 },
+      { scale: 0.85, opacity: 0 },
       { scale: 1, opacity: 1, duration: 1, ease: "none" }
     )
       // Text fades in and slides up
       .fromTo(".mentoria-hero-text",
         { opacity: 0, y: 60 },
         { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
-        0.2
+        0.3
       );
 
     // Content below: Z-axis reveal
@@ -116,9 +133,9 @@ export function Mentoria() {
     <section id="mentoria" ref={sectionRef} className="overflow-hidden">
 
       {/* MENTORIA HERO — Pinned section with bg-mentoria.jpg */}
-      <div ref={heroRef} className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden">
-        {/* Background Image - Animated */}
-        <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform overflow-hidden">
+      <div ref={heroRef} className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden bg-neutral-900">
+        {/* Background Image - Starts fully transparent (opacity: 0 via GSAP) */}
+        <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform overflow-hidden opacity-0">
           <img
             src="/assets/bg-mentoria.jpg"
             className="w-full h-full object-cover"
@@ -127,8 +144,8 @@ export function Mentoria() {
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
 
-        {/* Text content */}
-        <div className="mentoria-hero-text relative z-10 text-center px-container-padding md:px-[8%] max-w-4xl mx-auto">
+        {/* Text content — also starts invisible, revealed by GSAP */}
+        <div className="mentoria-hero-text relative z-10 text-center px-container-padding md:px-[8%] max-w-4xl mx-auto opacity-0">
           <span className="font-label-sm text-xs uppercase tracking-[0.3em] text-white/70 block mb-6 font-medium">
             Metodologia Ana Júlia Machado
           </span>
@@ -176,30 +193,30 @@ export function Mentoria() {
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-auto md:auto-rows-[220px]">
 
-            {/* Kit Premium (4 Vídeos) - Span 2x2 */}
+            {/* Kit Premium (4 Vídeos) - Span 2x2 — LAZY LOADED */}
             <div className="md:col-span-2 md:row-span-2 rounded-3xl overflow-hidden shadow-xl border-[0.5px] border-neutral-200 aspect-square md:aspect-auto flex flex-col">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full gap-0.5 bg-neutral-900">
-                <PremiumVideo
+                <LazyVideo
                   src="/assets/curso_vip/montandocaixa.mp4"
                   title="Kit Exclusivo"
                   subtitle="Incluso"
                   gradientPos="top"
                   objectPosition="object-[center_78%]"
                 />
-                <PremiumVideo
+                <LazyVideo
                   src="/assets/curso_vip/montandocaixacurso.mp4"
                   title="Preparado com Carinho"
                   subtitle="Detalhes"
                   gradientPos="top"
                   objectPosition="object-[center_67%]"
                 />
-                <PremiumVideo
+                <LazyVideo
                   src="/assets/curso_vip/mostrandoitenscurso.mp4"
                   title="Produtos de Elite"
                   subtitle="Materiais"
                   gradientPos="bottom"
                 />
-                <PremiumVideo
+                <LazyVideo
                   src="/assets/curso_vip/mostrandoitenscurso (2).mp4"
                   title="Fature Imediatamente"
                   subtitle="Pronto para uso"

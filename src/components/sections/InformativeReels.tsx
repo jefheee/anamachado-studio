@@ -42,7 +42,7 @@ function ReelVideo({ src }: { src: string }) {
       loop
       muted
       playsInline
-      preload="none"
+      preload="metadata"
     />
   );
 }
