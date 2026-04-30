@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="w-full mx-auto md:pt-[72px]">
+      <main className="w-full mx-auto md:pt-[60px]">
         <Hero />
         <Espaco />
         <Services />
@@ -26,8 +26,8 @@ export default function Home() {
         <LashDesignerProfession />
         <Mentoria />
         <AlunasResults />
-        <FAQ />
         <Oferta />
+        <FAQ />
         <InstagramFeed />
         <InformativeReels />
         <Location />

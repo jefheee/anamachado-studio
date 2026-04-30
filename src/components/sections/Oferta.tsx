@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Check, ArrowRight, Shield, Clock, Star, CreditCard } from "lucide-react";
+import { Check, ArrowRight, Shield, Clock, Star, CreditCard, Zap, HeartHandshake } from "lucide-react";
 
 const INCLUDED = [
   "8h de curso presencial intensivo",
@@ -15,19 +15,13 @@ const INCLUDED = [
   "Retorno de 20 dias para manutenção",
 ];
 
-const TRUST_ITEMS = [
-  { icon: Shield, text: "Pagamento seguro" },
-  { icon: Clock, text: "Acesso imediato" },
-  { icon: Star, text: "+2.000 atendimentos" },
-];
-
 export function Oferta() {
   return (
     <section
       id="garantir-vaga"
       className="py-16 md:py-24 px-container-padding md:px-[8%] bg-surface overflow-hidden"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* Header */}
         <motion.div
@@ -48,16 +42,16 @@ export function Oferta() {
           </p>
         </motion.div>
 
-        {/* Pricing Card */}
+        {/* Bento Grid Pricing */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="max-w-xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5"
         >
-          <div className="relative bg-white rounded-3xl shadow-xl border border-neutral-100 overflow-hidden">
-            
+          {/* Price Block — Span 2x2 */}
+          <div className="md:col-span-2 md:row-span-2 bg-white rounded-3xl shadow-xl border border-neutral-100 overflow-hidden flex flex-col">
             {/* Top badge */}
             <div className="bg-secondary text-white text-center py-3 px-6">
               <span className="font-label-sm text-xs uppercase tracking-[0.25em] font-semibold">
@@ -66,10 +60,10 @@ export function Oferta() {
             </div>
 
             {/* Price */}
-            <div className="px-8 pt-10 pb-6 text-center">
+            <div className="px-8 pt-10 pb-6 text-center flex-1 flex flex-col justify-center">
               <div className="flex items-baseline justify-center gap-1 mb-2">
                 <span className="text-neutral-400 text-lg font-medium">R$</span>
-                <span className="text-5xl md:text-6xl font-bold text-neutral-900 tracking-tight">999</span>
+                <span className="text-6xl md:text-7xl font-bold text-neutral-900 tracking-tight">999</span>
                 <span className="text-2xl font-bold text-neutral-900">,90</span>
               </div>
               <p className="text-sm text-neutral-500 font-medium">
@@ -83,33 +77,6 @@ export function Oferta() {
               </div>
             </div>
 
-            {/* Divider */}
-            <div className="mx-8 h-px bg-neutral-100"></div>
-
-            {/* What&apos;s included */}
-            <div className="px-8 py-8">
-              <h4 className="font-headline-sm text-sm uppercase tracking-widest text-neutral-400 mb-6">
-                Tudo que está incluso
-              </h4>
-              <ul className="space-y-4">
-                {INCLUDED.map((item, idx) => (
-                  <motion.li
-                    key={idx}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.05 * idx }}
-                    className="flex items-start gap-3"
-                  >
-                    <div className="w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-0.5">
-                      <Check className="w-3 h-3 text-secondary" />
-                    </div>
-                    <span className="text-neutral-700 font-body-md text-sm">{item}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
             {/* CTA */}
             <div className="px-8 pb-8">
               <Link
@@ -121,63 +88,123 @@ export function Oferta() {
                 Garantir Minha Vaga
                 <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <p className="text-center text-xs text-neutral-400 mt-4">
+              <p className="text-center text-xs text-neutral-400 mt-3">
                 Vagas limitadas para garantir a qualidade do ensino e supervisão.
               </p>
             </div>
           </div>
 
-          {/* Trust row */}
-          <div className="flex items-center justify-center gap-6 mt-8">
-            {TRUST_ITEMS.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 + idx * 0.1 }}
-                className="flex items-center gap-2"
-              >
-                <item.icon className="w-4 h-4 text-secondary" />
-                <span className="text-xs text-neutral-500 font-medium">{item.text}</span>
-              </motion.div>
-            ))}
+          {/* What's included — Span 2 rows */}
+          <div className="md:col-span-2 md:row-span-2 bg-white rounded-3xl shadow-md border border-neutral-100 p-6 md:p-8 flex flex-col">
+            <h4 className="font-headline-sm text-sm uppercase tracking-widest text-neutral-400 mb-6">
+              Tudo que está incluso
+            </h4>
+            <ul className="space-y-3.5 flex-1">
+              {INCLUDED.map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.05 * idx }}
+                  className="flex items-start gap-3"
+                >
+                  <div className="w-5 h-5 rounded-full bg-secondary/10 flex items-center justify-center shrink-0 mt-0.5">
+                    <Check className="w-3 h-3 text-secondary" />
+                  </div>
+                  <span className="text-neutral-700 font-body-md text-sm">{item}</span>
+                </motion.li>
+              ))}
+            </ul>
           </div>
+
+          {/* Trust items — Bottom row, 4 cols */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="md:col-span-1 bg-white rounded-3xl p-6 shadow-md border border-neutral-100 flex flex-col items-center justify-center text-center group hover:shadow-lg transition-shadow"
+          >
+            <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Shield className="w-6 h-6 text-secondary" />
+            </div>
+            <span className="text-sm text-neutral-700 font-medium">Pagamento Seguro</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="md:col-span-1 bg-white rounded-3xl p-6 shadow-md border border-neutral-100 flex flex-col items-center justify-center text-center group hover:shadow-lg transition-shadow"
+          >
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Clock className="w-6 h-6 text-primary" />
+            </div>
+            <span className="text-sm text-neutral-700 font-medium">Acesso Imediato</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="md:col-span-1 bg-white rounded-3xl p-6 shadow-md border border-neutral-100 flex flex-col items-center justify-center text-center group hover:shadow-lg transition-shadow"
+          >
+            <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Star className="w-6 h-6 text-amber-500" />
+            </div>
+            <span className="text-sm text-neutral-700 font-medium">+2.000 Atendimentos</span>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="md:col-span-1 bg-white rounded-3xl p-6 shadow-md border border-neutral-100 flex flex-col items-center justify-center text-center group hover:shadow-lg transition-shadow"
+          >
+            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Zap className="w-6 h-6 text-emerald-500" />
+            </div>
+            <span className="text-sm text-neutral-700 font-medium">ROI em ~10 Clientes</span>
+          </motion.div>
         </motion.div>
 
-        {/* PAS Section - Below the card */}
+        {/* PAS Section - Improved texts */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="max-w-3xl mx-auto mt-16 grid md:grid-cols-3 gap-6"
+          className="max-w-6xl mx-auto mt-16 grid md:grid-cols-3 gap-6"
         >
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center mb-4">
-              <span className="text-red-500 font-bold text-sm">?</span>
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100 hover:shadow-md transition-shadow group">
+            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <span className="text-red-500 font-bold text-lg">?</span>
             </div>
-            <h4 className="font-headline-sm text-base text-neutral-900 mb-2">O Problema</h4>
-            <p className="font-body-sm text-sm text-neutral-600 leading-relaxed">
-              Sente insegurança na retenção dos fios ou não consegue atrair clientes que pagam o valor justo?
+            <h4 className="font-headline-sm text-lg text-neutral-900 mb-3">O Problema</h4>
+            <p className="font-body-md text-sm text-neutral-600 leading-relaxed">
+              Você investiu em cursos online que prometiam tudo, mas no final ficou sem confiança para aplicar em clientes reais? Sozinha, sem suporte e sem saber como cobrar o valor justo pelo seu trabalho?
             </p>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center mb-4">
-              <span className="text-amber-500 font-bold text-sm">!</span>
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100 hover:shadow-md transition-shadow group">
+            <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <span className="text-amber-500 font-bold text-lg">!</span>
             </div>
-            <h4 className="font-headline-sm text-base text-neutral-900 mb-2">A Realidade</h4>
-            <p className="font-body-sm text-sm text-neutral-600 leading-relaxed">
-              O mercado está cheio de profissionais cobrando barato e entregando resultados que duram menos de 15 dias.
+            <h4 className="font-headline-sm text-lg text-neutral-900 mb-3">A Realidade</h4>
+            <p className="font-body-md text-sm text-neutral-600 leading-relaxed">
+              O mercado da beleza está saturado de profissionais que aprenderam &quot;por cima&quot;. Sem técnica sólida, sem prática supervisionada e sem estratégia, o resultado é agenda vazia e insegurança na hora de atender.
             </p>
           </div>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-neutral-100 hover:shadow-md transition-shadow">
-            <div className="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center mb-4">
-              <Check className="w-4 h-4 text-emerald-500" />
+          <div className="bg-white rounded-2xl p-8 shadow-sm border border-neutral-100 hover:shadow-md transition-shadow group">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <HeartHandshake className="w-5 h-5 text-emerald-500" />
             </div>
-            <h4 className="font-headline-sm text-base text-neutral-900 mb-2">A Solução</h4>
-            <p className="font-body-sm text-sm text-neutral-600 leading-relaxed">
-              A Metodologia Ana Machado. 8 horas de imersão presencial com suporte vitalício e materiais de elite.
+            <h4 className="font-headline-sm text-lg text-neutral-900 mb-3">A Solução</h4>
+            <p className="font-body-md text-sm text-neutral-600 leading-relaxed">
+              A Metodologia Ana Machado é 100% presencial. 8 horas de imersão com supervisão individual, kit premium incluso e acompanhamento vitalício. Você sai pronta para atender, faturar e se posicionar como referência na sua região.
             </p>
           </div>
         </motion.div>

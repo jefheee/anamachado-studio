@@ -88,6 +88,7 @@ export function Mentoria() {
     if (!sectionRef.current || !heroRef.current || !bgRef.current) return;
 
     // Mentoria Hero: Pin the intro and reveal the bg
+    // INVERTED: Starts zoomed in (scale 1.4), scrolls to fill (scale 1)
     const heroTl = gsap.timeline({
       scrollTrigger: {
         trigger: heroRef.current,
@@ -98,9 +99,9 @@ export function Mentoria() {
       }
     });
 
-    // Background fades in from fully transparent and scales up
+    // Background starts zoomed in and scales down to fill screen
     heroTl.fromTo(bgRef.current,
-      { scale: 0.85, opacity: 0 },
+      { scale: 1.4, opacity: 1 },
       { scale: 1, opacity: 1, duration: 1, ease: "none" }
     )
       // Text fades in and slides up
@@ -133,47 +134,53 @@ export function Mentoria() {
     <section id="mentoria" ref={sectionRef} className="overflow-hidden">
 
       {/* MENTORIA HERO — Pinned section with bg-mentoria.jpg */}
-      <div ref={heroRef} className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden bg-neutral-900">
-        {/* Background Image - Starts fully transparent (opacity: 0 via GSAP) */}
-        <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform overflow-hidden opacity-0">
+      <div ref={heroRef} className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden bg-black">
+        {/* Background Image - Starts visible and zoomed in (scale 1.4 via GSAP) */}
+        <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform overflow-hidden">
           <img
             src="/assets/bg-mentoria.jpg"
             className="w-full h-full object-cover"
             alt="Mentoria VIP Ana Machado"
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          {/* Stronger overlay for text readability */}
+          <div className="absolute inset-0 bg-black/65"></div>
         </div>
 
         {/* Text content — also starts invisible, revealed by GSAP */}
         <div className="mentoria-hero-text relative z-10 text-center px-container-padding md:px-[8%] max-w-4xl mx-auto opacity-0">
-          <span className="font-label-sm text-xs uppercase tracking-[0.3em] text-white/70 block mb-6 font-medium">
-            Metodologia Ana Júlia Machado
-          </span>
-          <h2 className="font-headline-xl text-3xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.1] font-bold">
-            Curso de Extensão de Cílios
-            <span className="block text-secondary mt-2">Lash Designer de Excelência</span>
-          </h2>
-          <p className="font-body-lg text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Domine a técnica, aumente sua retenção e construa uma agenda lucrativa em um mercado de alta demanda.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20garantir%20minha%20vaga%20na%20Mentoria%20VIP."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-secondary text-white font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
-            >
-              Garantir Minha Vaga
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20baixar%20gratuitamente%20o%20Manual%20Definitivo%20de%20Cuidados%20P%C3%B3s-Extens%C3%A3o."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center border-2 border-white text-white font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:bg-white hover:text-neutral-900 transition-all duration-300"
-            >
-              Baixe o Manual Gratuito
-            </Link>
+          {/* Backdrop for extra readability */}
+          <div className="absolute inset-0 -m-8 bg-black/20 backdrop-blur-[2px] rounded-3xl pointer-events-none"></div>
+          
+          <div className="relative z-10">
+            <span className="font-label-sm text-xs uppercase tracking-[0.3em] text-white/70 block mb-6 font-medium" style={{ textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
+              Metodologia Ana Júlia Machado
+            </span>
+            <h2 className="font-headline-xl text-3xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.1] font-bold" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.7)" }}>
+              Curso de Extensão de Cílios
+              <span className="block text-secondary mt-2">Lash Designer de Excelência</span>
+            </h2>
+            <p className="font-body-lg text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.5)" }}>
+              Domine a técnica, aumente sua retenção e construa uma agenda lucrativa em um mercado de alta demanda.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20garantir%20minha%20vaga%20na%20Mentoria%20VIP."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center bg-secondary text-white font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
+              >
+                Garantir Minha Vaga
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20baixar%20gratuitamente%20o%20Manual%20Definitivo%20de%20Cuidados%20P%C3%B3s-Extens%C3%A3o."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center border-2 border-white text-white font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:bg-white hover:text-neutral-900 transition-all duration-300"
+              >
+                Baixe o Manual Gratuito
+              </Link>
+            </div>
           </div>
         </div>
       </div>

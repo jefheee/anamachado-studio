@@ -1,39 +1,53 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValueEvent, useScroll } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const diff = latest - lastScrollY.current;
+    // Hide when scrolling down past 100px, show when scrolling up
+    if (diff > 5 && latest > 100) {
+      setIsHidden(true);
+    } else if (diff < -5) {
+      setIsHidden(false);
+    }
+    lastScrollY.current = latest;
+  });
 
   return (
     <>
       <motion.header
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="fixed top-0 w-full z-50 bg-white shadow-sm border-b border-neutral-100 flex justify-between items-center px-6 py-4"
+        animate={{ opacity: 1, y: isHidden ? -100 : 0 }}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-lg shadow-sm border-b border-neutral-100 flex justify-between items-center px-6 py-2.5"
       >
         <div className="flex items-center gap-4">
           <button 
             className="md:hidden hover:opacity-70 transition-opacity duration-300 active:scale-95"
             onClick={() => setIsMobileMenuOpen(true)}
           >
-            <Menu className="text-neutral-900 w-6 h-6" />
+            <Menu className="text-neutral-900 w-5 h-5" />
           </button>
-          <div className="h-20 flex items-center bg-white rounded-md p-2">
+          <Link href="#inicio" className="h-12 flex items-center rounded-md p-1">
             <Image
               alt="Ana Machado Logo"
               className="h-full w-auto object-contain mix-blend-multiply"
               src="/assets/brand/logoheader_sem_fundo.png"
-              width={160}
-              height={64}
+              width={120}
+              height={48}
               priority
             />
-          </div>
+          </Link>
         </div>
         
         {/* Nav Desktop */}
@@ -44,17 +58,17 @@ export function Header() {
           <Link href="#mentoria" className="hover:opacity-70 transition-opacity duration-300">Mentoria</Link>
         </nav>
         
-        <div className="hidden md:flex gap-4">
+        <div className="hidden md:flex gap-3">
           <Link
             href="#"
-            className="border border-neutral-900 text-neutral-900 font-label-sm text-[12px] px-6 py-3 rounded uppercase hover:bg-neutral-100 transition-colors tracking-widest font-semibold"
+            className="border border-neutral-900 text-neutral-900 font-label-sm text-[11px] px-5 py-2.5 rounded uppercase hover:bg-neutral-100 transition-colors tracking-widest font-semibold"
           >
             Área do Aluno
           </Link>
           <Link
             href="https://wa.me/5548992054803"
             target="_blank"
-            className="bg-[#800020] text-white font-label-sm text-[12px] px-6 py-3 rounded uppercase hover:bg-opacity-90 transition-colors tracking-widest font-semibold"
+            className="bg-secondary text-white font-label-sm text-[11px] px-5 py-2.5 rounded uppercase hover:brightness-110 hover:shadow-lg hover:scale-105 transition-all duration-300 tracking-widest font-semibold"
           >
             Agendar
           </Link>
@@ -72,20 +86,20 @@ export function Header() {
             className="fixed inset-0 z-[60] bg-white flex flex-col p-6"
           >
             <div className="flex justify-between items-center mb-12">
-              <div className="h-16 bg-white rounded-md p-2">
+              <div className="h-12 rounded-md p-1">
                 <Image
                   alt="Ana Machado Logo"
                   className="h-full w-auto object-contain mix-blend-multiply"
                   src="/assets/brand/logoheader_sem_fundo.png"
-                  width={140}
-                  height={56}
+                  width={120}
+                  height={48}
                 />
               </div>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-2 bg-neutral-100 rounded-full"
               >
-                <X className="w-6 h-6 text-neutral-900" />
+                <X className="w-5 h-5 text-neutral-900" />
               </button>
             </div>
 
@@ -106,7 +120,7 @@ export function Header() {
               <Link
                 href="https://wa.me/5548992054803"
                 target="_blank"
-                className="w-full text-center bg-[#800020] text-white font-label-sm py-4 rounded uppercase tracking-widest font-semibold"
+                className="w-full text-center bg-secondary text-white font-label-sm py-4 rounded uppercase tracking-widest font-semibold"
               >
                 Agendar Horário
               </Link>

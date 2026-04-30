@@ -92,7 +92,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-2 mb-6"
+                className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-2 mb-5"
               >
                 <Sparkles className="w-4 h-4 text-secondary" />
                 <span className="font-label-sm text-xs uppercase tracking-widest text-secondary font-semibold">
@@ -107,7 +107,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-headline-xl text-headline-xl text-neutral-900 mb-6 leading-[1.1]"
+            className="font-headline-xl text-headline-xl text-neutral-900 mb-4 leading-[1.1]"
           >
             Transforme seu olhar.
             <br />
@@ -119,7 +119,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="font-body-lg text-body-lg text-neutral-600 mb-10 max-w-xl leading-relaxed"
+            className="font-body-lg text-body-lg text-neutral-600 mb-8 max-w-xl leading-relaxed"
           >
             Cílios impecáveis, sobrancelhas de grife e uma mentoria que forma profissionais de elite. Palhoça/SC.
           </motion.p>
@@ -129,7 +129,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 mb-12"
+            className="flex flex-col sm:flex-row gap-4 mb-8"
           >
             <Link
               href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
@@ -148,22 +148,32 @@ export function Hero() {
             </Link>
           </motion.div>
 
-          {/* Stats Row */}
+          {/* Stats Row + Trust Badge inline */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isLoaded ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 1.0 }}
-            className="flex items-center gap-8"
+            className="flex flex-wrap items-center gap-6 md:gap-8"
           >
             {HERO_STATS.map((stat, idx) => (
               <div key={idx} className="flex items-center gap-3">
-                {idx > 0 && <div className="w-px h-10 bg-neutral-300 -ml-4 mr-0"></div>}
+                {idx > 0 && <div className="w-px h-10 bg-neutral-300 -ml-3 mr-0"></div>}
                 <div>
                   <span className="font-headline-md text-2xl md:text-3xl text-neutral-900 font-bold block">{stat.value}</span>
                   <span className="font-label-sm text-[10px] text-neutral-500 uppercase tracking-widest">{stat.label}</span>
                 </div>
               </div>
             ))}
+
+            {/* Trust Badge inline */}
+            <div className="hidden md:flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-full px-4 py-2 shadow-sm ml-4">
+              <div className="flex -space-x-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                ))}
+              </div>
+              <span className="text-[11px] text-neutral-600 font-medium">+2.000 atendimentos</span>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -173,7 +183,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={isLoaded ? { opacity: 1 } : {}}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
       >
         <span className="text-[10px] uppercase tracking-[0.25em] text-neutral-400 font-medium">Explore</span>
         <motion.div
@@ -183,21 +193,6 @@ export function Hero() {
         >
           <div className="w-1 h-1.5 bg-neutral-400 rounded-full"></div>
         </motion.div>
-      </motion.div>
-
-      {/* Trust Badge */}
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        animate={isLoaded ? { opacity: 1, x: 0 } : {}}
-        transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-8 right-8 z-10 hidden md:flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-neutral-200 rounded-full px-4 py-2 shadow-sm"
-      >
-        <div className="flex -space-x-0.5">
-          {[...Array(5)].map((_, i) => (
-            <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-          ))}
-        </div>
-        <span className="text-[11px] text-neutral-600 font-medium">+2.000 atendimentos</span>
       </motion.div>
     </section>
   );
