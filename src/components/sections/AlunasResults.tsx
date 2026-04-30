@@ -76,9 +76,11 @@ function ResultImage({
         loading="lazy"
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 object-center"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4 pointer-events-none">
-        <span className="bg-white/90 text-primary w-max text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm backdrop-blur-md uppercase tracking-wider mb-1">{tag}</span>
-        <h3 className="text-white font-headline-sm text-sm">{title}</h3>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-100 transition-opacity flex flex-col justify-end p-6 pointer-events-none">
+        <div className="flex items-center gap-2 mb-1">
+          <span className="text-white font-label-sm text-sm tracking-widest uppercase">{tag}</span>
+        </div>
+        <h3 className="text-white font-headline-sm text-lg">{title}</h3>
       </div>
     </FullscreenMediaWrapper>
   );
