@@ -269,44 +269,32 @@ export function StudioAndLocation() {
             </div>
           </ScrollRevealWrapper>
 
-          <ScrollRevealWrapper direction="right" delay={0.2} className="md:col-span-1 bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col gap-5 hover:bg-white/8 transition-colors group">
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Clock className="text-secondary w-4 h-4" />
+          <ScrollRevealWrapper direction="right" delay={0.2} className="md:col-span-1 bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10 flex flex-col hover:bg-white/8 transition-colors group">
+            <div className="flex flex-col gap-4">
+              <div className="w-11 h-11 bg-secondary/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
+                <Clock className="text-secondary w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-white/80 mb-1">Funcionamento</h4>
-                <p className="text-xs text-white/50 mb-2">Seg a Sex: <span className="text-secondary font-medium">09:30h - 18:30h</span></p>
-                <div className="inline-flex items-center gap-1.5 px-2 py-1 bg-secondary/10 border border-secondary/20 rounded-md">
-                  <div className="w-1 h-1 rounded-full bg-secondary animate-pulse" />
-                  <span className="text-[10px] uppercase tracking-wider text-secondary font-semibold">Exclusivo com Hora Marcada</span>
+                <h3 className="font-headline-md text-lg text-white mb-2">Funcionamento</h3>
+                <p className="text-sm text-white/60 mb-3">Seg a Sex: <span className="text-white/90 font-medium">09:30h - 18:30h</span></p>
+                <div className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white/5 border border-white/10 rounded-md">
+                  <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse shrink-0" />
+                  <span className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">Exclusivo com Hora Marcada</span>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col flex-1">
-              <div className="flex items-start gap-3">
-                <div className="w-9 h-9 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  <Phone className="text-secondary w-4 h-4" />
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-white/80 mb-1">WhatsApp</h4>
-                  <a href="https://wa.me/5548992054803" target="_blank" rel="noopener noreferrer" className="text-xs text-secondary hover:text-secondary/80 transition-colors font-medium">
-                    (48) 99205-4803
-                  </a>
-                </div>
-              </div>
-              
-              <div className="mt-auto pt-4 border-t border-white/5">
-                <a
-                  href="https://wa.me/5548992054803"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackCTAClick('Location_AgendarHorario')}
-                  className="w-full flex items-center justify-center gap-2 py-3 bg-secondary/10 hover:bg-secondary/20 border border-secondary/20 text-secondary rounded-xl transition-all duration-300"
-                >
-                  <span className="font-label-sm text-[11px] uppercase tracking-widest font-semibold">Agendar Meu Horário</span>
-                </a>
-              </div>
+            
+            <div className="mt-auto pt-6 border-t border-white/10 w-full">
+              <a
+                href="https://wa.me/5548992054803"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackCTAClick('Location_AgendarHorario')}
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all duration-300"
+              >
+                <Phone className="w-4 h-4 text-white/50" />
+                <span className="font-label-sm text-[11px] uppercase tracking-widest font-semibold text-white/80">Agendar Meu Horário</span>
+              </a>
             </div>
           </ScrollRevealWrapper>
 

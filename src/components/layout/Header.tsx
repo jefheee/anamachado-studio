@@ -43,7 +43,7 @@ export function Header() {
             <Image
               alt="Ana Machado Logo"
               className="object-contain"
-              style={{ width: "auto", height: "100%" }}
+              style={{ width: "auto", height: "auto" }}
               src="/assets/brand/logoheader_sem_fundo.png"
               width={200}
               height={48}
@@ -95,7 +95,7 @@ export function Header() {
                 <Image
                   alt="Ana Machado Logo"
                   className="object-contain"
-                  style={{ width: "auto", height: "100%" }}
+                  style={{ width: "auto", height: "auto" }}
                   src="/assets/brand/logoheader_sem_fundo.png"
                   width={180}
                   height={48}

@@ -42,11 +42,10 @@ export function Footer() {
               <Image
                 alt="Ana Machado Logo"
                 className="object-contain brightness-0 invert opacity-90"
-                style={{ width: "auto", height: "100%" }}
+                style={{ width: "auto", height: "auto" }}
                 src="/assets/brand/logoheader_sem_fundo.png"
                 width={180}
                 height={72}
-                quality={100}
               />
             </div>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs">
