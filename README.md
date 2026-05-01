@@ -29,7 +29,6 @@ O design foge do aspecto de "site gerado por IA". Ele aplica conceitos de design
 * **Styling:** Tailwind CSS com variáveis semânticas de design system (Tons de Areia, Bordô para CTAs, Tipografia *Noto Serif*).  
 * **Imersão 3D (Efeito GTA VI):** Uso do GSAP (ScrollTrigger) para criar o *Z-Axis Reveal*. Conforme a usuária faz o scroll, o *Hero* fixado sofre um zoom imersivo e as seções voam em direção à câmera.  
 * **Microinterações:** Framer Motion e Embla Carousel para sliders de portfólio ultra-fluidos no mobile (touch-pan nativo).  
-* **Vídeo Programático (Roadmap):** Remotion. O código prevê uma rota /marketing-gen onde a Ana insere fotos de "Antes e Depois" e o React renderiza e exporta um Reels .mp4 estilizado com a marca dela automaticamente.
 
 ## **⚡ Decisões Críticas de Performance (O Filtro de Verdade)**
 
@@ -54,12 +53,5 @@ Para manter o projeto hospedado gratuitamente na **Vercel (Plano Hobby)** sem es
    npm run dev
 
    *O site estará disponível em http://localhost:3000*
-
-## **🔮 Roadmap & Próximos Passos**
-
-* \[x\] Otimização SEO local e tags Open Graph para o link brilhar no WhatsApp.  
-* \[x\] Componentização dinâmica do Portfólio (Auto-swap e Tags Inteligentes).  
-* \[ \] **Integração Remotion:** Finalizar a *Composition* BeforeAndAfterLashes para gerar vídeos .mp4 de 9:16 diretamente pelo painel admin.  
-* \[ \] **Analytics:** Implementar rastreamento (Pixel do Meta/Google Analytics) nos CTAs de WhatsApp para mensurar a conversão real da Mentoria.
 
 *Desenvolvido com ☕, raciocínio lógico e muita Inteligência Artificial orquestrada por [Jefherson](https://github.com/jefheee).*
