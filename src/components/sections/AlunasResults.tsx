@@ -113,14 +113,14 @@ export function AlunasResults() {
   });
 
   return (
-    <section id="resultados-alunas" className="py-16 md:py-24 px-container-padding bg-white md:px-[8%]">
-      <div className="max-w-7xl mx-auto">
+    <section id="resultados-alunas" className="py-16 md:py-24 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-container-padding md:px-[8%] mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center"
         >
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             A Arte em Prática
@@ -132,23 +132,29 @@ export function AlunasResults() {
             Da teoria à prática com excelência. Arraste para o lado e veja o desempenho e a evolução na hora de aplicar as técnicas.
           </p>
         </motion.div>
+      </div>
 
-        {/* Embla Carousel Viewport */}
-        <div className="overflow-hidden" ref={emblaRef} role="region" aria-roledescription="carrossel" aria-label="Resultados das alunas da mentoria">
-          <div className="flex gap-4 md:gap-6 touch-pan-y">
-            {alunasMedia.map((media, index) => (
-              <div 
-                key={index} 
-                className="relative flex-[0_0_80%] sm:flex-[0_0_40%] lg:flex-[0_0_28%] h-[400px] md:h-[500px] select-none"
-              >
-                {media.type === "video" ? (
-                  <ResultVideo src={media.src} title={media.title} className="w-full h-full" />
-                ) : (
-                  <ResultImage src={media.src} title={media.title} className="w-full h-full" />
-                )}
-              </div>
-            ))}
-          </div>
+      {/* Embla Carousel Viewport - Outside the centered container for bleed-to-edge effect */}
+      <div 
+        className="w-full pl-container-padding md:pl-[8%] pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing" 
+        ref={emblaRef} 
+        role="region" 
+        aria-roledescription="carrossel" 
+        aria-label="Resultados das alunas da mentoria"
+      >
+        <div className="flex gap-4 md:gap-6 py-4 touch-pan-y">
+          {alunasMedia.map((media, index) => (
+            <div 
+              key={index} 
+              className="relative flex-[0_0_85vw] sm:flex-[0_0_40%] lg:flex-[0_0_28%] h-[400px] md:h-[500px] select-none"
+            >
+              {media.type === "video" ? (
+                <ResultVideo src={media.src} title={media.title} className="w-full h-full" />
+              ) : (
+                <ResultImage src={media.src} title={media.title} className="w-full h-full" />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>

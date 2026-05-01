@@ -5,14 +5,13 @@ import { motion } from "framer-motion";
 
 export function InstagramFeed() {
   return (
-    <section className="py-section-gap px-container-padding bg-neutral-900 md:px-[8%] border-t border-white/5">
-      <div className="max-w-7xl mx-auto text-center">
+    <section className="py-section-gap bg-neutral-900 border-t border-white/5 overflow-hidden">
+      <div className="max-w-7xl mx-auto text-center px-container-padding md:px-[8%] mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="mb-12"
         >
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2 font-semibold">
             Acompanhe o Dia a Dia
@@ -21,24 +20,24 @@ export function InstagramFeed() {
             Nosso Instagram
           </h2>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full min-h-[300px]"
-        >
-          {/* Script do Elfsight carregado de forma otimizada com next/script */}
-          <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
-          
-          {/* Widget do Instagram */}
-          <div 
-            className="elfsight-app-e7cb116e-1c9b-4e14-b326-bc4934785d4d" 
-            data-elfsight-app-lazy 
-          ></div>
-        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="w-full min-h-[300px]"
+      >
+        {/* Script do Elfsight carregado de forma otimizada com next/script */}
+        <Script src="https://elfsightcdn.com/platform.js" strategy="lazyOnload" />
+        
+        {/* Widget do Instagram */}
+        <div 
+          className="elfsight-app-e7cb116e-1c9b-4e14-b326-bc4934785d4d" 
+          data-elfsight-app-lazy 
+        ></div>
+      </motion.div>
     </section>
   );
 }

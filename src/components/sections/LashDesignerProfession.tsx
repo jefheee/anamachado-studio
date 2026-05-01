@@ -3,24 +3,24 @@ import { ScrollRevealWrapper } from "@/components/ui/ScrollRevealWrapper";
 
 const benefits = [
   {
-    icon: <TrendingUp className="w-6 h-6 text-secondary" />,
+    icon: <TrendingUp className="w-6 h-6 text-[#800020]" />,
     title: "Alta Rentabilidade",
-    description: "Com média de 4 atendimentos por dia, é possível faturar entre R$ 3.000 e R$ 12.000 mensais logo no início, podendo chegar a mais de R$ 20.000 com técnicas avançadas."
+    description: "Fature entre R$ 3.000 e R$ 12.000 mensais logo no início, podendo ultrapassar R$ 20.000 com técnicas de elite."
   },
   {
-    icon: <Target className="w-6 h-6 text-primary" />,
+    icon: <Target className="w-6 h-6 text-[#800020]" />,
     title: "Mercado em Expansão",
-    description: "A busca por procedimentos estéticos não invasivos e que valorizam o olhar cresce a cada dia. O mercado nunca esteve tão aquecido."
+    description: "A busca por extensões de cílios cresce exponencialmente. Estar preparada é garantir seu espaço no topo."
   },
   {
-    icon: <Sparkles className="w-6 h-6 text-secondary" />,
+    icon: <Sparkles className="w-6 h-6 text-[#800020]" />,
+    title: "Autoestima e Impacto",
+    description: "Transforme olhares e mude a vida de suas clientes com técnicas que realçam a beleza única."
+  },
+  {
+    icon: <Award className="w-6 h-6 text-[#800020]" />,
     title: "Flexibilidade",
-    description: "Seja dona do seu próprio tempo. Atenda a domicílio, em um espaço compartilhado ou construa seu próprio estúdio de sucesso."
-  },
-  {
-    icon: <Award className="w-6 h-6 text-primary" />,
-    title: "Autoestima",
-    description: "Muito mais do que colar fios: a Lash Designer tem o poder de transformar o olhar e resgatar a confiança e a autoestima das mulheres."
+    description: "Seja dona do seu tempo. Atenda em seu próprio espaço ou construa uma marca de sucesso."
   }
 ];
 
@@ -39,13 +39,11 @@ export function LashDesignerProfession() {
             </h2>
             <div className="space-y-6 font-body-md text-neutral-400">
               <p>
-                Você sabe o que é ser uma <strong className="text-white">Lash Designer</strong>? Muito além de aplicar extensões, é a profissional especializada em desenhar e personalizar o olhar de cada cliente, unindo arte, técnica e visagismo.
+                Ser Lash Designer é unir arte e técnica para transformar olhares e construir uma carreira de sucesso. 
+                O mercado busca profissionais de elite, e o próximo passo para o seu crescimento começa aqui.
               </p>
               <p>
-                Enquanto antigamente o mercado contava apenas com &quot;extensionistas&quot;, hoje a Lash Designer é uma <strong className="text-white">especialista altamente valorizada</strong>. Com o domínio de técnicas como Fio a Fio, Volume Brasileiro e Fox Eyes, você não apenas melhora a estética, mas entrega praticidade e confiança.
-              </p>
-              <p>
-                E o melhor: é uma das áreas da estética com <strong className="text-white">retorno mais rápido sobre o investimento</strong>. O custo de material por procedimento é baixo, permitindo margens de lucro que aceleram sua independência financeira.
+                É uma das áreas da estética com <strong className="text-white">retorno mais rápido sobre o investimento</strong>, permitindo margens de lucro que aceleram sua independência financeira.
               </p>
             </div>
 
@@ -81,14 +79,14 @@ export function LashDesignerProfession() {
         </div>
         
         {/* Scroll Incentive */}
-        <div className="mt-16 flex flex-col items-center">
+        <div className="mt-24 flex flex-col items-center">
           <ScrollRevealWrapper direction="up" delay={0.4}>
             <a 
               href="#mentoria" 
-              className="flex flex-col items-center gap-2 text-white/40 hover:text-white/80 transition-colors group"
+              className="flex flex-col items-center gap-3 text-white/40 hover:text-white/80 transition-colors group"
             >
-              <span className="font-label-sm text-[10px] uppercase tracking-[0.3em]">Conheça a Mentoria</span>
-              <ChevronDown className="w-6 h-6 animate-bounce" />
+              <span className="font-label-sm text-[11px] uppercase tracking-[0.3em] font-medium">Conheça a Mentoria</span>
+              <ChevronDown className="w-8 h-8 text-[#800020] animate-bounce" />
             </a>
           </ScrollRevealWrapper>
         </div>

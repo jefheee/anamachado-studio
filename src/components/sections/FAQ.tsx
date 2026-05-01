@@ -114,7 +114,7 @@ export function FAQ() {
 
         {/* Mentoria VIP */}
         <div>
-          <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-on-surface-variant mb-6">
+          <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-[#800020] mb-6">
             Mentoria VIP
           </h3>
           <FAQGroup title="Perguntas sobre a Mentoria" items={faqCurso} tabId="curso" />

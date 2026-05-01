@@ -307,13 +307,11 @@ export function Portfolio() {
         </div>
       </div>
 
-      <div className="w-full px-container-padding md:px-[8%]">
-        <div className="overflow-hidden" ref={emblaRef} role="region" aria-roledescription="carrossel" aria-label="Portfólio de trabalhos">
-          <div className="flex gap-6 py-4 touch-pan-y">
-            {portfolioGroups.map((group) => (
-              <PortfolioCard key={group.id} group={group} setActiveGroup={setActiveGroup} />
-            ))}
-          </div>
+      <div className="w-full pl-container-padding md:pl-[8%] pr-4 md:pr-0 overflow-hidden" ref={emblaRef} role="region" aria-roledescription="carrossel" aria-label="Portfólio de trabalhos">
+        <div className="flex gap-6 py-4 touch-pan-y">
+          {portfolioGroups.map((group) => (
+            <PortfolioCard key={group.id} group={group} setActiveGroup={setActiveGroup} />
+          ))}
         </div>
       </div>
 
