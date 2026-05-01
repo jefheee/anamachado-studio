@@ -3,7 +3,7 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
-import { Play } from "lucide-react";
+import { Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 const videos = [
   "/assets/conteudos/SaveClip.App_AQOkcSrYVOypq_R4iMBNhlfIU4A81XxwHTrYCTMP6PlkuAOPzedSS-31Q9dyank8NrkzUZUbRYGW63kk1AKznliwp6odfFr99dtcu70.mp4",
@@ -66,7 +66,7 @@ function FacadeReel({ src }: { src: string }) {
         <video
           ref={videoRef}
           src={src}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
           loop
           muted
           playsInline
@@ -94,17 +94,17 @@ function FacadeReel({ src }: { src: string }) {
 }
 
 export function InformativeReels() {
-  const [emblaRef] = useEmblaCarousel({ dragFree: true, align: "center" });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ dragFree: true, align: "start" });
 
   return (
     <section className="py-16 md:py-24 bg-surface-container-lowest overflow-hidden">
-      <div className="max-w-6xl mx-auto px-container-padding md:px-[8%]">
+      <div className="max-w-7xl mx-auto px-container-padding md:px-[8%] mb-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center"
         >
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             Conteúdos e Dicas
@@ -120,19 +120,36 @@ export function InformativeReels() {
 
       {/* Embla Carousel with Facade Reels */}
       <div
-        className="w-full pl-container-padding md:pl-[12%] pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing"
+        className="w-full pl-container-padding md:pl-0 pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing"
         ref={emblaRef}
       >
-        <div className="flex gap-4 md:gap-6">
+        <div className="flex gap-4 md:gap-6 py-4 touch-pan-y">
           {videos.map((src, index) => (
             <div
               key={index}
-              className="flex-[0_0_85vw] md:flex-[0_0_320px] h-[450px] rounded-xl overflow-hidden shadow-lg bg-black relative group"
+              className="relative flex-[0_0_85vw] sm:flex-[0_0_40%] lg:flex-[0_0_28%] h-[400px] md:h-[500px] rounded-xl overflow-hidden shadow-lg bg-black group"
             >
               <FacadeReel src={src} />
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="flex justify-center gap-4 mt-12" role="group" aria-label="Controles do carrossel">
+        <button 
+          onClick={() => emblaApi?.scrollPrev()}
+          className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
+          aria-label="Anterior"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button 
+          onClick={() => emblaApi?.scrollNext()}
+          className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
+          aria-label="Próximo"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
     </section>
   );

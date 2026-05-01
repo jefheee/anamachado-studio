@@ -217,7 +217,7 @@ function PortfolioCard({ group, setActiveGroup }: { group: PortfolioGroup, setAc
       onClick={() => setActiveGroup(group)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="flex-[0_0_85vw] md:flex-[0_0_320px] h-[450px] relative rounded-xl overflow-hidden shadow-sm border-[0.5px] border-outline-variant group cursor-pointer bg-neutral-900"
+      className="w-full h-full relative rounded-xl overflow-hidden shadow-sm border-[0.5px] border-outline-variant group cursor-pointer bg-neutral-900"
     >
       <div className="absolute inset-0 w-full h-full">
         <AnimatePresence mode="wait">
@@ -276,43 +276,51 @@ export function Portfolio() {
 
   return (
     <section id="portfolio" className="py-16 md:py-24 bg-surface-container-lowest overflow-hidden">
-      <div className="px-container-padding md:px-[8%] mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
+      <div className="max-w-7xl mx-auto px-container-padding md:px-[8%] mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             Portfólio
           </span>
           <h2 className="font-headline-lg text-headline-lg text-primary">
             Trabalhos Recentes
           </h2>
-          <p className="font-body-md text-body-md text-on-surface-variant mt-4 max-w-2xl">
+          <p className="font-body-md text-body-md text-on-surface-variant mt-4 max-w-2xl mx-auto">
             Clique num modelo para ver mais detalhes em vídeo e confira de perto a excelência, retenção e simetria dos nossos atendimentos.
           </p>
-        </div>
-        
-        <div className="flex gap-2 self-start md:self-end" role="group" aria-label="Controles do carrossel">
-          <button 
-            onClick={() => emblaApi?.scrollPrev()}
-            className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
-            aria-label="Categoria anterior"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button 
-            onClick={() => emblaApi?.scrollNext()}
-            className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
-            aria-label="Próxima categoria"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+        </motion.div>
+      </div>
+
+      <div className="w-full pl-container-padding md:pl-0 pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef} role="region" aria-roledescription="carrossel" aria-label="Portfólio de trabalhos">
+        <div className="flex gap-4 md:gap-6 py-4 touch-pan-y">
+          {portfolioGroups.map((group) => (
+            <div key={group.id} className="relative flex-[0_0_85vw] sm:flex-[0_0_40%] lg:flex-[0_0_28%] h-[400px] md:h-[500px] select-none">
+              <PortfolioCard group={group} setActiveGroup={setActiveGroup} />
+            </div>
+          ))}
         </div>
       </div>
 
-      <div className="w-full pl-container-padding md:pl-[8%] pr-4 md:pr-0 overflow-hidden" ref={emblaRef} role="region" aria-roledescription="carrossel" aria-label="Portfólio de trabalhos">
-        <div className="flex gap-6 py-4 touch-pan-y">
-          {portfolioGroups.map((group) => (
-            <PortfolioCard key={group.id} group={group} setActiveGroup={setActiveGroup} />
-          ))}
-        </div>
+      <div className="flex justify-center gap-4 mt-12" role="group" aria-label="Controles do carrossel">
+        <button 
+          onClick={() => emblaApi?.scrollPrev()}
+          className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
+          aria-label="Anterior"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button 
+          onClick={() => emblaApi?.scrollNext()}
+          className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
+          aria-label="Próximo"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
 
       {/* Lightbox Modal com Auto-Identificação de Mídia (Video vs Image) */}

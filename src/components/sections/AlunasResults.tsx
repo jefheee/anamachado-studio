@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, ArrowLeft, ArrowRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
 
@@ -106,7 +106,7 @@ const alunasMedia = [
 ];
 
 export function AlunasResults() {
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     dragFree: true,
     containScroll: "trimSnaps"
@@ -136,7 +136,7 @@ export function AlunasResults() {
 
       {/* Embla Carousel Viewport - Outside the centered container for bleed-to-edge effect */}
       <div 
-        className="w-full pl-container-padding md:pl-[8%] pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing" 
+        className="w-full pl-container-padding md:pl-0 pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing" 
         ref={emblaRef} 
         role="region" 
         aria-roledescription="carrossel" 
@@ -156,6 +156,23 @@ export function AlunasResults() {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="flex justify-center gap-4 mt-12" role="group" aria-label="Controles do carrossel">
+        <button 
+          onClick={() => emblaApi?.scrollPrev()}
+          className="w-12 h-12 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-500 hover:bg-neutral-50 transition-colors"
+          aria-label="Anterior"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+        <button 
+          onClick={() => emblaApi?.scrollNext()}
+          className="w-12 h-12 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-500 hover:bg-neutral-50 transition-colors"
+          aria-label="Próximo"
+        >
+          <ArrowRight className="w-5 h-5" />
+        </button>
       </div>
     </section>
   );
