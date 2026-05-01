@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# **🦋 Ana Machado Studio | Plataforma High-End & Motor de Marketing**
 
-## Getting Started
+O **Ana Machado Studio** transcende uma simples Landing Page institucional. É uma aplicação web de alto padrão arquitetada para funcionar como uma **Máquina de Conversão** para a Mentoria VIP de Lash Designers (R$ 999,90) e como um **Motor de Marketing Orgânico** interno.
 
-First, run the development server:
+Desenvolvido com foco absoluto em conversão (Copywriting PAS), imersão visual (Z-Axis Scroll) e performance extrema para dispositivos móveis.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **📖 A História e o Propósito do Projeto**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Este projeto nasceu de uma necessidade real de negócios. A Ana Júlia, amiga e Lash Designer de excelência, possuía uma demanda crescente por seus serviços (Volume Brasileiro, Foxy Eyes) e por seu Curso VIP presencial. O problema? Toda a captação dependia exclusivamente do Instagram e de links genéricos do WhatsApp.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O objetivo inicial era criar um "site para colocar as aulas do curso". No entanto, após uma análise profunda de mercado e de infraestrutura de nuvem, percebemos que **hospedar vídeos de aulas pesadas em uma hospedagem comum destruiria a performance e geraria custos altíssimos**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**O Pivot Estratégico:** O projeto escalou para uma **Vitrine de Luxo**. O site Next.js capta a cliente com uma experiência visual inesquecível, quebra objeções e fecha a venda direto no WhatsApp. A entrega do conteúdo em vídeo foi terceirizada para uma plataforma consolidada (Kiwify), garantindo segurança anti-pirataria e **zero custo fixo** de infraestrutura.
 
-## Learn More
+## **🤖 Engenharia Híbrida: Orquestração de IAs**
 
-To learn more about Next.js, take a look at the following resources:
+Este projeto não foi apenas "codado", ele foi **orquestrado**. Como desenvolvedor, atuei como Arquiteto de Software e *Prompt Engineer*, coordenando um esquadrão de IAs para ir da ideação ao deploy em tempo recorde:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* 🧠 **NotebookLM (Pesquisa e Contexto):** Ingestão de materiais da faculdade, catálogos de preços em PDF, apostilas do curso e a documentação extensa de *Skills* do Antigravity. Gerou o embasamento teórico para a engenharia de prompts.  
+* 🎨 **Stitch (Google) & Flow:** O Stitch foi utilizado para a idealização rápida da UI/UX e prototipagem inicial de componentes base. O Flow auxiliou na geração de artes de apoio.  
+* 🧭 **Gemini (O Estrategista):** Atuou como meu co-piloto de Arquitetura e Negócios. Juntos, definimos o funil de vendas, a estratégia híbrida (Vercel \+ Kiwify), a correção de falhas de UX e a elaboração de prompts complexos.  
+* ⌨️ **Antigravity (O Executor):** Agente de código integrado ao editor. Recebeu *prompts cirúrgicos* gerados pelo Gemini, utilizando *skills* específicas (@bug-hunter, @high-end-visual-design, @remotion) para escrever o código Next.js/Tailwind sob minha supervisão rígida.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## **🏗️ Arquitetura e Tech Stack**
 
-## Deploy on Vercel
+O design foge do aspecto de "site gerado por IA". Ele aplica conceitos de design editorial e interações de alta fidelidade:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* **Framework Core:** Next.js (App Router) \+ TypeScript para tipagem estrita e renderização otimizada.  
+* **Styling:** Tailwind CSS com variáveis semânticas de design system (Tons de Areia, Bordô para CTAs, Tipografia *Noto Serif*).  
+* **Imersão 3D (Efeito GTA VI):** Uso do GSAP (ScrollTrigger) para criar o *Z-Axis Reveal*. Conforme a usuária faz o scroll, o *Hero* fixado sofre um zoom imersivo e as seções voam em direção à câmera.  
+* **Microinterações:** Framer Motion e Embla Carousel para sliders de portfólio ultra-fluidos no mobile (touch-pan nativo).  
+* **Vídeo Programático (Roadmap):** Remotion. O código prevê uma rota /marketing-gen onde a Ana insere fotos de "Antes e Depois" e o React renderiza e exporta um Reels .mp4 estilizado com a marca dela automaticamente.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## **⚡ Decisões Críticas de Performance (O Filtro de Verdade)**
+
+Para manter o projeto hospedado gratuitamente na **Vercel (Plano Hobby)** sem estourar o limite rígido de 100GB de banda, apliquei engenharia de performance restrita:
+
+1. **Intersection Observer para Mídias:** O site possui dezenas de vídeos .mp4 (resultados, estúdio, kit de materiais). Nenhum deles usa autoPlay incondicional. Desenvolvi uma lógica onde o vídeo **só dá play se estiver 100% visível na tela**, pausando automaticamente ao sair do viewport.  
+2. **Modais Anti-Conflito (Portals):** O FullscreenMediaWrapper (modal para ver fotos e vídeos em alta resolução) é renderizado via createPortal direto no document.body. Isso evita conflitos bizarros de z-index com o motor de física do GSAP, garantindo que a tela cheia sobreponha tudo sem bugar a rolagem.  
+3. **Sistema de Arquivos Sanitizado:** Scripts em PowerShell automatizaram a limpeza de acentos e caracteres especiais (ç, \~, espaços) de dezenas de assets fotográficos, prevenindo falhas silenciosas de deploy no ambiente Linux da Vercel.
+
+## **💻 Como rodar localmente**
+
+1. **Clone este repositório:**  
+   git clone \[https://github.com/jefheee/anamachado-studio.git\](https://github.com/jefheee/anamachado-studio.git)
+
+2. **Acesse a pasta:**  
+   cd anamachado-studio
+
+3. **Instale as dependências:**  
+   npm install
+
+4. **Rode o servidor de desenvolvimento:**  
+   npm run dev
+
+   *O site estará disponível em http://localhost:3000*
+
+## **🔮 Roadmap & Próximos Passos**
+
+* \[x\] Otimização SEO local e tags Open Graph para o link brilhar no WhatsApp.  
+* \[x\] Componentização dinâmica do Portfólio (Auto-swap e Tags Inteligentes).  
+* \[ \] **Integração Remotion:** Finalizar a *Composition* BeforeAndAfterLashes para gerar vídeos .mp4 de 9:16 diretamente pelo painel admin.  
+* \[ \] **Analytics:** Implementar rastreamento (Pixel do Meta/Google Analytics) nos CTAs de WhatsApp para mensurar a conversão real da Mentoria.
+
+*Desenvolvido com ☕, raciocínio lógico e muita Inteligência Artificial orquestrada por [Jefherson](https://github.com/jefheee).*
