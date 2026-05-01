@@ -53,6 +53,7 @@ Para manter o projeto hospedado gratuitamente na **Vercel (Plano Hobby)** sem es
    npm run dev
 
    *O site estará disponível em http://localhost:3000*
-   
+
+
 
 *Desenvolvido com ☕, raciocínio lógico e muita Inteligência Artificial orquestrada por [Jefherson](https://github.com/jefheee).*
