@@ -93,7 +93,7 @@ function FAQGroup({ title, items, tabId }: { title: string; items: FAQItem[]; ta
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%] border-t border-neutral-100">
+    <section id="faq" className="py-16 md:py-24 px-container-padding bg-white md:px-[8%] border-t border-neutral-100">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">

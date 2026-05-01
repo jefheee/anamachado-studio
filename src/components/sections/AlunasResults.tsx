@@ -113,7 +113,7 @@ export function AlunasResults() {
   });
 
   return (
-    <section id="resultados-alunas" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%]">
+    <section id="resultados-alunas" className="py-16 md:py-24 px-container-padding bg-white md:px-[8%]">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

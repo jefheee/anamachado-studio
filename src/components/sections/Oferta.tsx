@@ -18,7 +18,7 @@ export function Oferta() {
   return (
     <section
       id="garantir-vaga"
-      className="py-16 md:py-24 px-container-padding md:px-[8%] bg-surface overflow-hidden"
+      className="py-16 md:py-24 px-container-padding md:px-[8%] bg-white overflow-hidden"
     >
       <div className="max-w-6xl mx-auto">
 
