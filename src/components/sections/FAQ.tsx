@@ -1,7 +1,3 @@
-"use client";
-
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
 interface FAQItem {
@@ -67,97 +63,61 @@ const faqCurso: FAQItem[] = [
   }
 ];
 
+function FAQGroup({ title, items, tabId }: { title: string; items: FAQItem[]; tabId: string }) {
+  return (
+    <div role="group" aria-labelledby={`faq-tab-${tabId}`}>
+      <h3 id={`faq-tab-${tabId}`} className="sr-only">{title}</h3>
+      <div className="space-y-3">
+        {items.map((faq, index) => (
+          <details
+            key={`${tabId}-${index}`}
+            className="bg-white border border-neutral-200 rounded-lg overflow-hidden shadow-sm group"
+          >
+            <summary className="w-full text-left px-6 py-5 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-colors min-h-[44px] list-none [&::-webkit-details-marker]:hidden">
+              <span className="font-headline-md text-lg text-primary pr-8">
+                {faq.question}
+              </span>
+              <ChevronDown className="text-secondary w-5 h-5 shrink-0 transition-transform duration-300 group-open:rotate-180" />
+            </summary>
+            <div className="px-6 pb-5 pt-1 border-t border-neutral-100">
+              <p className="font-body-md text-on-surface-variant leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const [activeTab, setActiveTab] = useState<"Serviços" | "Curso">("Serviços");
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const currentFaqs = activeTab === "Serviços" ? faqServicos : faqCurso;
-
   return (
     <section id="faq" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%] border-t border-neutral-100">
       <div className="max-w-3xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             Tire suas dúvidas
           </span>
           <h2 className="font-headline-lg text-headline-lg text-primary mb-8">
             Perguntas Frequentes
           </h2>
+        </div>
 
-          <div className="flex justify-center gap-4 mb-8">
-            <button
-              onClick={() => { setActiveTab("Serviços"); setOpenIndex(null); }}
-              className={`px-6 py-2 rounded-full font-label-sm text-sm tracking-widest uppercase transition-colors ${activeTab === "Serviços"
-                  ? "bg-secondary text-on-secondary shadow-md"
-                  : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
-                }`}
-            >
-              Atendimentos
-            </button>
-            <button
-              onClick={() => { setActiveTab("Curso"); setOpenIndex(null); }}
-              className={`px-6 py-2 rounded-full font-label-sm text-sm tracking-widest uppercase transition-colors ${activeTab === "Curso"
-                  ? "bg-secondary text-on-secondary shadow-md"
-                  : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
-                }`}
-            >
-              Mentoria VIP
-            </button>
-          </div>
-        </motion.div>
+        {/* Atendimentos */}
+        <div className="mb-10">
+          <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-on-surface-variant mb-6">
+            Atendimentos
+          </h3>
+          <FAQGroup title="Perguntas sobre Atendimentos" items={faqServicos} tabId="servicos" />
+        </div>
 
-        <div className="space-y-4">
-          {currentFaqs.map((faq, index) => (
-            <motion.div
-              key={index + activeTab} // forces re-animation on tab change
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-white border border-neutral-200 rounded-lg overflow-hidden shadow-sm"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                aria-expanded={openIndex === index}
-                className="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover:bg-neutral-50 transition-colors min-h-[44px]"
-              >
-                <span className="font-headline-md text-lg text-primary pr-8">{faq.question}</span>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="shrink-0"
-                >
-                  <ChevronDown className="text-secondary w-5 h-5" />
-                </motion.div>
-              </button>
-
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className="px-6 pb-5 pt-1 border-t border-neutral-100">
-                      <p className="font-body-md text-on-surface-variant leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+        {/* Mentoria VIP */}
+        <div>
+          <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-on-surface-variant mb-6">
+            Mentoria VIP
+          </h3>
+          <FAQGroup title="Perguntas sobre a Mentoria" items={faqCurso} tabId="curso" />
         </div>
       </div>
     </section>

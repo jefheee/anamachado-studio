@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
+import { Play } from "lucide-react";
 
 const videos = [
   "/assets/conteudos/SaveClip.App_AQOkcSrYVOypq_R4iMBNhlfIU4A81XxwHTrYCTMP6PlkuAOPzedSS-31Q9dyank8NrkzUZUbRYGW63kk1AKznliwp6odfFr99dtcu70.mp4",
@@ -22,28 +23,73 @@ const videos = [
   "/assets/conteudos/SaveClip.App_AQPrN1Z9XlTeg50PIWBLoM6sAAH8h2BZ_WWpKvHTo_hFTbkXOuEkkqZSSlv5OPbf07BfUipQrapxAqeNaLeikoMq6Jm6S7MTm18QlAE.mp4",
 ];
 
-function ReelVideo({ src }: { src: string }) {
+/**
+ * Facade Reel — renders a lightweight placeholder (poster + play icon).
+ * The actual <video> is mounted only when the slide enters the viewport.
+ */
+function FacadeReel({ src }: { src: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const isInView = useInView(videoRef, { amount: 0.6 });
+  const isInView = useInView(containerRef, { amount: 0.4 });
+  const [activated, setActivated] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
+  // Mount the video when it first enters the viewport
   useEffect(() => {
-    if (isInView && videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    } else if (!isInView && videoRef.current) {
-      videoRef.current.pause();
+    if (isInView && !activated) {
+      setActivated(true);
     }
-  }, [isInView]);
+  }, [isInView, activated]);
+
+  // Play/pause based on viewport visibility
+  useEffect(() => {
+    if (!videoRef.current || !activated) return;
+
+    if (isInView) {
+      videoRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch(() => {});
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [isInView, activated]);
 
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      className="w-full h-full object-cover"
-      loop
-      muted
-      playsInline
-      preload="metadata"
-    />
+    <div
+      ref={containerRef}
+      className="relative w-full h-full bg-neutral-900 overflow-hidden"
+    >
+      {activated ? (
+        /* Real video — only mounted after first intersection */
+        <video
+          ref={videoRef}
+          src={src}
+          className="w-full h-full object-cover"
+          loop
+          muted
+          playsInline
+          preload="metadata"
+        />
+      ) : (
+        /* Facade — lightweight placeholder */
+        <div className="w-full h-full bg-neutral-800 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/30 transition-colors">
+            <Play className="w-7 h-7 text-white fill-white ml-1" />
+          </div>
+        </div>
+      )}
+
+      {/* Play indicator — shown when video is active but paused */}
+      {activated && !isPlaying && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-14 h-14 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center">
+            <Play className="w-6 h-6 text-white fill-white ml-0.5" />
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -72,15 +118,18 @@ export function InformativeReels() {
         </motion.div>
       </div>
 
-      {/* Embla Carousel */}
-      <div className="w-full pl-container-padding md:pl-[12%] pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+      {/* Embla Carousel with Facade Reels */}
+      <div
+        className="w-full pl-container-padding md:pl-[12%] pr-4 md:pr-0 overflow-hidden cursor-grab active:cursor-grabbing"
+        ref={emblaRef}
+      >
         <div className="flex gap-4 md:gap-6">
           {videos.map((src, index) => (
-            <div 
-              key={index} 
-              className="flex-[0_0_80vw] md:flex-[0_0_300px] lg:flex-[0_0_350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-lg bg-black relative"
+            <div
+              key={index}
+              className="flex-[0_0_80vw] md:flex-[0_0_300px] lg:flex-[0_0_350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-lg bg-black relative group"
             >
-              <ReelVideo src={src} />
+              <FacadeReel src={src} />
             </div>
           ))}
         </div>

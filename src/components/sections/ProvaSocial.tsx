@@ -1,35 +1,24 @@
-"use client";
-
-import { motion } from "framer-motion";
+import Image from "next/image";
 import { User } from "lucide-react";
+import { ScrollRevealWrapper } from "@/components/ui/ScrollRevealWrapper";
 
 export function ProvaSocial() {
   return (
     <section className="py-section-gap px-container-padding bg-surface-container-low md:px-[8%] overflow-hidden">
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full md:w-1/2 order-2 md:order-1 flex justify-center"
-        >
-          <div className="w-full max-w-[320px] rounded-2xl overflow-hidden shadow-2xl border-[4px] border-white relative">
-            <img
-              alt="Social Proof Instagram"
-              className="object-cover w-full h-auto"
+        <ScrollRevealWrapper className="w-full md:w-1/2 order-2 md:order-1 flex justify-center">
+          <div className="w-full max-w-[320px] rounded-2xl overflow-hidden shadow-2xl border-[4px] border-white relative aspect-[9/16]">
+            <Image
+              alt="Perfil do Instagram Ana Machado Estética Facial"
+              className="object-cover"
               src="/images/printpaginainstaana.jpeg"
+              fill
+              sizes="320px"
             />
           </div>
-        </motion.div>
+        </ScrollRevealWrapper>
 
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="w-full md:w-1/2 order-1 md:order-2"
-        >
+        <ScrollRevealWrapper direction="right" delay={0.2} className="w-full md:w-1/2 order-1 md:order-2">
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-4">
             Experiência Comprovada
           </span>
@@ -57,7 +46,7 @@ export function ProvaSocial() {
               +2000 Clientes Satisfeitas
             </span>
           </div>
-        </motion.div>
+        </ScrollRevealWrapper>
       </div>
     </section>
   );

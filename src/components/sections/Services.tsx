@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
+import Image from "next/image";
 import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
 
 type Tab = "Cílios" | "Sobrancelhas" | "Micropigmentação" | "Manutenções";
@@ -225,13 +226,12 @@ export function Services() {
                           : "h-full min-h-[190px] md:min-h-[240px]"
                     } ${activeContent.images.length === 2 ? "h-[400px] md:h-[500px]" : ""}`}
                   >
-                    <img
+                    <Image
                       src={img.src}
                       alt={`Procedimento: ${img.label}`}
-                      className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-700"
-                      onError={(e) => {
-                        e.currentTarget.src = "/assets/modelos_clientes/egipcio/egipcio (1).jpeg";
-                      }}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover object-center hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                       <span className="text-white font-label-sm tracking-wide text-sm">{img.label}</span>
