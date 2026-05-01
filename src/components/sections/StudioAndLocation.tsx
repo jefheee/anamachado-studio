@@ -276,15 +276,16 @@ export function StudioAndLocation() {
               </div>
               <div>
                 <h3 className="font-headline-md text-lg text-white mb-2">Funcionamento</h3>
-                <p className="text-sm text-white/60 mb-3">Seg a Sex: <span className="text-white/90 font-medium">09:30h - 18:30h</span></p>
-                <div className="inline-flex items-center gap-2 px-2.5 py-1.5 bg-white/5 border border-white/10 rounded-md">
-                  <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse shrink-0" />
-                  <span className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">Exclusivo com Hora Marcada</span>
-                </div>
+                <p className="text-sm text-white/60">Seg a Sex: <span className="text-white/90 font-medium">09:30h - 18:30h</span></p>
               </div>
             </div>
             
-            <div className="mt-auto pt-6 border-t border-white/10 w-full">
+            <div className="mt-auto pt-4 flex flex-col gap-3 w-full">
+              <div className="w-full flex items-center justify-center gap-2 py-3.5 px-4 bg-white/5 border border-white/10 rounded-xl">
+                <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-pulse shrink-0" />
+                <span className="font-label-sm text-[11px] uppercase tracking-widest font-semibold text-white/60">Exclusivo com Hora Marcada</span>
+              </div>
+              
               <a
                 href="https://wa.me/5548992054803"
                 target="_blank"
