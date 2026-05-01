@@ -37,7 +37,7 @@ function FacadeReel({ src }: { src: string }) {
   // Mount the video when it first enters the viewport
   useEffect(() => {
     if (isInView && !activated) {
-      setActivated(true);
+      requestAnimationFrame(() => setActivated(true));
     }
   }, [isInView, activated]);
 
@@ -52,7 +52,7 @@ function FacadeReel({ src }: { src: string }) {
         .catch(() => {});
     } else {
       videoRef.current.pause();
-      setIsPlaying(false);
+      requestAnimationFrame(() => setIsPlaying(false));
     }
   }, [isInView, activated]);
 

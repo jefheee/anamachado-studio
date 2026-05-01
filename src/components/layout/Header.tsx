@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useRef } from "react";
+import { trackCTAClick } from "@/utils/analytics";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,7 +42,8 @@ export function Header() {
           <Link href="#inicio" className="flex items-center h-12">
             <Image
               alt="Ana Machado Logo"
-              className="h-full w-auto object-contain"
+              className="object-contain"
+              style={{ width: "auto", height: "100%" }}
               src="/assets/brand/logoheader_sem_fundo.png"
               width={200}
               height={48}
@@ -70,6 +72,7 @@ export function Header() {
           <Link
             href="https://wa.me/5548992054803"
             target="_blank"
+            onClick={() => trackCTAClick('Header_AgendarHorario')}
             className="bg-secondary text-white font-label-sm text-[11px] px-5 py-2.5 rounded uppercase hover:brightness-110 hover:shadow-lg hover:scale-105 transition-all duration-300 tracking-widest font-semibold"
           >
             Agendar
@@ -91,7 +94,8 @@ export function Header() {
               <div className="h-12 flex items-center">
                 <Image
                   alt="Ana Machado Logo"
-                  className="h-full w-auto object-contain"
+                  className="object-contain"
+                  style={{ width: "auto", height: "100%" }}
                   src="/assets/brand/logoheader_sem_fundo.png"
                   width={180}
                   height={48}
@@ -124,6 +128,7 @@ export function Header() {
               <Link
                 href="https://wa.me/5548992054803"
                 target="_blank"
+                onClick={() => trackCTAClick('HeaderMobile_AgendarHorario')}
                 className="w-full text-center bg-secondary text-white font-label-sm py-4 rounded uppercase tracking-widest font-semibold"
               >
                 Agendar Horário

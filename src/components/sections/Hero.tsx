@@ -9,6 +9,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { trackCTAClick } from "@/utils/analytics";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -201,6 +202,7 @@ export function Hero() {
               href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackCTAClick('Hero_AgendarHorario')}
               className="inline-flex items-center justify-center bg-secondary text-white font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
             >
               <WhatsAppIcon className="w-5 h-5 mr-2" />

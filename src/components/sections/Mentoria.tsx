@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Clock, Award, Headset, BookOpen, Users, Smartphone, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { trackCTAClick } from "@/utils/analytics";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -34,7 +35,7 @@ function LazyVideo({
   // Mount video only when it enters viewport for the first time
   useEffect(() => {
     if (isInView && !shouldMount) {
-      setShouldMount(true);
+      requestAnimationFrame(() => setShouldMount(true));
     }
   }, [isInView, shouldMount]);
 
@@ -198,6 +199,7 @@ export function Mentoria() {
                 href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20garantir%20minha%20vaga%20na%20Mentoria%20VIP."
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackCTAClick('Mentoria_GarantirVaga')}
                 className="inline-flex items-center justify-center bg-secondary text-white font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
               >
                 Garantir Minha Vaga

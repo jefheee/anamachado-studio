@@ -6,6 +6,7 @@ import { CheckCircle } from "lucide-react";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import Image from "next/image";
 import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
+import { trackCTAClick } from "@/utils/analytics";
 
 type Tab = "Cílios" | "Sobrancelhas" | "Micropigmentação" | "Manutenções";
 
@@ -194,6 +195,7 @@ export function Services() {
                     href="https://wa.me/5548992054803"
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackCTAClick('Services_AgendarHorario')}
                     className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-label-sm text-sm uppercase tracking-widest rounded-lg hover:brightness-110 shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     <WhatsAppIcon className="w-5 h-5" />

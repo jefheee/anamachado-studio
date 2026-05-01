@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { Check, ArrowRight, Shield, Clock, Star, CreditCard, Zap, HeartHandshake } from "lucide-react";
 import { ScrollRevealWrapper } from "@/components/ui/ScrollRevealWrapper";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { trackCTAClick } from "@/utils/analytics";
 
 const INCLUDED = [
   "8h de curso presencial intensivo",
@@ -79,6 +82,7 @@ export function Oferta() {
                   href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20garantir%20minha%20vaga%20na%20Mentoria%20VIP."
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackCTAClick('Oferta_GarantirVaga')}
                   className="flex items-center justify-center w-full bg-secondary text-white font-label-sm text-label-sm py-4 px-8 rounded-xl uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
                 >
                   <WhatsAppIcon className="w-5 h-5 mr-2" />

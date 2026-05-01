@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Manrope, Noto_Serif } from "next/font/google";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
@@ -22,7 +22,7 @@ const notoSerif = Noto_Serif({
 const SITE_URL = "https://www.anamachadoestetica.com.br";
 
 /* ─── Tracking IDs (lidos de variáveis de ambiente) ─── */
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? ""; // ex: GTM-XXXXXXX
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? ""; // ex: G-XXXXXXX
 const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? ""; // ex: 123456789012345
 
 export const metadata: Metadata = {
@@ -100,8 +100,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${manrope.variable} ${notoSerif.variable}`}>
-      {/* ── Google Tag Manager (via @next/third-parties — optimized loading) ── */}
-      {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
+      {/* ── Google Analytics 4 (via @next/third-parties — optimized loading) ── */}
+      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
 
       <body className="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
         {children}
