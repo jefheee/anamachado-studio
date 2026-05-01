@@ -23,7 +23,7 @@ const faqServicos: FAQItem[] = [
     answer: "Temos uma tolerância máxima de 15 minutos de atraso. Caso seja possível realizar o atendimento após esse período, será cobrada uma taxa adicional de R$15. Caso contrário, será necessário remarcar e o sinal não será devolvido."
   },
   {
-    question: "Quais são as regras para manutenções de Cílios?",
+    question: "Quais são as regras para manutenções de cílios?",
     answer: "Para ser considerada manutenção, é necessário comparecer dentro do prazo estabelecido (15, 20, 25 ou 30 dias), com os cílios higienizados e no mínimo 60% dos fios preservados. Caso contrário, ou após 30 dias, será cobrado o valor de uma nova aplicação."
   },
   {
@@ -97,21 +97,19 @@ export function FAQ() {
           <div className="flex justify-center gap-4 mb-8">
             <button
               onClick={() => { setActiveTab("Serviços"); setOpenIndex(null); }}
-              className={`px-6 py-2 rounded-full font-label-sm text-sm tracking-widest uppercase transition-colors ${
-                activeTab === "Serviços" 
-                  ? "bg-secondary text-on-secondary shadow-md" 
+              className={`px-6 py-2 rounded-full font-label-sm text-sm tracking-widest uppercase transition-colors ${activeTab === "Serviços"
+                  ? "bg-secondary text-on-secondary shadow-md"
                   : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
-              }`}
+                }`}
             >
               Atendimentos
             </button>
             <button
               onClick={() => { setActiveTab("Curso"); setOpenIndex(null); }}
-              className={`px-6 py-2 rounded-full font-label-sm text-sm tracking-widest uppercase transition-colors ${
-                activeTab === "Curso" 
-                  ? "bg-secondary text-on-secondary shadow-md" 
+              className={`px-6 py-2 rounded-full font-label-sm text-sm tracking-widest uppercase transition-colors ${activeTab === "Curso"
+                  ? "bg-secondary text-on-secondary shadow-md"
                   : "bg-surface-container text-on-surface-variant hover:bg-surface-container-high"
-              }`}
+                }`}
             >
               Mentoria VIP
             </button>
@@ -140,7 +138,7 @@ export function FAQ() {
                   <ChevronDown className="text-secondary w-5 h-5" />
                 </motion.div>
               </button>
-              
+
               <AnimatePresence>
                 {openIndex === index && (
                   <motion.div
