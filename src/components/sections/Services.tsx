@@ -97,30 +97,30 @@ export function Services() {
   const activeContent = content[activeTab];
 
   return (
-    <section id="servicos" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%]">
+    <section id="servicos" className="py-12 md:py-24 px-5 bg-surface md:px-[8%]">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10 md:mb-16"
         >
-          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
+          <span className="font-label-sm text-[11px] md:text-label-sm text-secondary uppercase tracking-widest block mb-2">
             Catálogo de Serviços
           </span>
-          <h2 className="font-headline-lg text-headline-lg text-primary">
+          <h2 className="font-headline-lg text-2xl md:text-headline-lg text-primary">
             Nossos Atendimentos
           </h2>
         </motion.div>
 
         {/* Tabs Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-10 md:mb-16">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-8 py-3 rounded-full font-label-sm text-sm uppercase tracking-widest transition-all duration-300 ${activeTab === tab
+              className={`px-4 md:px-8 py-2 md:py-3 rounded-full font-label-sm text-[11px] md:text-sm uppercase tracking-widest transition-all duration-300 ${activeTab === tab
                   ? "bg-secondary text-on-secondary shadow-lg"
                   : "bg-surface-container hover:bg-surface-container-high text-on-surface-variant"
                 }`}
@@ -145,10 +145,10 @@ export function Services() {
                 className="space-y-8"
               >
                 <div>
-                  <h3 className="font-headline-lg text-headline-lg text-primary mb-4">
+                  <h3 className="font-headline-lg text-xl md:text-headline-lg text-primary mb-3 md:mb-4">
                     {activeTab}
                   </h3>
-                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
+                  <p className="font-body-sm md:font-body-md text-xs md:text-body-md text-on-surface-variant leading-relaxed md:leading-relaxed mb-4">
                     {activeContent.description}
                   </p>
                   {"highlights" in activeContent && activeContent.highlights && (
@@ -163,11 +163,11 @@ export function Services() {
                   )}
                 </div>
 
-                <ul className="space-y-6 mt-8">
+                <ul className="space-y-3 md:space-y-6 mt-6 md:mt-8">
                   {activeContent.items.map((item, index) => (
-                    <li key={index} className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 sm:gap-4">
-                      <div className="flex items-center gap-2">
-                        <span className="font-headline-md text-headline-md text-on-surface">{item.name}</span>
+                    <li key={index} className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 sm:gap-4 bg-white/5 border border-white/10 backdrop-blur-sm md:bg-transparent md:border-transparent md:backdrop-blur-none p-4 md:p-0 rounded-2xl md:rounded-none">
+                      <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-start">
+                        <span className="font-headline-md text-sm md:text-headline-md text-on-surface">{item.name}</span>
                         {item.badge && (
                           <span className="bg-secondary/10 text-secondary text-[10px] uppercase font-bold px-2 py-1 rounded-full whitespace-nowrap">
                             {item.badge}
@@ -175,7 +175,7 @@ export function Services() {
                         )}
                       </div>
                       <div className="hidden sm:block flex-1 border-b border-dotted border-outline-variant mb-2"></div>
-                      <span className="font-headline-md text-headline-md text-primary font-bold whitespace-nowrap">
+                      <span className="font-headline-md text-base md:text-headline-md text-primary font-bold whitespace-nowrap">
                         R$ {item.price}
                       </span>
                     </li>
@@ -190,18 +190,18 @@ export function Services() {
                   </div>
                 )}
                 
-                <div className="mt-8 flex flex-col items-start gap-3">
+                <div className="mt-8 flex flex-col items-start gap-3 w-full">
                   <a 
                     href="https://wa.me/5548992054803"
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackCTAClick('Services_AgendarHorario')}
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-label-sm text-sm uppercase tracking-widest rounded-lg hover:brightness-110 shadow-md hover:shadow-lg transition-all duration-300"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 md:py-4 bg-secondary text-white font-label-sm text-[13px] md:text-sm uppercase tracking-widest rounded-xl hover:brightness-110 shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     <WhatsAppIcon className="w-5 h-5" />
                     Agendar Horário
                   </a>
-                  <p className="text-[10px] text-neutral-400 uppercase tracking-wider ml-1">
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-wider ml-1 text-center sm:text-left w-full sm:w-auto">
                     Você será redirecionada para o WhatsApp
                   </p>
                 </div>

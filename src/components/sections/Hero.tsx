@@ -149,7 +149,7 @@ export function Hero() {
       </div>
 
       {/* Main Content with entrance animation */}
-      <div className="hero-main-content relative z-10 w-full px-container-padding md:px-[8%] will-change-transform">
+      <div className="hero-main-content relative z-10 w-full px-5 md:px-[8%] will-change-transform">
         <div className="max-w-2xl">
 
           {/* Badge */}
@@ -174,7 +174,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={entranceTransition ?? { duration: 0.8, delay: 0.4 }}
-            className="font-headline-xl text-headline-xl text-neutral-900 mb-4 leading-[1.1]"
+            className="font-headline-xl text-4xl md:text-headline-xl text-neutral-900 mb-4 md:mb-4 leading-[1.1]"
           >
             Transforme seu olhar.
             <br />
@@ -196,14 +196,14 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={entranceTransition ?? { duration: 0.7, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 mb-8"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8"
           >
             <Link
               href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackCTAClick('Hero_AgendarHorario')}
-              className="inline-flex items-center justify-center bg-secondary text-white font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center bg-secondary text-white font-label-sm text-[13px] md:text-sm px-6 py-3.5 md:py-4 rounded-xl uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
             >
               <WhatsAppIcon className="w-5 h-5 mr-2" />
               Agendar Horário
@@ -211,7 +211,7 @@ export function Hero() {
             </Link>
             <Link
               href="#mentoria"
-              className="inline-flex items-center justify-center border-2 border-neutral-900 text-neutral-900 font-label-sm text-label-sm px-8 py-4 rounded-lg uppercase tracking-widest hover:bg-neutral-900 hover:text-white transition-all duration-300"
+              className="w-full sm:w-auto inline-flex items-center justify-center border-2 border-neutral-900 text-neutral-900 font-label-sm text-[13px] md:text-sm px-6 py-3.5 md:py-4 rounded-xl uppercase tracking-widest hover:bg-neutral-900 hover:text-white transition-all duration-300"
             >
               Conhecer a Mentoria
             </Link>
