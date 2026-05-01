@@ -291,13 +291,14 @@ export default function Home() {
         <Hero />
         <Services />
 
+        <StudioAndLocation />
+
         {/* ── Below the Fold (BTF) — dynamic imports, code-split ── */}
         <Portfolio />
         <InformativeReels />
         <LashDesignerProfession />
         <Mentoria />
         <AlunasResults />
-        <StudioAndLocation />
         <Oferta />
         <FAQ />
         <InstagramFeed />
