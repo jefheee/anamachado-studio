@@ -1,4 +1,4 @@
-# **🦋 Ana Machado Studio | Plataforma High-End & Motor de Marketing**
+# **Ana Machado Studio | Plataforma High-End & Motor de Marketing**
 
 O **Ana Machado Studio** transcende uma simples Landing Page institucional. É uma aplicação web de alto padrão arquitetada para funcionar como uma **Máquina de Conversão** para a Mentoria VIP de Lash Designers (R$ 999,90) e como um **Motor de Marketing Orgânico** interno.
 
