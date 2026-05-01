@@ -47,7 +47,7 @@ function MediaSwapCard({
         setActiveIndex(nextIndex);
         setNextIndex(null);
         setNextReady(false);
-      }, 600);
+      }, 800); // Slightly longer for a smoother crossfade
       return () => clearTimeout(swapTimer);
     }
   }, [nextReady, nextIndex]);
@@ -105,7 +105,7 @@ function MediaSwapCard({
       {/* Next layer — fades in on top when ready, then becomes the active */}
       {next && (
         <div
-          className={`absolute inset-0 w-full h-full z-[1] transition-opacity duration-600 ${
+          className={`absolute inset-0 w-full h-full z-[1] transition-opacity duration-700 bg-neutral-900 ${
             nextReady ? "opacity-100" : "opacity-0"
           }`}
         >
@@ -113,10 +113,9 @@ function MediaSwapCard({
             <video
               ref={nextVideoRef}
               src={next.src}
-              loop
+              autoPlay
               muted
               playsInline
-              preload="metadata"
               onCanPlay={handleNextCanPlay}
               className="w-full h-full object-cover"
             />

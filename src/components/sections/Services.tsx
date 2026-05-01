@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import Image from "next/image";
 import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
 
@@ -188,15 +189,19 @@ export function Services() {
                   </div>
                 )}
                 
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col items-start gap-3">
                   <a 
                     href="https://wa.me/5548992054803"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-8 py-3 border border-primary text-primary font-label-sm text-sm uppercase tracking-widest rounded-lg hover:bg-primary/5 transition-colors"
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-secondary text-white font-label-sm text-sm uppercase tracking-widest rounded-lg hover:brightness-110 shadow-md hover:shadow-lg transition-all duration-300"
                   >
-                    Agendar Avaliação
+                    <WhatsAppIcon className="w-5 h-5" />
+                    Agendar Horário
                   </a>
+                  <p className="text-[10px] text-neutral-400 uppercase tracking-wider ml-1">
+                    Você será redirecionada para o WhatsApp
+                  </p>
                 </div>
               </motion.div>
             </AnimatePresence>

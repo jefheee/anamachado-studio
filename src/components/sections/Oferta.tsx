@@ -30,6 +30,14 @@ export function Oferta() {
           <h2 className="font-headline-lg text-headline-lg text-primary mb-4">
             Invista na Sua Carreira
           </h2>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-red-600 text-[10px] font-bold uppercase tracking-wider rounded-full animate-pulse border border-red-100">
+              <Zap className="w-3 h-3" /> Vagas Limitadas
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-bold uppercase tracking-wider rounded-full border border-emerald-100">
+              <Shield className="w-3 h-3" /> Garantia de Aprendizado
+            </span>
+          </div>
           <p className="font-body-md text-on-surface-variant max-w-xl mx-auto">
             Uma formação completa para você se tornar uma profissional de excelência no mercado da beleza.
           </p>

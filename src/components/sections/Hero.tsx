@@ -12,6 +12,30 @@ import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Custom Aperture Reveal Component
+function ApertureReveal({ isLoaded }: { isLoaded: boolean }) {
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (isLoaded && overlayRef.current) {
+      gsap.to(overlayRef.current, {
+        clipPath: "circle(150% at 50% 50%)",
+        duration: 1.8,
+        ease: "power4.inOut",
+        delay: 0.2
+      });
+    }
+  }, [isLoaded]);
+
+  return (
+    <div 
+      ref={overlayRef}
+      className="fixed inset-0 z-[100] bg-white pointer-events-none"
+      style={{ clipPath: "circle(0% at 50% 50%)" }}
+    />
+  );
+}
+
 const HERO_STATS = [
   { value: "2.000+", label: "Atendimentos" },
   { value: "3+", label: "Anos" },
@@ -90,6 +114,7 @@ export function Hero() {
       className="relative w-full h-[100svh] flex items-center overflow-hidden bg-white"
       aria-label="Seção principal — Ana Machado Estética Facial"
     >
+      <ApertureReveal isLoaded={isLoaded} />
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image

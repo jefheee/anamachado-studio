@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
@@ -106,6 +105,13 @@ const businessJsonLd = {
           "@type": "Service",
           name: "Extensão de Cílios - Volume Brasileiro",
           description: "Fios em formato de Y para volume, retenção e leveza.",
+          images: [
+            "/assets/modelos_clientes/brasileiro/brasileiro (1).jpg",
+            "/assets/modelos_clientes/brasileiro/brasileiro (2).jpg",
+            "/assets/modelos_clientes/brasileiro/brasileiro (3).jpg",
+            "/assets/modelos_clientes/brasileiro/brasileiro (4).jpg",
+            "/assets/modelos_clientes/brasileiro/brasileiro (5).jpg",
+          ]
         },
       },
       {
@@ -114,6 +120,16 @@ const businessJsonLd = {
           "@type": "Service",
           name: "Extensão de Cílios - Foxy Eyes",
           description: "Mapeamento de elevação com efeito lifting no olhar.",
+          images: [
+            "/assets/modelos_clientes/egipcio/egipcio (1).jpg",
+            "/assets/modelos_clientes/egipcio/egipcio (3).jpg",
+            "/assets/modelos_clientes/egipcio/egipcio (4).jpg",
+            "/assets/modelos_clientes/egipcio/egipcio (5).jpg",
+            "/assets/modelos_clientes/egipcio/egipcio (6).jpg",
+            "/assets/modelos_clientes/egipcio/egipcio (7).jpg",
+            "/assets/modelos_clientes/egipcio/egipcio (8).jpg",
+            "/assets/modelos_clientes/egipcio/egipcio (9).jpg",
+          ]
         },
       },
       {

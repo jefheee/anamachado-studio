@@ -38,15 +38,17 @@ export function Header() {
           >
             <Menu className="text-neutral-900 w-5 h-5" />
           </button>
-          <Link href="#inicio" className="h-12 flex items-center rounded-md p-1">
-            <Image
-              alt="Ana Machado Logo"
-              className="h-full w-auto object-contain mix-blend-multiply"
-              src="/assets/brand/logoheader_sem_fundo.png"
-              width={120}
-              height={48}
-              priority
-            />
+          <Link href="#inicio" className="flex items-center">
+            <div className="bg-white rounded-md p-2 shadow-sm border border-neutral-100 h-14 flex items-center">
+              <Image
+                alt="Ana Machado Logo"
+                className="h-full w-auto object-contain"
+                src="/assets/brand/logoheader_sem_fundo.png"
+                width={140}
+                height={56}
+                priority
+              />
+            </div>
           </Link>
         </div>
         
@@ -88,13 +90,13 @@ export function Header() {
             className="fixed inset-0 z-[60] bg-white flex flex-col p-6"
           >
             <div className="flex justify-between items-center mb-12">
-              <div className="h-12 rounded-md p-1">
+              <div className="bg-white rounded-md p-2 shadow-sm border border-neutral-100 h-14 flex items-center">
                 <Image
                   alt="Ana Machado Logo"
-                  className="h-full w-auto object-contain mix-blend-multiply"
+                  className="h-full w-auto object-contain"
                   src="/assets/brand/logoheader_sem_fundo.png"
-                  width={120}
-                  height={48}
+                  width={140}
+                  height={56}
                 />
               </div>
               <button 

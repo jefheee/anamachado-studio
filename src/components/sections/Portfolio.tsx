@@ -50,11 +50,8 @@ const portfolioGroups: PortfolioGroup[] = [
       "/assets/modelos_clientes/egipcio/egipcio (5).mp4",
     ],
     images: [
-      "/assets/modelos_clientes/egipcio/egipcio (1).jpeg",
       "/assets/modelos_clientes/egipcio/egipcio (1).jpg",
-      "/assets/modelos_clientes/egipcio/egipcio (3).jpeg",
       "/assets/modelos_clientes/egipcio/egipcio (3).jpg",
-      "/assets/modelos_clientes/egipcio/egipcio (4).jpeg",
       "/assets/modelos_clientes/egipcio/egipcio (4).jpg",
       "/assets/modelos_clientes/egipcio/egipcio (5).jpg",
       "/assets/modelos_clientes/egipcio/egipcio (6).jpg",
@@ -95,11 +92,8 @@ const portfolioGroups: PortfolioGroup[] = [
       "/assets/modelos_clientes/brasileiro/brasileiro (5).mp4",
     ],
     images: [
-      "/assets/modelos_clientes/brasileiro/brasileiro (1).jpeg",
       "/assets/modelos_clientes/brasileiro/brasileiro (1).jpg",
-      "/assets/modelos_clientes/brasileiro/brasileiro (2).jpeg",
       "/assets/modelos_clientes/brasileiro/brasileiro (2).jpg",
-      "/assets/modelos_clientes/brasileiro/brasileiro (3).jpeg",
       "/assets/modelos_clientes/brasileiro/brasileiro (3).jpg",
       "/assets/modelos_clientes/brasileiro/brasileiro (4).jpg",
       "/assets/modelos_clientes/brasileiro/brasileiro (5).jpg",
@@ -342,15 +336,15 @@ export function Portfolio() {
               </button>
             </div>
             
-            <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-8 items-center">
+            <div className="flex-1 overflow-y-auto p-4 md:p-8">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6 max-w-7xl mx-auto">
               {Array.from(new Set([...activeGroup.videos, activeGroup.cover, ...activeGroup.images])).map((src, idx) => (
                 <motion.div
                   key={`media-${idx}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="w-full max-w-2xl relative rounded-xl shadow-2xl overflow-hidden bg-black/50"
-                  style={{ minHeight: "300px" }}
+                  className="relative aspect-[3/4] rounded-xl shadow-lg overflow-hidden bg-neutral-900 group/item"
                 >
                   {src.endsWith('.mp4') ? (
                     <FullscreenMediaWrapper src={src} type="video" className="block w-full h-full">
@@ -360,8 +354,9 @@ export function Portfolio() {
                         loop
                         muted
                         playsInline
-                        className="w-full h-auto object-contain"
+                        className="w-full h-full object-cover object-center group-hover/item:scale-105 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-black/20 group-hover/item:bg-transparent transition-colors duration-300"></div>
                     </FullscreenMediaWrapper>
                   ) : (
                     <FullscreenMediaWrapper src={src} type="image" className="block w-full h-full">
@@ -370,13 +365,15 @@ export function Portfolio() {
                         alt={`${activeGroup.title} - Item ${idx + 1}`}
                         width={800}
                         height={800}
-                        className="w-full h-auto object-cover"
+                        className="object-cover object-center group-hover/item:scale-105 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-black/20 group-hover/item:bg-transparent transition-colors duration-300"></div>
                     </FullscreenMediaWrapper>
                   )}
                 </motion.div>
               ))}
             </div>
+          </div>
           </motion.div>
         )}
       </AnimatePresence>

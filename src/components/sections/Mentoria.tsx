@@ -61,9 +61,9 @@ function LazyVideo({
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           onCanPlay={() => setIsReady(true)}
-          className={`w-full h-full object-cover ${objectPosition} transition-opacity duration-700 scale-105 group-hover:scale-100 ${
+          className={`w-full h-full object-cover ${objectPosition} transition-all duration-1000 scale-105 group-hover:scale-100 ${
             isReady ? "opacity-80 group-hover:opacity-100" : "opacity-0"
           }`}
         />
