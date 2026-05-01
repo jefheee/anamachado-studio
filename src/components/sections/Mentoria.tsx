@@ -217,7 +217,7 @@ export function Mentoria() {
       </div>
 
       {/* BENTO GRID — What's included */}
-      <div ref={contentRef} className="relative py-16 md:py-24 px-container-padding md:px-[8%] bg-surface">
+      <div ref={contentRef} className="relative py-16 md:py-24 px-container-padding md:px-[8%] bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2 font-semibold">

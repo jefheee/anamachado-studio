@@ -127,7 +127,7 @@ export function InformativeReels() {
           {videos.map((src, index) => (
             <div
               key={index}
-              className="flex-[0_0_80vw] md:flex-[0_0_300px] lg:flex-[0_0_350px] aspect-[9/16] rounded-2xl overflow-hidden shadow-lg bg-black relative group"
+              className="flex-[0_0_85vw] md:flex-[0_0_320px] h-[450px] rounded-xl overflow-hidden shadow-lg bg-black relative group"
             >
               <FacadeReel src={src} />
             </div>
