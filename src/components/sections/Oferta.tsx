@@ -21,7 +21,7 @@ export function Oferta() {
   return (
     <section
       id="garantir-vaga"
-      className="py-16 md:py-24 px-container-padding md:px-[8%] bg-white overflow-hidden"
+      className="py-10 md:py-24 px-4 md:px-[8%] bg-white overflow-hidden"
     >
       <div className="max-w-6xl mx-auto">
 
@@ -62,7 +62,7 @@ export function Oferta() {
               <div className="px-8 pt-10 pb-6 text-center flex-1 flex flex-col justify-center">
                 <div className="flex items-baseline justify-center gap-1 mb-2">
                   <span className="text-neutral-400 text-lg font-medium">R$</span>
-                  <span className="text-6xl md:text-7xl font-bold text-neutral-900 tracking-tight">999</span>
+                  <span className="text-5xl sm:text-6xl md:text-7xl font-bold text-neutral-900 tracking-tight">999</span>
                   <span className="text-2xl font-bold text-neutral-900">,90</span>
                 </div>
                 <p className="text-sm text-neutral-500 font-medium">
@@ -83,11 +83,11 @@ export function Oferta() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackCTAClick('Oferta_GarantirVaga')}
-                  className="flex items-center justify-center w-full bg-secondary text-white font-label-sm text-label-sm py-4 px-8 rounded-xl uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
+                  className="flex items-center justify-center w-full max-w-[320px] mx-auto bg-secondary text-white font-label-sm text-xs md:text-sm py-3.5 md:py-4 px-6 md:px-8 rounded-xl md:rounded-2xl uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300 min-h-[44px]"
                 >
-                  <WhatsAppIcon className="w-5 h-5 mr-2" />
+                  <WhatsAppIcon className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   Garantir Minha Vaga
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <p className="text-center text-xs text-neutral-400 mt-3">
                   Você será redirecionada para o WhatsApp

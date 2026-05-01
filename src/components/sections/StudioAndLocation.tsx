@@ -169,7 +169,7 @@ function FeaturePill({ icon: Icon, text, delay = 0 }: { icon: React.ElementType;
 
 export function StudioAndLocation() {
   return (
-    <section id="espaco" className="py-16 md:py-24 px-container-padding bg-neutral-900 text-white md:px-[8%] overflow-hidden">
+    <section id="espaco" className="py-10 md:py-24 px-4 bg-neutral-900 text-white md:px-[8%] overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
         {/* Espaco Header */}
@@ -291,7 +291,7 @@ export function StudioAndLocation() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackCTAClick('Location_AgendarHorario')}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all duration-300"
+                className="w-full max-w-[280px] mx-auto flex items-center justify-center gap-2 py-3.5 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all duration-300 min-h-[44px]"
               >
                 <Phone className="w-4 h-4 text-white/50" />
                 <span className="font-label-sm text-[11px] uppercase tracking-widest font-semibold text-white/80">Agendar Meu Horário</span>

@@ -174,7 +174,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={entranceTransition ?? { duration: 0.8, delay: 0.4 }}
-            className="font-headline-xl text-4xl md:text-headline-xl text-neutral-900 mb-4 md:mb-4 leading-[1.1]"
+            className="font-headline-xl text-3xl sm:text-4xl md:text-headline-xl text-neutral-900 mb-3 md:mb-4 leading-[1.15] md:leading-[1.1]"
           >
             Transforme seu olhar.
             <br />
@@ -196,22 +196,22 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={entranceTransition ?? { duration: 0.7, delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-8"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-6"
           >
             <Link
               href="https://wa.me/5548992054803?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackCTAClick('Hero_AgendarHorario')}
-              className="w-full sm:w-auto inline-flex items-center justify-center bg-secondary text-white font-label-sm text-[13px] md:text-sm px-6 py-3.5 md:py-4 rounded-xl uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300"
+              className="w-full sm:w-auto max-w-[280px] sm:max-w-none inline-flex items-center justify-center bg-secondary text-white font-label-sm text-xs md:text-sm px-6 py-3.5 md:py-4 rounded-xl md:rounded-2xl uppercase tracking-widest hover:brightness-110 transition-all group shadow-lg hover:shadow-xl hover:-translate-y-0.5 duration-300 min-h-[44px]"
             >
-              <WhatsAppIcon className="w-5 h-5 mr-2" />
+              <WhatsAppIcon className="w-4 h-4 md:w-5 md:h-5 mr-2" />
               Agendar Horário
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 md:w-5 md:h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               href="#mentoria"
-              className="w-full sm:w-auto inline-flex items-center justify-center border-2 border-neutral-900 text-neutral-900 font-label-sm text-[13px] md:text-sm px-6 py-3.5 md:py-4 rounded-xl uppercase tracking-widest hover:bg-neutral-900 hover:text-white transition-all duration-300"
+              className="w-full sm:w-auto max-w-[280px] sm:max-w-none inline-flex items-center justify-center bg-white/60 backdrop-blur-md border border-neutral-200/50 text-neutral-900 font-label-sm text-xs md:text-sm px-6 py-3.5 md:py-4 rounded-xl md:rounded-2xl uppercase tracking-widest hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-all duration-300 min-h-[44px]"
             >
               Conhecer a Mentoria
             </Link>
@@ -233,11 +233,11 @@ export function Hero() {
             className="flex flex-wrap items-center gap-6 md:gap-8"
           >
             {HERO_STATS.map((stat, idx) => (
-              <div key={idx} className="flex items-center gap-3">
-                {idx > 0 && <div className="w-px h-10 bg-neutral-300 -ml-3 mr-0"></div>}
+              <div key={idx} className="flex items-center gap-2 md:gap-3">
+                {idx > 0 && <div className="w-px h-8 md:h-10 bg-neutral-300 -ml-2 md:-ml-3 mr-0"></div>}
                 <div>
-                  <span className="font-headline-md text-2xl md:text-3xl text-neutral-900 font-bold block">{stat.value}</span>
-                  <span className="font-label-sm text-[10px] text-neutral-500 uppercase tracking-widest">{stat.label}</span>
+                  <span className="font-headline-md text-xl md:text-3xl text-neutral-900 font-bold block leading-none md:leading-none mb-0.5">{stat.value}</span>
+                  <span className="font-label-sm text-[9px] md:text-[10px] text-neutral-500 uppercase tracking-widest leading-none">{stat.label}</span>
                 </div>
               </div>
             ))}
