@@ -4,6 +4,7 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useInView } from "framer-motion";
 import { Sparkles, Gift, Heart, Coffee, MapPin, Clock, Navigation, Phone } from "lucide-react";
 import Image from "next/image";
+import { trackCTAClick } from "@/utils/analytics";
 import { ScrollRevealWrapper } from "@/components/ui/ScrollRevealWrapper";
 
 // --- Components from Espaco ---
@@ -275,17 +276,35 @@ export function StudioAndLocation() {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-white/80 mb-1">Funcionamento</h4>
-                <p className="text-xs text-white/50">Seg a Sex: <span className="text-secondary font-medium">09:30h - 18:30h</span></p>
+                <p className="text-xs text-white/50 mb-2">Seg a Sex: <span className="text-secondary font-medium">09:30h - 18:30h</span></p>
+                <div className="inline-flex items-center gap-1.5 px-2 py-1 bg-secondary/10 border border-secondary/20 rounded-md">
+                  <div className="w-1 h-1 rounded-full bg-secondary animate-pulse" />
+                  <span className="text-[10px] uppercase tracking-wider text-secondary font-semibold">Exclusivo com Hora Marcada</span>
+                </div>
               </div>
             </div>
-            <div className="flex items-start gap-3">
-              <div className="w-9 h-9 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Phone className="text-secondary w-4 h-4" />
+            <div className="flex flex-col flex-1">
+              <div className="flex items-start gap-3">
+                <div className="w-9 h-9 bg-white/10 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Phone className="text-secondary w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-semibold text-white/80 mb-1">WhatsApp</h4>
+                  <a href="https://wa.me/5548992054803" target="_blank" rel="noopener noreferrer" className="text-xs text-secondary hover:text-secondary/80 transition-colors font-medium">
+                    (48) 99205-4803
+                  </a>
+                </div>
               </div>
-              <div>
-                <h4 className="text-sm font-semibold text-white/80 mb-1">WhatsApp</h4>
-                <a href="https://wa.me/5548992054803" target="_blank" rel="noopener noreferrer" className="text-xs text-secondary hover:text-secondary/80 transition-colors font-medium">
-                  (48) 99205-4803
+              
+              <div className="mt-auto pt-4 border-t border-white/5">
+                <a
+                  href="https://wa.me/5548992054803"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackCTAClick('Location_AgendarHorario')}
+                  className="w-full flex items-center justify-center gap-2 py-3 bg-secondary/10 hover:bg-secondary/20 border border-secondary/20 text-secondary rounded-xl transition-all duration-300"
+                >
+                  <span className="font-label-sm text-[11px] uppercase tracking-widest font-semibold">Agendar Meu Horário</span>
                 </a>
               </div>
             </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, Clock, Phone } from "lucide-react";
+import { trackCTAClick } from "@/utils/analytics";
 
 export function Footer() {
   return (
@@ -140,23 +141,38 @@ export function Footer() {
               <Clock className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
               <div>
                 <p className="text-sm text-white/80 font-medium">Horário de Funcionamento</p>
-                <p className="text-xs text-white/50">Segunda a Sexta: 09:30h às 18:30h</p>
+                <p className="text-xs text-white/50 mb-2">Segunda a Sexta: 09:30h às 18:30h</p>
+                <div className="inline-flex items-center gap-1.5 px-2 py-1 bg-white/5 border border-white/10 rounded-md">
+                  <div className="w-1 h-1 rounded-full bg-white/40 animate-pulse" />
+                  <span className="text-[10px] uppercase tracking-wider text-white/60 font-semibold">Exclusivo com Hora Marcada</span>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <Phone className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-              <div>
-                <p className="text-sm text-white/80 font-medium">WhatsApp</p>
-                <a 
-                  href="https://wa.me/5548992054803"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-secondary hover:text-secondary/80 transition-colors font-medium"
-                >
-                  (48) 99205-4803
-                </a>
+            <div className="flex flex-col gap-3">
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm text-white/80 font-medium">WhatsApp</p>
+                  <a 
+                    href="https://wa.me/5548992054803"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-secondary hover:text-secondary/80 transition-colors font-medium"
+                  >
+                    (48) 99205-4803
+                  </a>
+                </div>
               </div>
+              <a
+                href="https://wa.me/5548992054803"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackCTAClick('Footer_AgendarHorario')}
+                className="mt-2 w-full flex items-center justify-center gap-2 py-3 px-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-xl transition-all duration-300"
+              >
+                <span className="font-label-sm text-[11px] uppercase tracking-widest font-semibold text-white/80">Agendar Meu Horário</span>
+              </a>
             </div>
           </div>
         </div>
