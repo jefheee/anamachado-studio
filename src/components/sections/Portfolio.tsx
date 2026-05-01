@@ -295,18 +295,18 @@ export function Portfolio() {
           </p>
         </div>
         
-        <div className="flex gap-2 self-start md:self-end">
+        <div className="flex gap-2 self-start md:self-end" role="group" aria-label="Controles do carrossel">
           <button 
             onClick={() => emblaApi?.scrollPrev()}
             className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
-            aria-label="Scroll Left"
+            aria-label="Categoria anterior"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button 
             onClick={() => emblaApi?.scrollNext()}
             className="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors text-on-surface"
-            aria-label="Scroll Right"
+            aria-label="Próxima categoria"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -314,7 +314,7 @@ export function Portfolio() {
       </div>
 
       <div className="w-full px-container-padding md:px-[8%]">
-        <div className="overflow-hidden" ref={emblaRef}>
+        <div className="overflow-hidden" ref={emblaRef} role="region" aria-roledescription="carrossel" aria-label="Portfólio de trabalhos">
           <div className="flex gap-6 py-4 touch-pan-y">
             {portfolioGroups.map((group) => (
               <PortfolioCard key={group.id} group={group} setActiveGroup={setActiveGroup} />

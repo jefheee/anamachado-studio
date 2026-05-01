@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles, Star } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,50 +21,74 @@ const HERO_STATS = [
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    // Small delay to let the image load, then trigger entrance animation
     const timer = setTimeout(() => setIsLoaded(true), 300);
     return () => clearTimeout(timer);
   }, []);
 
   useGSAP(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || prefersReducedMotion) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=100%",
-        pin: true,
-        scrub: 1,
-      }
+    // matchMedia: only run the heavy ScrollTrigger pin on desktop (≥768px)
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=100%",
+          pin: true,
+          scrub: 1,
+        },
+      });
+
+      tl.to(
+        ".hero-bg-image",
+        { scale: 1.3, duration: 1, ease: "none" },
+        0
+      )
+        .to(
+          ".hero-overlay",
+          { opacity: 1, duration: 1, ease: "none" },
+          0
+        )
+        .to(
+          ".hero-main-content",
+          { opacity: 0, y: -80, duration: 1, ease: "power1.in" },
+          0
+        );
+
+      // Return cleanup for this matchMedia context
+      return () => {
+        tl.kill();
+      };
     });
 
-    // On scroll: zoom into image + fade content
-    tl.to(".hero-bg-image", {
-      scale: 1.3,
-      duration: 1,
-      ease: "none",
-    }, 0)
-    .to(".hero-overlay", {
-      opacity: 1,
-      duration: 1,
-      ease: "none",
-    }, 0)
-    .to(".hero-main-content", {
-      opacity: 0,
-      y: -80,
-      duration: 1,
-      ease: "power1.in",
-    }, 0);
-  }, { scope: containerRef });
+    // Mobile: no pin, no scroll animations — saves battery & CPU
+    mm.add("(max-width: 767px)", () => {
+      // Noop — hero is static on mobile
+    });
+
+    // Cleanup: matchMedia.revert() kills all ScrollTriggers + tweens
+    return () => {
+      mm.revert();
+    };
+  }, { scope: containerRef, dependencies: [prefersReducedMotion] });
+
+  // Entrance animations respect prefers-reduced-motion
+  const entranceTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : undefined;
 
   return (
     <section
       id="inicio"
       ref={containerRef}
       className="relative w-full h-[100svh] flex items-center overflow-hidden bg-white"
+      aria-label="Seção principal — Ana Machado Estética Facial"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -74,6 +98,7 @@ export function Hero() {
           src="/assets/hero-branca.jpg"
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
         />
         {/* Overlay that darkens on scroll */}
@@ -92,7 +117,7 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={entranceTransition ?? { duration: 0.6, delay: 0.2 }}
                 className="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/20 rounded-full px-4 py-2 mb-5"
               >
                 <Sparkles className="w-4 h-4 text-secondary" />
@@ -107,7 +132,7 @@ export function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={entranceTransition ?? { duration: 0.8, delay: 0.4 }}
             className="font-headline-xl text-headline-xl text-neutral-900 mb-4 leading-[1.1]"
           >
             Transforme seu olhar.
@@ -119,7 +144,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.6 }}
+            transition={entranceTransition ?? { duration: 0.7, delay: 0.6 }}
             className="font-body-lg text-body-lg text-neutral-600 mb-8 max-w-xl leading-relaxed"
           >
             Cílios impecáveis, sobrancelhas de grife e uma mentoria que forma profissionais de elite. Palhoça/SC.
@@ -129,7 +154,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.8 }}
+            transition={entranceTransition ?? { duration: 0.7, delay: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 mb-8"
           >
             <Link
@@ -152,7 +177,7 @@ export function Hero() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={isLoaded ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={entranceTransition ?? { duration: 0.6, delay: 0.9 }}
             className="text-xs text-neutral-400 -mt-4 mb-8"
           >
             Você será redirecionada para o WhatsApp
@@ -162,7 +187,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={isLoaded ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={entranceTransition ?? { duration: 0.8, delay: 1.0 }}
             className="flex flex-wrap items-center gap-6 md:gap-8"
           >
             {HERO_STATS.map((stat, idx) => (
@@ -188,22 +213,25 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isLoaded ? { opacity: 1 } : {}}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
-      >
-        <span className="text-[10px] uppercase tracking-[0.25em] text-neutral-400 font-medium">Explore</span>
+      {/* Scroll indicator — hidden when reduced motion is preferred */}
+      {!prefersReducedMotion && (
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-5 h-8 border-2 border-neutral-300 rounded-full flex justify-center pt-1.5"
+          initial={{ opacity: 0 }}
+          animate={isLoaded ? { opacity: 1 } : {}}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+          aria-hidden="true"
         >
-          <div className="w-1 h-1.5 bg-neutral-400 rounded-full"></div>
+          <span className="text-[10px] uppercase tracking-[0.25em] text-neutral-400 font-medium">Explore</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="w-5 h-8 border-2 border-neutral-300 rounded-full flex justify-center pt-1.5"
+          >
+            <div className="w-1 h-1.5 bg-neutral-400 rounded-full"></div>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      )}
     </section>
   );
 }

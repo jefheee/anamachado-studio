@@ -1,15 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-
-const revealVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" },
-  },
-};
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 
 interface ScrollRevealWrapperProps {
   children: React.ReactNode;
@@ -29,6 +20,13 @@ export function ScrollRevealWrapper({
   once = true,
   margin = "-100px",
 }: ScrollRevealWrapperProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  // When user prefers reduced motion, render immediately without animation
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   const initial = {
     opacity: 0,
     ...(direction === "up" && { y: 24 }),
@@ -76,6 +74,17 @@ const staggerItemVariants: Variants = {
   },
 };
 
+/* Reduced-motion safe variants: no transform, instant opacity */
+const staggerContainerReduced: Variants = {
+  hidden: { opacity: 1 },
+  visible: { opacity: 1 },
+};
+
+const staggerItemReduced: Variants = {
+  hidden: { opacity: 1 },
+  visible: { opacity: 1 },
+};
+
 export function ScrollRevealStaggerContainer({
   children,
   className = "",
@@ -85,9 +94,11 @@ export function ScrollRevealStaggerContainer({
   className?: string;
   margin?: string;
 }) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <motion.div
-      variants={staggerContainerVariants}
+      variants={prefersReducedMotion ? staggerContainerReduced : staggerContainerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin }}
@@ -105,8 +116,13 @@ export function ScrollRevealItem({
   children: React.ReactNode;
   className?: string;
 }) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <motion.div variants={staggerItemVariants} className={className}>
+    <motion.div
+      variants={prefersReducedMotion ? staggerItemReduced : staggerItemVariants}
+      className={className}
+    >
       {children}
     </motion.div>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Clock, Award, Headset, BookOpen, Users, Smartphone, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import gsap from "gsap";
@@ -29,6 +29,7 @@ function LazyVideo({
   const isInView = useInView(containerRef, { amount: 0.2, once: false });
   const [shouldMount, setShouldMount] = useState(false);
   const [isReady, setIsReady] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   // Mount video only when it enters viewport for the first time
   useEffect(() => {
@@ -37,15 +38,19 @@ function LazyVideo({
     }
   }, [isInView, shouldMount]);
 
-  // Play/pause based on visibility
+  // Play/pause based on visibility — skip autoplay when reduced motion is preferred
   useEffect(() => {
-    if (!videoRef.current) return;
+    if (!videoRef.current || !shouldMount) return;
+    if (prefersReducedMotion) {
+      videoRef.current.pause();
+      return;
+    }
     if (isInView) {
       videoRef.current.play().catch(() => {});
     } else {
       videoRef.current.pause();
     }
-  }, [isInView, shouldMount]);
+  }, [isInView, shouldMount, prefersReducedMotion]);
 
   return (
     <div ref={containerRef} className="relative w-full h-full group overflow-hidden bg-neutral-900">
@@ -83,60 +88,86 @@ export function Mentoria() {
   const heroRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useGSAP(() => {
-    if (!sectionRef.current || !heroRef.current || !bgRef.current) return;
+    if (!sectionRef.current || !heroRef.current || !bgRef.current || prefersReducedMotion) return;
 
-    // Mentoria Hero: Pin the intro and reveal the bg
-    // INVERTED: Starts zoomed in (scale 1.4), scrolls to fill (scale 1)
-    const heroTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top top",
-        end: "+=120%",
-        pin: true,
-        scrub: 1,
+    const mm = gsap.matchMedia();
+
+    // Desktop only: pin + parallax zoom
+    mm.add("(min-width: 768px)", () => {
+      const heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroRef.current,
+          start: "top top",
+          end: "+=120%",
+          pin: true,
+          scrub: 1,
+        },
+      });
+
+      heroTl
+        .fromTo(
+          bgRef.current,
+          { scale: 1.4, opacity: 1 },
+          { scale: 1, opacity: 1, duration: 1, ease: "none" }
+        )
+        .fromTo(
+          ".mentoria-hero-text",
+          { opacity: 0, y: 60 },
+          { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+          0.3
+        );
+
+      // Content reveal below hero
+      if (contentRef.current) {
+        gsap.fromTo(
+          contentRef.current,
+          { opacity: 0, y: 80 },
+          {
+            opacity: 1,
+            y: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: "top 85%",
+              end: "top 40%",
+              scrub: 1,
+            },
+          }
+        );
+      }
+
+      return () => {
+        heroTl.kill();
+      };
+    });
+
+    // Mobile: make hero text visible immediately (no pin, no GSAP animation)
+    mm.add("(max-width: 767px)", () => {
+      gsap.set(".mentoria-hero-text", { opacity: 1, y: 0 });
+      if (bgRef.current) {
+        gsap.set(bgRef.current, { scale: 1 });
       }
     });
 
-    // Background starts zoomed in and scales down to fill screen
-    heroTl.fromTo(bgRef.current,
-      { scale: 1.4, opacity: 1 },
-      { scale: 1, opacity: 1, duration: 1, ease: "none" }
-    )
-      // Text fades in and slides up
-      .fromTo(".mentoria-hero-text",
-        { opacity: 0, y: 60 },
-        { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
-        0.3
-      );
+    return () => {
+      mm.revert();
+    };
+  }, { scope: sectionRef, dependencies: [prefersReducedMotion] });
 
-    // Content below: Z-axis reveal
-    if (contentRef.current) {
-      gsap.fromTo(contentRef.current,
-        { opacity: 0, y: 80 },
-        {
-          opacity: 1,
-          y: 0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: contentRef.current,
-            start: "top 85%",
-            end: "top 40%",
-            scrub: 1,
-          }
-        }
-      );
-    }
-  }, { scope: sectionRef });
+  // Framer Motion transition for bento cards — disabled if reduced motion
+  const cardTransition = prefersReducedMotion ? { duration: 0 } : undefined;
 
   return (
-    <section id="mentoria" ref={sectionRef} className="overflow-hidden">
+    <section id="mentoria" ref={sectionRef} className="overflow-hidden" aria-label="Mentoria VIP de Extensão de Cílios">
 
       {/* MENTORIA HERO — Pinned section with bg-mentoria.jpg */}
       <div ref={heroRef} className="relative w-full h-[100svh] flex items-center justify-center overflow-hidden bg-black">
         {/* Background Image - Starts visible and zoomed in (scale 1.4 via GSAP) */}
         <div ref={bgRef} className="absolute inset-0 z-0 origin-center will-change-transform overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/assets/bg-mentoria.jpg"
             className="w-full h-full object-cover"
@@ -147,7 +178,7 @@ export function Mentoria() {
         </div>
 
         {/* Text content — also starts invisible, revealed by GSAP */}
-        <div className="mentoria-hero-text relative z-10 text-center px-container-padding md:px-[8%] max-w-4xl mx-auto opacity-0">
+        <div className="mentoria-hero-text relative z-10 text-center px-container-padding md:px-[8%] max-w-4xl mx-auto opacity-0 md:opacity-0">
           {/* Backdrop for extra readability */}
           <div className="absolute inset-0 -m-8 bg-black/20 backdrop-blur-[2px] rounded-3xl pointer-events-none"></div>
           
@@ -238,9 +269,10 @@ export function Mentoria() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={cardTransition}
               className="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 shadow-md border border-neutral-100 flex flex-col justify-center relative overflow-hidden group hover:shadow-lg transition-shadow"
             >
-              <Clock className="absolute -right-4 -bottom-4 w-32 h-32 text-surface-container opacity-50 group-hover:scale-110 transition-transform duration-500 pointer-events-none" />
+              <Clock className="absolute -right-4 -bottom-4 w-32 h-32 text-surface-container opacity-50 group-hover:scale-110 transition-transform duration-500 pointer-events-none" aria-hidden="true" />
               <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-3 relative z-10">8h de Curso Presencial</h4>
               <p className="text-on-surface-variant font-body-md max-w-sm relative z-10">Teoria e prática intensiva. Podendo dividir em 2 dias ou finalizar em 1 dia focado para acelerar sua jornada.</p>
             </motion.div>
@@ -250,10 +282,10 @@ export function Mentoria() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={cardTransition ?? { delay: 0.1 }}
               className="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 shadow-md border border-neutral-100 flex flex-col justify-center group hover:shadow-lg transition-shadow"
             >
-              <Users className="w-8 h-8 text-secondary mb-4 group-hover:scale-110 transition-transform" />
+              <Users className="w-8 h-8 text-secondary mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
               <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-3">Treinamento em Modelos</h4>
               <p className="text-on-surface-variant font-body-md">Mão na massa desde o início com supervisão rigorosa. Corrigimos cada detalhe da sua postura e aplicação ao vivo.</p>
             </motion.div>
@@ -263,10 +295,10 @@ export function Mentoria() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
+              transition={cardTransition ?? { delay: 0.2 }}
               className="md:col-span-1 bg-secondary text-white rounded-3xl p-6 md:p-8 shadow-md flex flex-col justify-between group hover:shadow-lg transition-shadow hover:-translate-y-1 duration-300"
             >
-              <BookOpen className="w-8 h-8 mb-4 opacity-80 group-hover:opacity-100 transition-opacity" />
+              <BookOpen className="w-8 h-8 mb-4 opacity-80 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
               <div>
                 <h4 className="font-headline-md text-xl mb-2">Apostila Completa</h4>
                 <p className="text-white/80 font-body-sm text-sm">Material super didático cobrindo desde a anatomia dos fios até biossegurança e tendências.</p>
@@ -278,10 +310,10 @@ export function Mentoria() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+              transition={cardTransition ?? { delay: 0.3 }}
               className="md:col-span-1 bg-white/80 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-md border border-neutral-100 flex flex-col justify-between group hover:shadow-lg transition-shadow"
             >
-              <Smartphone className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" />
+              <Smartphone className="w-8 h-8 text-primary mb-4 group-hover:scale-110 transition-transform" aria-hidden="true" />
               <div>
                 <h4 className="font-headline-md text-xl text-primary mb-2">Marketing e Perfil</h4>
                 <p className="text-on-surface-variant font-body-sm text-sm">Captação de clientes, dicas de fotos, edições e construção de perfil profissional.</p>
@@ -293,10 +325,10 @@ export function Mentoria() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
+              transition={cardTransition ?? { delay: 0.1 }}
               className="md:col-span-2 bg-primary text-white rounded-3xl p-6 md:p-8 shadow-xl flex flex-col justify-center relative overflow-hidden group"
             >
-              <Headset className="absolute right-0 bottom-0 w-40 h-40 text-white/5 pointer-events-none group-hover:scale-110 transition-transform duration-700" />
+              <Headset className="absolute right-0 bottom-0 w-40 h-40 text-white/5 pointer-events-none group-hover:scale-110 transition-transform duration-700" aria-hidden="true" />
               <h4 className="font-headline-md text-xl md:text-2xl mb-3 relative z-10">Acompanhamento Vitalício</h4>
               <p className="text-white/80 font-body-md max-w-md relative z-10">Suporte contínuo para o seu dia a dia. Você não estará sozinha no seu processo de evolução técnica e comercial.</p>
             </motion.div>
@@ -306,10 +338,11 @@ export function Mentoria() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              transition={cardTransition}
               className="md:col-span-4 bg-white/90 backdrop-blur-md rounded-3xl p-6 md:p-8 shadow-md border border-neutral-100 flex flex-col md:flex-row items-start md:items-center gap-6 group hover:shadow-lg transition-shadow"
             >
               <div className="w-16 h-16 rounded-full bg-surface flex items-center justify-center shrink-0 border border-neutral-100">
-                <Award className="w-8 h-8 text-secondary group-hover:rotate-12 transition-transform" />
+                <Award className="w-8 h-8 text-secondary group-hover:rotate-12 transition-transform" aria-hidden="true" />
               </div>
               <div>
                 <h4 className="font-headline-md text-xl md:text-2xl text-primary mb-2">Certificação e Retorno</h4>

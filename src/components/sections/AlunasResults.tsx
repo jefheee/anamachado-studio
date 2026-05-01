@@ -134,7 +134,7 @@ export function AlunasResults() {
         </motion.div>
 
         {/* Embla Carousel Viewport */}
-        <div className="overflow-hidden" ref={emblaRef}>
+        <div className="overflow-hidden" ref={emblaRef} role="region" aria-roledescription="carrossel" aria-label="Resultados das alunas da mentoria">
           <div className="flex gap-4 md:gap-6 touch-pan-y">
             {alunasMedia.map((media, index) => (
               <div 
