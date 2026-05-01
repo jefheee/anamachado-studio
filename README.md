@@ -19,7 +19,7 @@ Este projeto não foi apenas "codado", ele foi **orquestrado**. Como desenvolved
 * 🧠 **NotebookLM (Pesquisa e Contexto):** Ingestão de materiais da faculdade, catálogos de preços em PDF, apostilas do curso e a documentação extensa de *Skills* do Antigravity. Gerou o embasamento teórico para a engenharia de prompts.  
 * 🎨 **Stitch (Google) & Flow:** O Stitch foi utilizado para a idealização rápida da UI/UX e prototipagem inicial de componentes base. O Flow auxiliou na geração de artes de apoio.  
 * 🧭 **Gemini (O Estrategista):** Atuou como meu co-piloto de Arquitetura e Negócios. Juntos, definimos o funil de vendas, a estratégia híbrida (Vercel \+ Kiwify), a correção de falhas de UX e a elaboração de prompts complexos.  
-* ⌨️ **Antigravity (O Executor):** Agente de código integrado ao editor. Recebeu *prompts cirúrgicos* gerados pelo Gemini, utilizando *skills* específicas (@bug-hunter, @high-end-visual-design, @remotion) para escrever o código Next.js/Tailwind sob minha supervisão rígida.
+* ⌨️ **Antigravity (O Executor):** Agente de código integrado ao editor. Recebeu *prompts cirúrgicos* gerados pelo Gemini, utilizando *skills* específicas (@bug-hunter, @high-end-visual-design) para escrever o código Next.js/Tailwind sob minha supervisão rígida.
 
 ## **🏗️ Arquitetura e Tech Stack**
 
