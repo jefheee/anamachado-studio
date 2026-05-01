@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function InstagramFeed() {
   return (
-    <section className="py-section-gap px-container-padding bg-surface-container-lowest md:px-[8%]">
+    <section className="py-section-gap px-container-padding bg-neutral-900 md:px-[8%] border-t border-white/5">
       <div className="max-w-7xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,10 +14,10 @@ export function InstagramFeed() {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
+          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2 font-semibold">
             Acompanhe o Dia a Dia
           </span>
-          <h2 className="font-headline-lg text-headline-lg text-primary">
+          <h2 className="font-headline-lg text-headline-lg text-white">
             Nosso Instagram
           </h2>
         </motion.div>

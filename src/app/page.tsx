@@ -2,12 +2,11 @@ import dynamic from "next/dynamic";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/sections/Hero";
-import { Espaco } from "@/components/sections/Espaco";
 import { Services } from "@/components/sections/Services";
 import { LashDesignerProfession } from "@/components/sections/LashDesignerProfession";
 import { FAQ } from "@/components/sections/FAQ";
 import { Oferta } from "@/components/sections/Oferta";
-import { Location } from "@/components/sections/Location";
+import { StudioAndLocation } from "@/components/sections/StudioAndLocation";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
 /* ─── Below-the-fold: lazy-loaded with next/dynamic ─── */
@@ -290,19 +289,18 @@ export default function Home() {
       <main className="w-full mx-auto md:pt-[60px]">
         {/* ── Above the Fold (ATF) — static imports, SSR'd ── */}
         <Hero />
-        <Espaco />
         <Services />
 
         {/* ── Below the Fold (BTF) — dynamic imports, code-split ── */}
         <Portfolio />
+        <InformativeReels />
         <LashDesignerProfession />
         <Mentoria />
         <AlunasResults />
+        <StudioAndLocation />
         <Oferta />
         <FAQ />
         <InstagramFeed />
-        <InformativeReels />
-        <Location />
       </main>
       <Footer />
       <FloatingWhatsApp />

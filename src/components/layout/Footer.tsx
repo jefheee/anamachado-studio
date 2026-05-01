@@ -40,10 +40,11 @@ export function Footer() {
             <div className="h-12 flex items-center">
               <Image
                 alt="Ana Machado Logo"
-                className="h-full w-auto object-contain brightness-0 invert opacity-80"
+                className="h-full w-auto object-contain brightness-0 invert opacity-90"
                 src="/assets/brand/logoheader_sem_fundo.png"
-                width={120}
-                height={48}
+                width={180}
+                height={72}
+                quality={100}
               />
             </div>
             <p className="text-sm text-white/60 leading-relaxed max-w-xs">
