@@ -15,23 +15,38 @@ gsap.registerPlugin(ScrollTrigger);
 // Custom Aperture Reveal Component
 function ApertureReveal({ isLoaded }: { isLoaded: boolean }) {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useGSAP(() => {
     if (isLoaded && overlayRef.current) {
+      // Bloqueia o scroll durante a revelação inicial para evitar saltos visuais
+      document.body.style.overflow = "hidden";
+      
       gsap.to(overlayRef.current, {
-        clipPath: "circle(150% at 50% 50%)",
+        clipPath: "circle(0% at 50% 50%)",
         duration: 1.8,
         ease: "power4.inOut",
-        delay: 0.2
+        delay: 0.2,
+        onComplete: () => {
+          setIsVisible(false);
+          document.body.style.overflow = "auto";
+        }
       });
     }
+    
+    // Cleanup em caso de desmontagem prematura
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, [isLoaded]);
+
+  if (!isVisible) return null;
 
   return (
     <div 
       ref={overlayRef}
-      className="fixed inset-0 z-[100] bg-white pointer-events-none"
-      style={{ clipPath: "circle(0% at 50% 50%)" }}
+      className="fixed inset-0 z-[999] bg-white pointer-events-none"
+      style={{ clipPath: "circle(150% at 50% 50%)" }}
     />
   );
 }
