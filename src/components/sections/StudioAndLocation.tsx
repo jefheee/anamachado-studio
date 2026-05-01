@@ -53,7 +53,7 @@ function MediaSwapCard({
   useEffect(() => {
     if (activeVideoRef.current) {
       if (isInView) {
-        activeVideoRef.current.play().catch(() => {});
+        activeVideoRef.current.play().catch(() => { });
       } else {
         activeVideoRef.current.pause();
       }
@@ -100,9 +100,8 @@ function MediaSwapCard({
 
       {next && (
         <div
-          className={`absolute inset-0 w-full h-full z-[1] transition-opacity duration-700 bg-neutral-800 ${
-            nextReady ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 w-full h-full z-[1] transition-opacity duration-700 bg-neutral-800 ${nextReady ? "opacity-100" : "opacity-0"
+            }`}
         >
           {next.type === "video" ? (
             <video
@@ -138,9 +137,8 @@ function MediaSwapCard({
           {media.map((_, idx) => (
             <div
               key={idx}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                idx === activeIndex ? "bg-white scale-125" : "bg-white/40"
-              }`}
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === activeIndex ? "bg-white scale-125" : "bg-white/40"
+                }`}
             />
           ))}
         </div>
@@ -172,7 +170,7 @@ export function StudioAndLocation() {
   return (
     <section id="espaco" className="py-16 md:py-24 px-container-padding bg-neutral-900 text-white md:px-[8%] overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        
+
         {/* Espaco Header */}
         <ScrollRevealWrapper className="text-center max-w-2xl mx-auto mb-12">
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-4 font-semibold">
@@ -277,7 +275,7 @@ export function StudioAndLocation() {
               </div>
               <div>
                 <h4 className="text-sm font-semibold text-white/80 mb-1">Funcionamento</h4>
-                <p className="text-xs text-white/50">Seg a Sex: <span className="text-secondary font-medium">09h - 19h</span></p>
+                <p className="text-xs text-white/50">Seg a Sex: <span className="text-secondary font-medium">09:30h - 18:30h</span></p>
               </div>
             </div>
             <div className="flex items-start gap-3">

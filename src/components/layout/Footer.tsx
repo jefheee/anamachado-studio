@@ -140,7 +140,7 @@ export function Footer() {
               <Clock className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
               <div>
                 <p className="text-sm text-white/80 font-medium">Horário de Funcionamento</p>
-                <p className="text-xs text-white/50">Segunda a Sexta: 09h às 19h</p>
+                <p className="text-xs text-white/50">Segunda a Sexta: 09:30h às 18:30h</p>
               </div>
             </div>
 

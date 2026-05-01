@@ -4,6 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { LocalBusinessSchema } from "@/components/seo/LocalBusinessSchema";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -104,6 +105,7 @@ export default function RootLayout({
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
 
       <body className="bg-background text-on-background antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+        <LocalBusinessSchema />
         {children}
 
         {/* ── Meta Pixel / Facebook Pixel (afterInteractive = não bloqueia LCP) ── */}
