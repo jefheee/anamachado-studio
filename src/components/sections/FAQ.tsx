@@ -78,7 +78,7 @@ export function FAQ() {
   const currentFaqs = activeTab === "Serviços" ? faqServicos : faqCurso;
 
   return (
-    <section className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%] border-t border-neutral-100">
+    <section id="faq" className="py-16 md:py-24 px-container-padding bg-surface md:px-[8%] border-t border-neutral-100">
       <div className="max-w-3xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -127,7 +127,8 @@ export function FAQ() {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover:bg-neutral-50 transition-colors"
+                aria-expanded={openIndex === index}
+                className="w-full text-left px-6 py-5 flex justify-between items-center focus:outline-none hover:bg-neutral-50 transition-colors min-h-[44px]"
               >
                 <span className="font-headline-md text-lg text-primary pr-8">{faq.question}</span>
                 <motion.div

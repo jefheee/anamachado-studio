@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle } from "lucide-react";
 import { FullscreenMediaWrapper } from "../ui/FullscreenMediaWrapper";
 
 type Tab = "Cílios" | "Sobrancelhas" | "Micropigmentação" | "Manutenções";
@@ -13,7 +14,13 @@ export function Services() {
 
   const content = {
     "Cílios": {
-      description: "A extensão de cílios transforma o olhar, trazendo praticidade e elevação da autoestima. O Volume Brasileiro proporciona um olhar marcante, o Egípcio traz densidade e o Foxy Eyes cria um efeito lifting sofisticado.",
+      description: "A extensão de cílios transforma o olhar, trazendo praticidade e elevação da autoestima.",
+      highlights: [
+        "Volume Brasileiro: olhar marcante e natural",
+        "Egípcio: máxima densidade e preenchimento",
+        "Foxy Eyes: efeito lifting sofisticado",
+        "Retenção de 20 a 30 dias",
+      ],
       images: [
         { src: "/assets/modelos_clientes/brasileiro/brasileiro (1).jpeg", label: "Volume Brasileiro" },
         { src: "/assets/modelos_clientes/egipcio/egipcio (1).jpeg", label: "Volume Egípcio" },
@@ -28,7 +35,12 @@ export function Services() {
       ],
     },
     "Sobrancelhas": {
-      description: "Um design bem estruturado é a moldura do rosto. O Design estratégico alinha a simetria, enquanto a Brow Lamination entrega volume, preenchimento e um aspecto moderno e selvagem (fluffy brows).",
+      description: "Um design bem estruturado é a moldura do rosto.",
+      highlights: [
+        "Design estratégico com simetria perfeita",
+        "Brow Lamination: volume e aspecto fluffy",
+        "Resultado natural e duradouro",
+      ],
       images: [
         { src: "/assets/modelos_clientes/brown_lamination/brown_lamination (8).jpeg", label: "Brow Lamination" },
         { src: "/assets/modelos_clientes/design_simples/design_simples (1).jpg", label: "Design de Sobrancelhas" },
@@ -39,7 +51,12 @@ export function Services() {
       ],
     },
     "Micropigmentação": {
-      description: "Correção e aprimoramento duradouros. A técnica Fio a Fio reproduz a naturalidade dos pelos da sobrancelha, enquanto a revitalização Labial devolve cor, contorno e saúde aos lábios.",
+      description: "Correção e aprimoramento duradouros.",
+      highlights: [
+        "Fio a Fio: naturalidade dos pelos",
+        "Labial: cor, contorno e saúde",
+        "Resultados que duram anos",
+      ],
       images: [
         { src: "/assets/modelos_clientes/micropigmentacao_fio_a_fio/micropigmentacao_fio_a_fio (1).jpeg", label: "Sobrancelha Fio a Fio" },
         { src: "/assets/modelos_clientes/micropigmentacao_labial/micropigmentacao_labial_depois.jpeg", label: "Micropigmentação Labial" },
@@ -51,7 +68,13 @@ export function Services() {
       ],
     },
     "Manutenções": {
-      description: "Para manter a saúde dos fios naturais e o preenchimento impecável, as manutenções devem ser realizadas dentro do prazo estabelecido e com pelo menos 60% dos fios intactos e limpos. Caso contrário, será cobrado o valor de uma nova aplicação.",
+      description: "Para manter o preenchimento impecável.",
+      highlights: [
+        "Dentro do prazo estabelecido (15-30 dias)",
+        "Mínimo 60% dos fios preservados",
+        "Fios higienizados no dia",
+        "Valor de nova aplicação após 30 dias",
+      ],
       images: [
         { src: "/assets/modelos_clientes/egipcio/egipcio (5).jpg", label: "Manutenção Volume Egípcio" },
         { src: "/assets/modelos_clientes/foxy/foxy (2).jpeg", label: "Manutenção Foxy Eyes" },
@@ -122,9 +145,19 @@ export function Services() {
                   <h3 className="font-headline-lg text-headline-lg text-primary mb-4">
                     {activeTab}
                   </h3>
-                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed mb-4">
                     {activeContent.description}
                   </p>
+                  {"highlights" in activeContent && activeContent.highlights && (
+                    <ul className="space-y-2.5">
+                      {(activeContent.highlights as string[]).map((h: string, i: number) => (
+                        <li key={i} className="flex items-start gap-2.5">
+                          <CheckCircle className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
+                          <span className="font-body-md text-sm text-on-surface-variant">{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
 
                 <ul className="space-y-6 mt-8">

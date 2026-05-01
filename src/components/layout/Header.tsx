@@ -53,9 +53,11 @@ export function Header() {
         {/* Nav Desktop */}
         <nav className="hidden md:flex gap-8 items-center uppercase tracking-widest text-xs font-medium text-neutral-900">
           <Link href="#inicio" className="hover:opacity-70 transition-opacity duration-300">Início</Link>
+          <Link href="#espaco" className="hover:opacity-70 transition-opacity duration-300">Espaço</Link>
           <Link href="#servicos" className="hover:opacity-70 transition-opacity duration-300">Serviços</Link>
           <Link href="#portfolio" className="hover:opacity-70 transition-opacity duration-300">Portfólio</Link>
           <Link href="#mentoria" className="hover:opacity-70 transition-opacity duration-300">Mentoria</Link>
+          <Link href="#faq" className="hover:opacity-70 transition-opacity duration-300">FAQ</Link>
         </nav>
         
         <div className="hidden md:flex gap-3">
@@ -104,10 +106,12 @@ export function Header() {
             </div>
 
             <nav className="flex flex-col gap-6 uppercase tracking-widest text-sm font-medium mb-12 text-neutral-900">
-              <Link onClick={() => setIsMobileMenuOpen(false)} href="#inicio" className="hover:opacity-70">Início</Link>
-              <Link onClick={() => setIsMobileMenuOpen(false)} href="#servicos" className="hover:opacity-70">Serviços</Link>
-              <Link onClick={() => setIsMobileMenuOpen(false)} href="#portfolio" className="hover:opacity-70">Portfólio</Link>
-              <Link onClick={() => setIsMobileMenuOpen(false)} href="#mentoria" className="hover:opacity-70">Mentoria</Link>
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="#inicio" className="hover:opacity-70 min-h-[44px] flex items-center">Início</Link>
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="#espaco" className="hover:opacity-70 min-h-[44px] flex items-center">Espaço</Link>
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="#servicos" className="hover:opacity-70 min-h-[44px] flex items-center">Serviços</Link>
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="#portfolio" className="hover:opacity-70 min-h-[44px] flex items-center">Portfólio</Link>
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="#mentoria" className="hover:opacity-70 min-h-[44px] flex items-center">Mentoria</Link>
+              <Link onClick={() => setIsMobileMenuOpen(false)} href="#faq" className="hover:opacity-70 min-h-[44px] flex items-center">FAQ</Link>
             </nav>
 
             <div className="flex flex-col gap-4 mt-auto mb-8">

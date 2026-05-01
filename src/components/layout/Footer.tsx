@@ -46,10 +46,10 @@ export function Footer() {
                 height={48}
               />
             </div>
-            <p className="text-sm text-white/50 leading-relaxed max-w-xs">
+            <p className="text-sm text-white/60 leading-relaxed max-w-xs">
               Especialista em extensão de cílios, design de sobrancelhas e micropigmentação. Formando profissionais de excelência através da Mentoria VIP.
             </p>
-            <p className="text-xs text-white/30 uppercase tracking-widest font-semibold">
+            <p className="text-xs text-white/40 uppercase tracking-widest font-semibold">
               Palhoça, SC — Brasil
             </p>
 
@@ -94,20 +94,20 @@ export function Footer() {
             <h4 className="font-label-sm text-xs uppercase tracking-widest text-white/40 font-semibold">
               Navegação
             </h4>
-            <nav className="flex flex-col gap-3">
-              <Link href="#servicos" className="text-sm text-white/60 hover:text-white transition-colors">Serviços</Link>
-              <Link href="#portfolio" className="text-sm text-white/60 hover:text-white transition-colors">Portfólio</Link>
-              <Link href="#mentoria" className="text-sm text-white/60 hover:text-white transition-colors">Mentoria VIP</Link>
-              <Link href="#resultados-alunas" className="text-sm text-white/60 hover:text-white transition-colors">Resultados</Link>
-              <Link href="#garantir-vaga" className="text-sm text-white/60 hover:text-white transition-colors">Investimento</Link>
+            <nav className="flex flex-col gap-1">
+              <Link href="#servicos" className="text-sm text-white/60 hover:text-white transition-colors min-h-[44px] flex items-center">Serviços</Link>
+              <Link href="#portfolio" className="text-sm text-white/60 hover:text-white transition-colors min-h-[44px] flex items-center">Portfólio</Link>
+              <Link href="#mentoria" className="text-sm text-white/60 hover:text-white transition-colors min-h-[44px] flex items-center">Mentoria VIP</Link>
+              <Link href="#resultados-alunas" className="text-sm text-white/60 hover:text-white transition-colors min-h-[44px] flex items-center">Resultados</Link>
+              <Link href="#garantir-vaga" className="text-sm text-white/60 hover:text-white transition-colors min-h-[44px] flex items-center">Investimento</Link>
             </nav>
 
             <h4 className="font-label-sm text-xs uppercase tracking-widest text-white/40 font-semibold mt-4">
               Legal
             </h4>
-            <nav className="flex flex-col gap-3">
-              <Link href="/termos-e-condicoes" className="text-sm text-white/60 hover:text-white transition-colors">Termos e Condições</Link>
-              <Link href="/politica-de-privacidade" className="text-sm text-white/60 hover:text-white transition-colors">Política de Privacidade</Link>
+            <nav className="flex flex-col gap-1">
+              <Link href="/termos-e-condicoes" className="text-sm text-white/60 hover:text-white transition-colors min-h-[44px] flex items-center">Termos e Condições</Link>
+              <Link href="/politica-de-privacidade" className="text-sm text-white/60 hover:text-white transition-colors min-h-[44px] flex items-center">Política de Privacidade</Link>
             </nav>
           </div>
 
@@ -163,10 +163,10 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/5 py-6 px-6 md:px-[8%]">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[11px] text-white/30 tracking-wider uppercase">
+          <p className="text-[11px] text-white/40 tracking-wider uppercase">
             © {new Date().getFullYear()} Ana Machado Estética Facial. Todos os direitos reservados.
           </p>
-          <p className="text-[11px] text-white/20 tracking-wider">
+          <p className="text-[11px] text-white/30 tracking-wider">
             Palhoça, Santa Catarina — Brasil
           </p>
         </div>
