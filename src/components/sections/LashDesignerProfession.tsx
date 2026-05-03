@@ -26,7 +26,7 @@ const benefits = [
 
 export function LashDesignerProfession() {
   return (
-    <section id="profissao" className="relative py-10 md:py-24 px-4 md:px-[8%] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-800/40 via-[#171717] to-[#171717] border-t border-neutral-800 overflow-hidden">
+    <section id="profissao" className="relative py-10 md:py-24 px-4 md:px-[8%] bg-[#171717] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-800/40 via-[#171717] to-[#171717] border-t border-neutral-800 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           
