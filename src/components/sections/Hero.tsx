@@ -20,25 +20,19 @@ function ApertureReveal({ isLoaded }: { isLoaded: boolean }) {
 
   useGSAP(() => {
     if (isLoaded && overlayRef.current) {
-      // Bloqueia o scroll durante a revelação inicial para evitar saltos visuais
-      document.body.style.overflow = "hidden";
+      // Removido o 'document.body.style.overflow = "hidden"' para evitar Layout Shift (Barra de scroll sumindo)
       
       gsap.to(overlayRef.current, {
-        clipPath: "circle(0% at 50% 50%)",
-        duration: 1.8,
-        ease: "power4.inOut",
-        delay: 0.2,
+        width: "300vmax",
+        height: "300vmax",
+        duration: 1.5,
+        ease: "power2.inOut",
+        delay: 0.1,
         onComplete: () => {
           setIsVisible(false);
-          document.body.style.overflow = "auto";
         }
       });
     }
-    
-    // Cleanup em caso de desmontagem prematura
-    return () => {
-      document.body.style.overflow = "auto";
-    };
   }, [isLoaded]);
 
   if (!isVisible) return null;
@@ -46,8 +40,12 @@ function ApertureReveal({ isLoaded }: { isLoaded: boolean }) {
   return (
     <div 
       ref={overlayRef}
-      className="fixed inset-0 z-[999] bg-white pointer-events-none"
-      style={{ clipPath: "circle(150% at 50% 50%)" }}
+      className="fixed z-[999] pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-transparent rounded-full"
+      style={{ 
+        border: "150vmax solid white",
+        width: "0px",
+        height: "0px"
+      }}
     />
   );
 }

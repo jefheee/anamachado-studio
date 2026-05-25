@@ -30,7 +30,7 @@ export function Header() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: isHidden ? -100 : 0 }}
         transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-lg shadow-sm border-b border-neutral-100 flex justify-between items-center px-6 py-2.5"
+        className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-lg shadow-sm border-b border-neutral-100 flex justify-between items-center px-6 py-4 md:px-8"
       >
         <div className="flex items-center gap-4">
           <button 
@@ -39,14 +39,14 @@ export function Header() {
           >
             <Menu className="text-neutral-900 w-5 h-5" />
           </button>
-          <Link href="#inicio" className="flex items-center h-12">
+          <Link href="#inicio" className="flex items-center">
             <Image
               alt="Ana Machado Logo"
               className="object-contain"
-              style={{ width: "auto", height: "auto" }}
+              style={{ width: "auto", height: "auto", maxHeight: "36px" }}
               src="/assets/brand/logoheader_sem_fundo.png"
               width={200}
-              height={48}
+              height={36}
               priority
             />
           </Link>

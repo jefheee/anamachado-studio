@@ -75,10 +75,11 @@ function FAQGroup({ title, items, tabId }: { title: string; items: FAQItem[]; ta
         {items.map((faq, index) => (
           <details
             key={`${tabId}-${index}`}
-            className="bg-white border border-neutral-200 rounded-lg overflow-hidden shadow-sm group"
+            name={tabId}
+            className="group border border-neutral-200 bg-white rounded-2xl overflow-hidden will-change-transform [transform:translateZ(0)] [backface-visibility:hidden] [&_summary::-webkit-details-marker]:hidden"
           >
-            <summary className="w-full text-left px-6 py-5 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-colors min-h-[44px] list-none [&::-webkit-details-marker]:hidden">
-              <span className="font-headline-md text-lg text-primary pr-8">
+            <summary className="w-full text-left px-5 md:px-6 flex justify-between items-center cursor-pointer hover:bg-neutral-50 transition-colors min-h-[88px] md:min-h-[96px] list-none [&::-webkit-details-marker]:hidden">
+              <span className="font-headline-md text-base md:text-[17px] font-semibold text-primary pr-6 leading-snug">
                 {faq.question}
               </span>
               <ChevronDown className="text-secondary w-5 h-5 shrink-0 transition-transform duration-300 group-open:rotate-180" />
