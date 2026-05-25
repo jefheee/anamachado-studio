@@ -112,13 +112,20 @@ export function Mentoria() {
         .fromTo(
           bgRef.current,
           { scale: 1.4, opacity: 1 },
-          { scale: 1, opacity: 1, duration: 1, ease: "none" }
+          { scale: 1, opacity: 1, duration: 1, ease: "none" },
+          0
+        )
+        .fromTo(
+          ".mentoria-bg-overlay",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.8, ease: "none" },
+          0
         )
         .fromTo(
           ".mentoria-hero-text",
           { opacity: 0, y: 60 },
           { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
-          0.3
+          0.2
         );
 
       // Content reveal below hero
@@ -148,6 +155,7 @@ export function Mentoria() {
     // Mobile: make hero text visible immediately (no pin, no GSAP animation)
     mm.add("(max-width: 767px)", () => {
       gsap.set(".mentoria-hero-text", { opacity: 1, y: 0 });
+      gsap.set(".mentoria-bg-overlay", { opacity: 1 });
       if (bgRef.current) {
         gsap.set(bgRef.current, { scale: 1 });
       }
@@ -174,8 +182,8 @@ export function Mentoria() {
             className="w-full h-full object-cover"
             alt="Mentoria VIP Ana Machado"
           />
-          {/* Stronger overlay for text readability */}
-          <div className="absolute inset-0 bg-black/65"></div>
+          {/* Stronger overlay for text readability - animated via GSAP */}
+          <div className="mentoria-bg-overlay absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 md:opacity-0"></div>
         </div>
 
         {/* Text content — also starts invisible, revealed by GSAP */}

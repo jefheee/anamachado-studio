@@ -60,6 +60,10 @@ const faqCurso: FAQItem[] = [
   {
     question: "Quanto tempo leva para recuperar o investimento do curso?",
     answer: "Com as técnicas de marketing ensinadas no curso e cobrando um valor inicial médio de R$ 120 por aplicação, você pode recuperar todo o investimento inicial atendendo cerca de 10 clientes. O retorno é extremamente rápido."
+  },
+  {
+    question: "Há alguma certificação ao final da Mentoria?",
+    answer: "Sim, ao concluir a mentoria você recebe um certificado de conclusão de curso, validando que você domina a metodologia Ana Machado e está apta para atuar como uma Lash Designer de excelência."
   }
 ];
 
@@ -94,7 +98,7 @@ function FAQGroup({ title, items, tabId }: { title: string; items: FAQItem[]; ta
 export function FAQ() {
   return (
     <section id="faq" className="py-16 md:py-24 px-container-padding bg-white md:px-[8%] border-t border-neutral-100">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">
             Tire suas dúvidas
@@ -104,20 +108,22 @@ export function FAQ() {
           </h2>
         </div>
 
-        {/* Atendimentos */}
-        <div className="mb-10">
-          <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-on-surface-variant mb-6">
-            Atendimentos
-          </h3>
-          <FAQGroup title="Perguntas sobre Atendimentos" items={faqServicos} tabId="servicos" />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+          {/* Atendimentos */}
+          <div>
+            <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-on-surface-variant mb-6">
+              Atendimentos
+            </h3>
+            <FAQGroup title="Perguntas sobre Atendimentos" items={faqServicos} tabId="servicos" />
+          </div>
 
-        {/* Mentoria VIP */}
-        <div>
-          <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-[#800020] mb-6">
-            Mentoria VIP
-          </h3>
-          <FAQGroup title="Perguntas sobre a Mentoria" items={faqCurso} tabId="curso" />
+          {/* Mentoria VIP */}
+          <div>
+            <h3 className="text-center font-label-sm text-sm uppercase tracking-widest text-[#800020] mb-6">
+              Mentoria VIP
+            </h3>
+            <FAQGroup title="Perguntas sobre a Mentoria" items={faqCurso} tabId="curso" />
+          </div>
         </div>
       </div>
     </section>
