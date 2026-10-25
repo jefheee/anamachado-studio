@@ -1,59 +1,59 @@
-# **Ana Machado Studio | Plataforma High-End & Motor de Marketing**
+# **Ana Machado Studio | High-End Platform & Marketing Engine**
 
-O **Ana Machado Studio** transcende uma simples Landing Page institucional. É uma aplicação web de alto padrão arquitetada para funcionar como uma **Máquina de Conversão** para a Mentoria VIP de Lash Designers (R$ 999,90) e como um **Motor de Marketing Orgânico** interno.
+**Ana Machado Studio** transcends a simple institutional Landing Page. It is a high-standard web application architected to function as a **Conversion Machine** for the VIP Lash Designer Mentorship (R$ 999.90) and as an internal **Organic Marketing Engine**.
 
-Desenvolvido com foco absoluto em conversão (Copywriting PAS), imersão visual (Z-Axis Scroll) e performance extrema para dispositivos móveis.
+Developed with an absolute focus on conversion (PAS Copywriting), visual immersion (Z-Axis Scroll), and extreme performance for mobile devices.
 
-## **📖 A História e o Propósito do Projeto**
+## **📖 The History and Purpose of the Project**
 
-Este projeto nasceu de uma necessidade real de negócios. A Ana Júlia, amiga e Lash Designer de excelência, possuía uma demanda crescente por seus serviços (Volume Brasileiro, Foxy Eyes) e por seu Curso VIP presencial. O problema? Toda a captação dependia exclusivamente do Instagram e de links genéricos do WhatsApp.
+This project was born from a real business need. Ana Júlia, a friend and excellent Lash Designer, had a growing demand for her services (Brazilian Volume, Foxy Eyes) and her in-person VIP Course. The problem? All client acquisition depended exclusively on Instagram and generic WhatsApp links.
 
-O objetivo inicial era criar um "site para colocar as aulas do curso". No entanto, após uma análise profunda de mercado e de infraestrutura de nuvem, percebemos que **hospedar vídeos de aulas pesadas em uma hospedagem comum destruiria a performance e geraria custos altíssimos**.
+The initial goal was to create a "website to put the course classes". However, after a deep market and cloud infrastructure analysis, we realized that **hosting heavy video classes on a standard host would destroy performance and generate astronomical costs**.
 
-**O Pivot Estratégico:** O projeto escalou para uma **Vitrine de Luxo**. O site Next.js capta a cliente com uma experiência visual inesquecível, quebra objeções e fecha a venda direto no WhatsApp. A entrega do conteúdo em vídeo foi terceirizada para uma plataforma consolidada (Kiwify), garantindo segurança anti-pirataria e **zero custo fixo** de infraestrutura.
+**The Strategic Pivot:** The project scaled to a **Luxury Showcase**. The Next.js website captures the client with an unforgettable visual experience, breaks objections, and closes the sale straight on WhatsApp. Video content delivery was outsourced to a consolidated platform (Kiwify), ensuring anti-piracy security and **zero fixed infrastructure cost**.
 
-## **🤖 Engenharia Híbrida: Orquestração de IAs**
+## **🤖 Hybrid Engineering: AI Orchestration**
 
-Este projeto não foi apenas "codado", ele foi **orquestrado**. Como desenvolvedor, atuei como Arquiteto de Software e *Prompt Engineer*, coordenando um esquadrão de IAs para ir da ideação ao deploy em tempo recorde:
+This project wasn't just "coded", it was **orchestrated**. As a developer, I acted as a Software Architect and *Prompt Engineer*, coordinating a squad of AIs to go from ideation to deploy in record time:
 
-* 🧠 **NotebookLM (Pesquisa e Contexto):** Ingestão de materiais da faculdade, catálogos de preços em PDF, apostilas do curso e a documentação extensa de *Skills* do Antigravity. Gerou o embasamento teórico para a engenharia de prompts.  
-* 🎨 **Stitch (Google) & Flow:** O Stitch foi utilizado para a idealização rápida da UI/UX e prototipagem inicial de componentes base. O Flow auxiliou na geração de artes de apoio.  
-* 🧭 **Gemini (O Estrategista):** Atuou como meu co-piloto de Arquitetura e Negócios. Juntos, definimos o funil de vendas, a estratégia híbrida (Vercel \+ Kiwify), a correção de falhas de UX e a elaboração de prompts complexos.  
-* ⌨️ **Antigravity (O Executor):** Agente de código integrado ao editor. Recebeu *prompts cirúrgicos* gerados pelo Gemini, utilizando *skills* específicas (@bug-hunter, @high-end-visual-design) para escrever o código Next.js/Tailwind sob minha supervisão rígida.
+- 🧠 **NotebookLM (Research and Context):** Ingestion of college materials, PDF price catalogs, course workbooks, and Antigravity's extensive *Skills* documentation. Generated the theoretical foundation for prompt engineering.  
+- 🎨 **Stitch (Google) & Flow:** Stitch was used for rapid UI/UX ideation and initial prototyping of base components. Flow assisted in generating supporting artwork.  
+- 🧭 **Gemini (The Strategist):** Acted as my Architecture and Business co-pilot. Together, we defined the sales funnel, the hybrid strategy (Vercel + Kiwify), the correction of UX flaws, and the elaboration of complex prompts.  
+- ⌨️ **Antigravity (The Executor):** Code agent integrated into the editor. Received *surgical prompts* generated by Gemini, using specific *skills* (@bug-hunter, @high-end-visual-design) to write the Next.js/Tailwind code under my strict supervision.
 
-## **🏗️ Arquitetura e Tech Stack**
+## **🏗️ Architecture and Tech Stack**
 
-O design foge do aspecto de "site gerado por IA". Ele aplica conceitos de design editorial e interações de alta fidelidade:
+The design escapes the "AI-generated website" look. It applies editorial design concepts and high-fidelity interactions:
 
-* **Framework Core:** Next.js (App Router) \+ TypeScript para tipagem estrita e renderização otimizada.  
-* **Styling:** Tailwind CSS com variáveis semânticas de design system (Tons de Areia, Bordô para CTAs, Tipografia *Noto Serif*).  
-* **Imersão 3D (Efeito GTA VI):** Uso do GSAP (ScrollTrigger) para criar o *Z-Axis Reveal*. Conforme a usuária faz o scroll, o *Hero* fixado sofre um zoom imersivo e as seções voam em direção à câmera.  
-* **Microinterações:** Framer Motion e Embla Carousel para sliders de portfólio ultra-fluidos no mobile (touch-pan nativo).  
+- **Core Framework:** Next.js (App Router) + TypeScript for strict typing and optimized rendering.  
+- **Styling:** Tailwind CSS with semantic design system variables (Sand Tones, Burgundy for CTAs, *Noto Serif* Typography).  
+- **3D Immersion (GTA VI Effect):** Use of GSAP (ScrollTrigger) to create the *Z-Axis Reveal*. As the user scrolls, the fixed *Hero* undergoes an immersive zoom and the sections fly towards the camera.  
+- **Microinteractions:** Framer Motion and Embla Carousel for ultra-fluid portfolio sliders on mobile (native touch-pan).  
 
-## **⚡ Decisões Críticas de Performance (O Filtro de Verdade)**
+## **⚡ Critical Performance Decisions (The Truth Filter)**
 
-Para manter o projeto hospedado gratuitamente na **Vercel (Plano Hobby)** sem estourar o limite rígido de 100GB de banda, apliquei engenharia de performance restrita:
+To keep the project hosted for free on **Vercel (Hobby Plan)** without exceeding the strict 100GB bandwidth limit, I applied restricted performance engineering:
 
-1. **Intersection Observer para Mídias:** O site possui dezenas de vídeos .mp4 (resultados, estúdio, kit de materiais). Nenhum deles usa autoPlay incondicional. Desenvolvi uma lógica onde o vídeo **só dá play se estiver 100% visível na tela**, pausando automaticamente ao sair do viewport.  
-2. **Modais Anti-Conflito (Portals):** O FullscreenMediaWrapper (modal para ver fotos e vídeos em alta resolução) é renderizado via createPortal direto no document.body. Isso evita conflitos bizarros de z-index com o motor de física do GSAP, garantindo que a tela cheia sobreponha tudo sem bugar a rolagem.  
-3. **Sistema de Arquivos Sanitizado:** Scripts em PowerShell automatizaram a limpeza de acentos e caracteres especiais (ç, \~, espaços) de dezenas de assets fotográficos, prevenindo falhas silenciosas de deploy no ambiente Linux da Vercel.
+1. **Intersection Observer for Media:** The site has dozens of .mp4 videos (results, studio, materials kit). None of them use unconditional autoPlay. I developed a logic where the video **only plays if it is 100% visible on the screen**, pausing automatically when leaving the viewport.  
+2. **Anti-Conflict Modals (Portals):** The FullscreenMediaWrapper (modal to see photos and videos in high resolution) is rendered via createPortal directly into the document.body. This avoids bizarre z-index conflicts with GSAP's physics engine, ensuring the fullscreen overlays everything without bugging the scroll.  
+3. **Sanitized File System:** PowerShell scripts automated the cleaning of accents and special characters (ç, ~, spaces) from dozens of photographic assets, preventing silent deploy failures in Vercel's Linux environment.
 
-## **💻 Como rodar localmente**
+## **💻 How to run locally**
 
-1. **Clone este repositório:**  
-   git clone \[https://github.com/jefheee/anamachado-studio.git\](https://github.com/jefheee/anamachado-studio.git)
+1. **Clone this repository:**  
+   git clone [https://github.com/jefheee/anamachado-studio.git](https://github.com/jefheee/anamachado-studio.git)
 
-2. **Acesse a pasta:**  
+2. **Access the folder:**  
    cd anamachado-studio
 
-3. **Instale as dependências:**  
+3. **Install dependencies:**  
    npm install
 
-4. **Rode o servidor de desenvolvimento:**  
+4. **Run the development server:**  
    npm run dev
 
-   *O site estará disponível em http://localhost:3000*
+   *The site will be available at http://localhost:3000*
 
 
 
-*Desenvolvido com ☕, raciocínio lógico e muita Inteligência Artificial orquestrada por [Jefherson](https://github.com/jefheee).*
+*Developed with ☕, logical reasoning, and a lot of Artificial Intelligence orchestrated by [Jefherson](https://github.com/jefheee).*
